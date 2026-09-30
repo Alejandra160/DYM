@@ -75,6 +75,18 @@ document.addEventListener('keydown', function (e) {
   if (e.key === 'Escape') closeAboutModal();
 });
 
+// Botón "volver arriba" — aparece al bajar en la página
+(function () {
+  var btn = document.getElementById('toTopBtn');
+  if (!btn) return;
+  window.addEventListener('scroll', function () {
+    var show = window.scrollY > 500;
+    btn.classList.toggle('opacity-0', !show);
+    btn.classList.toggle('pointer-events-none', !show);
+    btn.classList.toggle('translate-y-2', !show);
+  });
+})();
+
 // Tabs de FAQ
 function faqTab(btn) {
   document.querySelectorAll('.faq-tab').forEach(function (t) {
