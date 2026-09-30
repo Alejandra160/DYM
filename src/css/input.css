@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@theme {
+  --color-navy: #6B5D4F;
+  --color-navy-deep: #3D3229;
+  --color-cream: #F3EDE4;
+  --color-graybg: #E9DFD1;
+  --color-gold: #8B2D3A;
+  --color-gold-light: #C7A876;
+  --color-sand: #F5EFE6;
+  --color-dim: #5E5245;
+  --color-mut: #A69A8A;
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Fraunces", serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 64px;
+  scrollbar-color: #bc9f79 #F3EDE4;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: #F3EDE4;
+}
+::-webkit-scrollbar-thumb {
+  background: #C6AD8B;
+  border-radius: 8px;
+  border: 3px solid #F3EDE4;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #A9814F;
+}
+
+body {
+  @apply bg-cream text-navy-deep antialiased overflow-x-hidden;
+}
+
+@layer components {
+  /* Hero: fondo con degradado cálido + resplandor, inspirado en la referencia */
+  .hero-glow {
+    background-image:
+      radial-gradient(ellipse 170% 115% at 50% 116%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 28%, rgba(255,255,255,0) 72%),
+      linear-gradient(180deg, #ECE1CF 0%, #D6C1A2 50%, #BC9F79 100%);
+  }
+
+  /* Buttons */
+  .btn-gold {
+    @apply inline-block bg-gold text-sand font-semibold text-sm tracking-[0.03em] px-8 py-[15px] rounded-full transition-all cursor-pointer border-0;
+  }
+  .btn-gold:hover { background-color: color-mix(in srgb, var(--color-gold) 80%, white); @apply -translate-y-px; }
+
+  .btn-outline {
+    @apply inline-block bg-transparent text-gold font-medium text-sm border border-gold/40 px-8 py-[15px] rounded-full transition-all cursor-pointer;
+  }
+  .btn-outline:hover { @apply border-gold bg-gold/5 -translate-y-px; }
+
+  .btn-navy {
+    @apply inline-block bg-gold text-sand font-semibold text-sm px-8 py-[15px] rounded-full transition-all cursor-pointer border-0;
+  }
+  .btn-navy:hover { background-color: color-mix(in srgb, var(--color-gold) 80%, white); }
+
+  /* Form fields (fondo claro) */
+  .field {
+    @apply w-full bg-white border border-navy/15 rounded-md px-4 py-[14px] text-sm text-navy-deep outline-none transition-colors;
+  }
+  .field::placeholder { @apply text-navy/30; }
+  .field:focus { @apply border-gold; }
+  .field option { @apply bg-white text-navy-deep; }
+
+  .field-select {
+    @apply w-full bg-white border border-navy/15 rounded-md px-4 py-[14px] text-sm text-navy-deep outline-none transition-colors appearance-none bg-no-repeat pr-10;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='rgba(61,50,41,0.4)' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-position: right 16px center;
+  }
+  .field-select:focus { @apply border-gold; }
+  .field-select option { @apply bg-white text-navy-deep; }
+
+  /* Arrow bullet lists (insygt / MARKO feature lists) — pensadas para fondo claro */
+  .arrow-list li {
+    @apply flex items-center gap-2.5 py-[11px] border-b border-navy/[0.07] text-[14px] text-dim;
+  }
+  .arrow-list.dark li { @apply border-navy/[0.06] text-dim; }
+  .arrow-list li::before { content: '→'; @apply text-gold font-semibold text-xs; }
+
+  /* Numbered mini steps (Integración) */
+  .mini-steps { counter-reset: step; }
+  .mini-steps li { counter-increment: step; @apply relative pl-9 py-3 border-t border-navy/[0.08] text-dim text-sm; }
+  .mini-steps li::before {
+    content: counter(step, decimal-leading-zero);
+    @apply absolute left-0 top-3 font-serif font-bold text-gold text-[13px];
+  }
+  .mini-steps li b { @apply block text-[14.5px] text-navy-deep mb-0.5; }
+
+  /* FAQ accordion */
+  .faq-item summary {
+    @apply cursor-pointer list-none flex justify-between items-center gap-4 text-[15px] font-medium text-navy-deep;
+  }
+  .faq-item summary::-webkit-details-marker { display: none; }
+  .faq-item summary::after { content: '⌄'; @apply text-lg text-navy/40 transition-transform flex-none; }
+  .faq-item[open] summary::after { transform: rotate(180deg); }
+
+  /* Tier cards (Modalidades) */
+  .tier-card {
+    @apply p-9 rounded-[22px] bg-white border border-navy/[0.08] shadow-sm relative transition-transform text-left;
+  }
+  .tier-card.tier-pop {
+    @apply p-11 bg-graybg border-gold/40 shadow-[0_25px_55px_rgba(61,50,41,0.14)] scale-[1.06] z-10;
+  }
+  .tier-list li {
+    @apply flex items-center gap-3 py-[13px] border-t border-navy/[0.08] text-[13.5px] text-dim;
+  }
+  .tier-list li:first-child { border-top: none; }
+  .check-c {
+    @apply flex-none w-5 h-5 rounded-full bg-navy-deep/[0.07] flex items-center justify-center text-[10px] text-navy-deep;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide { scrollbar-width: none; }
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+
+  /* Controles de UI (tabs, dots) no deben comportarse como texto seleccionable */
+  .faq-tab, .mk-tab, .vert-dot, .vert-next {
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* Transición al entrar/salir del viewport (scroll hacia abajo y hacia arriba).
+     .reveal da la opacidad + transición base; una clase reveal-* define de dónde
+     entra cada sección, para que no todas se muevan igual pero mantengan el mismo
+     timing/curva y se vean cohesivas. */
+  .reveal {
+    opacity: 0;
+    transition: opacity .7s cubic-bezier(.2,.65,.3,1), transform .7s cubic-bezier(.2,.65,.3,1);
+    will-change: opacity, transform;
+  }
+  .reveal.is-visible { opacity: 1; transform: none; }
+
+  .reveal-fade  { transform: none; }
+  .reveal-up    { transform: translateY(32px); }
+  .reveal-down  { transform: translateY(-32px); }
+  .reveal-left  { transform: translateX(-40px); }
+  .reveal-right { transform: translateX(40px); }
+  .reveal-scale { transform: scale(.94); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .reveal { opacity: 1; transform: none; transition: none; }
+  }
+}
