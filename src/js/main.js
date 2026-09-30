@@ -58,6 +58,32 @@
   });
 })();
 
+// Carrusel de imágenes de MARKO
+(function () {
+  var img = document.getElementById('mkImg');
+  if (!img) return;
+  var dots = document.querySelectorAll('#mkDots .mk-img-dot');
+  var slides = [
+    { src: 'assets/images/Marko_1.png', alt: 'Conversación de MARKO por chat' },
+    { src: 'assets/images/Marko_2.png', alt: 'MARKO enviando promociones por WhatsApp' }
+  ];
+  var i = 0;
+
+  function render() {
+    img.src = slides[i].src;
+    img.alt = slides[i].alt;
+    dots.forEach(function (d, idx) {
+      d.classList.toggle('w-6', idx === i);
+      d.classList.toggle('bg-navy-deep', idx === i);
+      d.classList.toggle('w-2', idx !== i);
+      d.classList.toggle('bg-navy-deep/25', idx !== i);
+    });
+  }
+
+  window.mkNext = function () { i = (i + 1) % slides.length; render(); };
+  window.mkPrev = function () { i = (i - 1 + slides.length) % slides.length; render(); };
+})();
+
 // Modal "Quiénes somos"
 function openAboutModal() {
   var modal = document.getElementById('aboutModal');

@@ -125,38 +125,19 @@
 <!-- 6. MARKO — dos columnas, invertida -->
 <section class="reveal reveal-left py-[110px] px-5 sm:px-10 bg-cream text-navy" id="mrk">
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-9 md:gap-16 items-center">
-    <div class="md:order-2">
-      <div class="inline-flex gap-1 bg-white border border-navy/10 rounded-2xl p-1.5 mb-4">
-        <button class="px-4.5 py-2 rounded-[11px] text-[12.5px] font-semibold bg-gold text-sand">Conversación</button>
-        <button class="px-4.5 py-2 rounded-[11px] text-[12.5px] font-semibold text-dim">Catálogo</button>
-        <button class="px-4.5 py-2 rounded-[11px] text-[12.5px] font-semibold text-dim">Ofertas</button>
-      </div>
-      <div class="rounded-[20px] overflow-hidden bg-white border border-navy/10 shadow-[0_30px_70px_rgba(61,50,41,0.12)] flex min-h-[400px]">
-        <div class="hidden sm:block w-[170px] flex-none bg-graybg border-r border-navy/10 p-5">
-          <div class="flex items-center gap-2 font-serif font-bold text-navy-deep text-sm mb-6">✦ MARKO</div>
-          <ul class="list-none space-y-0.5">
-            <li class="text-[12.5px] px-2.5 py-2.5 rounded-lg bg-gold/10 text-gold font-medium flex items-center gap-2">💬 Chat</li>
-            <li class="text-[12.5px] px-2.5 py-2.5 rounded-lg text-dim flex items-center gap-2">📦 Catálogo</li>
-            <li class="text-[12.5px] px-2.5 py-2.5 rounded-lg text-dim flex items-center gap-2">🏷️ Ofertas</li>
-            <li class="text-[12.5px] px-2.5 py-2.5 rounded-lg text-dim flex items-center gap-2">📍 Ubicaciones</li>
-            <li class="text-[12.5px] px-2.5 py-2.5 rounded-lg text-dim flex items-center gap-2">📊 Historial</li>
-          </ul>
+    <div class="md:order-2 flex flex-col items-center gap-5">
+      <img id="mkImg" src="assets/images/Marko_1.png" alt="Conversación de MARKO por chat" class="w-[190px] sm:w-[230px] rounded-2xl shadow-[0_30px_70px_rgba(61,50,41,0.18)]">
+      <div class="flex items-center gap-4">
+        <button class="group w-11 h-11 flex-none rounded-full bg-navy-deep flex items-center justify-center cursor-pointer transition-colors hover:bg-gold" onclick="mkPrev()" aria-label="Imagen anterior">
+          <svg viewBox="0 0 24 24" class="w-3 h-3 fill-white group-hover:fill-navy-deep ml-0.5 -scale-x-100"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <div id="mkDots" class="flex items-center gap-2">
+          <span class="mk-img-dot w-6 h-2 rounded-full bg-navy-deep transition-all"></span>
+          <span class="mk-img-dot w-2 h-2 rounded-full bg-navy-deep/25 transition-all"></span>
         </div>
-        <div class="flex-1 flex flex-col p-5.5">
-          <div class="max-w-[75%] mb-3.5 text-[12.5px] leading-relaxed self-start bg-graybg text-navy-deep px-4 py-2.5 rounded-2xl rounded-bl-[4px]">Hola, ¿tienen café en oferta?</div>
-          <div class="max-w-[75%] mb-3.5 text-[12.5px] leading-relaxed self-end bg-gold text-sand font-medium px-4 py-2.5 rounded-2xl rounded-br-[4px]">¡Sí! Café La Finca 500g está 2×1 esta semana — pasillo 3, anaquel superior.</div>
-          <div class="max-w-[75%] mb-3.5 text-[12.5px] leading-relaxed self-start bg-graybg text-navy-deep px-4 py-2.5 rounded-2xl rounded-bl-[4px]">¿Y algo para acompañar?</div>
-          <div class="max-w-[75%] mb-3.5 text-[12.5px] leading-relaxed self-end bg-gold text-sand font-medium px-4 py-2.5 rounded-2xl rounded-br-[4px]">Te recomiendo las galletas María del mismo pasillo, van perfecto con el café ☕</div>
-          <div class="flex gap-2 flex-wrap mt-auto mb-4">
-            <span class="text-[11px] text-dim bg-graybg border border-navy/10 px-3.5 py-1.5 rounded-2xl">Ver ofertas</span>
-            <span class="text-[11px] text-dim bg-graybg border border-navy/10 px-3.5 py-1.5 rounded-2xl">Ubicación en tienda</span>
-            <span class="text-[11px] text-dim bg-graybg border border-navy/10 px-3.5 py-1.5 rounded-2xl">Recomendado</span>
-          </div>
-          <div class="flex items-center gap-2.5 bg-graybg border border-navy/10 rounded-3xl py-2.5 pl-4.5 pr-2.5">
-            <span class="flex-1 text-[12.5px] text-navy/40">Escribe tu pregunta...</span>
-            <button class="w-[30px] h-[30px] flex-none rounded-full bg-gold text-sand flex items-center justify-center text-[13px]">➤</button>
-          </div>
-        </div>
+        <button class="group w-11 h-11 flex-none rounded-full bg-navy-deep flex items-center justify-center cursor-pointer transition-colors hover:bg-gold" onclick="mkNext()" aria-label="Siguiente imagen">
+          <svg viewBox="0 0 24 24" class="w-3 h-3 fill-white group-hover:fill-navy-deep ml-0.5"><path d="M8 5v14l11-7z"/></svg>
+        </button>
       </div>
     </div>
     <div class="md:order-1">
