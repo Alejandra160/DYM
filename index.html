@@ -13,11 +13,11 @@
 <!-- NAV -->
 <nav class="fixed top-0 inset-x-0 z-50 bg-[#ECE1CF]/90 backdrop-blur-2xl border-b border-navy/[0.08]">
   <div class="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-10 py-2.5">
-    <div class="flex items-center gap-2.5">
-      <img src="assets/images/logo-dym.png" alt="DYM" class="h-7 w-auto block brightness-0">
-      <span class="text-[11px] tracking-[0.14em] uppercase text-navy/40">Systems</span>
+    <div class="flex items-center gap-2.5 flex-none">
+      <img src="assets/images/logo-dym.png" alt="DYM" class="h-6 sm:h-7 w-auto block brightness-0">
+      <span class="hidden sm:inline text-[11px] tracking-[0.14em] uppercase text-navy/40">Systems</span>
     </div>
-    <ul class="hidden md:flex gap-7 list-none">
+    <ul class="hidden lg:flex gap-7 list-none">
       <li><a href="#feat" class="text-xs text-dim hover:text-gold transition-colors">Sistema</a></li>
       <li><a href="#ins" class="text-xs text-dim hover:text-gold transition-colors">insygt</a></li>
       <li><a href="#mrk" class="text-xs text-dim hover:text-gold transition-colors">MARKO</a></li>
@@ -25,17 +25,20 @@
       <li><a href="#faq" class="text-xs text-dim hover:text-gold transition-colors">FAQ</a></li>
       <li><a href="#cnt" class="text-xs text-dim hover:text-gold transition-colors">Contacto</a></li>
     </ul>
-    <button class="bg-transparent text-gold border border-gold/40 rounded-full px-4.5 py-[7px] text-[11px] font-semibold uppercase tracking-wider cursor-pointer transition-all hover:bg-gold hover:text-sand hover:border-gold hover:-translate-y-px" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Conocer el sistema</button>
+    <button class="flex-none bg-transparent text-gold border border-gold/40 rounded-full px-3 py-1.5 text-[10px] sm:px-4.5 sm:py-[7px] sm:text-[11px] font-semibold uppercase tracking-wider cursor-pointer transition-all hover:bg-gold hover:text-sand hover:border-gold hover:-translate-y-px whitespace-nowrap" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">
+      <span class="lg:hidden">Contacto</span>
+      <span class="hidden lg:inline">Conocer el sistema</span>
+    </button>
   </div>
 </nav>
 
 <!-- 1. HERO — una columna, centrado -->
 <section class="reveal reveal-fade hero-glow min-h-[92vh] flex items-center justify-center px-5 sm:px-10 pt-20 pb-20 relative overflow-hidden">
   <div class="max-w-[640px] mx-auto text-center">
-    <img src="assets/images/logo-dym.png" alt="DYM Systems" class="h-[180px] sm:h-[230px] w-auto mx-auto mb-5 block brightness-0">
+    <img src="assets/images/logo-dym.png" alt="DYM Systems" class="w-[75%] sm:w-[340px] md:w-[400px] h-auto max-w-full mx-auto mb-5 block brightness-0">
     <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3.5">DYM Systems</p>
     <div class="w-11 h-0.5 bg-gold/50 mx-auto mb-5"></div>
-    <h1 class="font-serif font-medium text-[clamp(20px,3.2vw,36px)] leading-[1.2] tracking-tight mb-9 text-navy-deep whitespace-nowrap">A una <em class="italic text-gold">vista</em> de la <em class="italic text-gold">venta</em></h1>
+    <h1 class="font-serif font-medium text-[clamp(20px,3.2vw,36px)] leading-[1.2] tracking-tight mb-9 text-navy-deep sm:whitespace-nowrap">A una <em class="italic text-gold">vista</em> de la <em class="italic text-gold">venta</em></h1>
     <div class="flex gap-3.5 flex-wrap justify-center">
       <button class="btn-gold" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Conocer el sistema</button>
       <button class="btn-outline" onclick="document.getElementById('feat').scrollIntoView({behavior:'smooth'})">Cómo funciona</button>
