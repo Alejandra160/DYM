@@ -19,6 +19,7 @@ html {
   scroll-padding-top: 64px;
   scrollbar-color: #bc9f79 #F3EDE4;
   overflow-x: hidden;
+  overscroll-behavior-x: none;
   width: 100%;
 }
 
@@ -39,6 +40,7 @@ html {
 
 body {
   @apply bg-cream text-navy-deep antialiased overflow-x-hidden;
+  overscroll-behavior-x: none;
 }
 
 @layer components {
@@ -122,7 +124,7 @@ body {
 }
 
 @layer utilities {
-  .scrollbar-hide { scrollbar-width: none; }
+  .scrollbar-hide { scrollbar-width: none; overscroll-behavior-x: contain; }
   .scrollbar-hide::-webkit-scrollbar { display: none; }
 
   /* Controles de UI (tabs, dots) no deben comportarse como texto seleccionable */
