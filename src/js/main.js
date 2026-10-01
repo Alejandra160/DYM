@@ -58,6 +58,57 @@
   });
 })();
 
+// Carrusel de imágenes de insygt (tarjeta oscura con peek lateral)
+(function () {
+  var img = document.getElementById('insImg');
+  if (!img) return;
+  var imgWrap = document.getElementById('insImgWrap');
+  var peek = document.getElementById('insPeek');
+  var peekWrap = document.getElementById('insPeekWrap');
+  var dots = document.querySelectorAll('#insDots .ins-dot');
+  var slides = [
+    { src: 'assets/images/insygt_1.jpeg', alt: 'Pantalla insygt mostrando una oferta reactiva a una clienta', fit: 'cover' },
+    { src: 'assets/images/insygt_2.jpeg', alt: 'insygt detectando edad, género y tiempo de permanencia de una clienta', fit: 'cover' },
+    { src: 'assets/images/totem.png', alt: 'Tótems insygt con distintos contenidos en pantalla', fit: 'contain' }
+  ];
+  var i = 0;
+
+  function applyFit(imgEl, wrapEl, slide) {
+    var contain = slide.fit === 'contain';
+    imgEl.classList.toggle('object-cover', !contain);
+    imgEl.classList.toggle('object-contain', contain);
+    wrapEl.classList.toggle('bg-cream', contain);
+  }
+
+  function render() {
+    var slide = slides[i];
+    var peekSlide = slides[(i + 1) % slides.length];
+
+    img.classList.add('opacity-0');
+    peek.classList.add('opacity-0');
+
+    setTimeout(function () {
+      img.src = slide.src;
+      img.alt = slide.alt;
+      applyFit(img, imgWrap, slide);
+      peek.src = peekSlide.src;
+      applyFit(peek, peekWrap, peekSlide);
+      img.classList.remove('opacity-0');
+      peek.classList.remove('opacity-0');
+    }, 400);
+
+    dots.forEach(function (d, idx) {
+      d.classList.toggle('w-6', idx === i);
+      d.classList.toggle('bg-gold', idx === i);
+      d.classList.toggle('w-2', idx !== i);
+      d.classList.toggle('bg-navy-deep/20', idx !== i);
+    });
+  }
+
+  function next() { i = (i + 1) % slides.length; render(); }
+  setInterval(next, 4500);
+})();
+
 // Carrusel de imágenes de MARKO
 (function () {
   var img = document.getElementById('mkImg');
@@ -84,21 +135,24 @@
   window.mkPrev = function () { i = (i - 1 + slides.length) % slides.length; render(); };
 })();
 
-// Modal "Quiénes somos"
-function openAboutModal() {
-  var modal = document.getElementById('aboutModal');
+// Ventanas modales (Quiénes somos, insygt, MARKO)
+function openModal(id) {
+  var modal = document.getElementById(id);
   modal.classList.remove('hidden');
   modal.classList.add('flex');
   document.body.style.overflow = 'hidden';
 }
-function closeAboutModal() {
-  var modal = document.getElementById('aboutModal');
+function closeModal(id) {
+  var modal = document.getElementById(id);
   modal.classList.add('hidden');
   modal.classList.remove('flex');
   document.body.style.overflow = '';
 }
 document.addEventListener('keydown', function (e) {
-  if (e.key === 'Escape') closeAboutModal();
+  if (e.key !== 'Escape') return;
+  document.querySelectorAll('[id$="Modal"].flex').forEach(function (modal) {
+    closeModal(modal.id);
+  });
 });
 
 // Botón "volver arriba" — aparece al bajar en la página

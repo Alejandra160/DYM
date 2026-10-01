@@ -30,12 +30,12 @@
 </nav>
 
 <!-- 1. HERO — una columna, centrado -->
-<section class="reveal reveal-fade hero-glow min-h-[92vh] flex items-center justify-center px-5 sm:px-10 pt-[150px] pb-20 relative overflow-hidden">
+<section class="reveal reveal-fade hero-glow min-h-[92vh] flex items-center justify-center px-5 sm:px-10 pt-20 pb-20 relative overflow-hidden">
   <div class="max-w-[640px] mx-auto text-center">
-    <img src="assets/images/logo-dym.png" alt="DYM Systems" class="h-[160px] sm:h-[220px] w-auto mx-auto mb-6 block brightness-0">
+    <img src="assets/images/logo-dym.png" alt="DYM Systems" class="h-[180px] sm:h-[230px] w-auto mx-auto mb-5 block brightness-0">
     <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3.5">DYM Systems</p>
     <div class="w-11 h-0.5 bg-gold/50 mx-auto mb-5"></div>
-    <h1 class="font-serif font-medium text-[clamp(24px,3.6vw,36px)] leading-[1.2] tracking-tight mb-9 text-navy-deep">Un ecosistema que <em class="italic text-gold">ve</em> a tu cliente<br>y <em class="italic text-gold">le vende</em> por ti</h1>
+    <h1 class="font-serif font-medium text-[clamp(20px,3.2vw,36px)] leading-[1.2] tracking-tight mb-9 text-navy-deep whitespace-nowrap">A una <em class="italic text-gold">vista</em> de la <em class="italic text-gold">venta</em></h1>
     <div class="flex gap-3.5 flex-wrap justify-center">
       <button class="btn-gold" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Conocer el sistema</button>
       <button class="btn-outline" onclick="document.getElementById('feat').scrollIntoView({behavior:'smooth'})">Cómo funciona</button>
@@ -105,19 +105,27 @@
 <!-- 5. INSYGT — dos columnas -->
 <section class="reveal reveal-right py-[110px] px-5 sm:px-10 bg-graybg" id="ins">
   <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-9 md:gap-16 items-center">
-    <div class="aspect-video rounded-2xl border border-dashed border-navy/[0.15] bg-navy/[0.04] text-navy/30 flex items-center justify-center text-center text-xs p-6">Video / imagen<br>insygt dashboard en acción<br>1920×1080 [PLACEHOLDER]</div>
+    <div class="relative rounded-[32px] p-5 sm:p-8 overflow-hidden">
+      <div class="flex items-center justify-center gap-4 sm:gap-5">
+        <div id="insPeekWrap" class="hidden sm:flex w-[20%] h-[260px] rounded-2xl items-center justify-center overflow-hidden opacity-30 scale-[0.96] transition-all">
+          <img id="insPeek" src="assets/images/insygt_2.jpeg" alt="" aria-hidden="true" class="w-full h-full object-cover transition-opacity duration-500">
+        </div>
+        <div id="insImgWrap" class="w-[74%] sm:w-[58%] h-[290px] sm:h-[320px] rounded-2xl shadow-[0_25px_60px_rgba(61,50,41,0.2)] flex items-center justify-center overflow-hidden transition-all">
+          <img id="insImg" src="assets/images/insygt_1.jpeg" alt="Pantalla insygt mostrando una oferta reactiva a una clienta" class="w-full h-full object-cover transition-opacity duration-500">
+        </div>
+      </div>
+      <div id="insDots" class="flex items-center justify-center gap-2 mt-6">
+        <span class="ins-dot w-6 h-2 rounded-full bg-gold transition-all"></span>
+        <span class="ins-dot w-2 h-2 rounded-full bg-navy-deep/20 transition-all"></span>
+        <span class="ins-dot w-2 h-2 rounded-full bg-navy-deep/20 transition-all"></span>
+      </div>
+    </div>
     <div>
       <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3.5">insygt</p>
       <div class="w-11 h-0.5 bg-gold/50 mb-5"></div>
       <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] mb-4 text-navy-deep">Inteligencia de audiencia</h2>
-      <p class="text-base leading-relaxed text-dim">Pantallas inteligentes con IA que detectan tráfico, analizan audiencia y adaptan el contenido automáticamente — sin almacenar datos personales.</p>
-      <ul class="arrow-list dark mt-6 mb-9 list-none">
-        <li>Señalización digital profesional</li>
-        <li>Sensor de audiencia 4K (8MP)</li>
-        <li>Contenido reactivo por perfil</li>
-        <li>Cumple LFPDPPP</li>
-      </ul>
-      <button class="btn-outline">Conocer insygt</button>
+      <p class="text-base leading-relaxed text-dim mb-9">Pantallas inteligentes con IA que detectan y entienden a tu audiencia en tiempo real.</p>
+      <button class="btn-outline" onclick="openModal('insygtModal')">Conocer insygt</button>
     </div>
   </div>
 </section>
@@ -143,14 +151,8 @@
     <div class="md:order-1">
       <span class="inline-block text-[11px] tracking-[0.2em] uppercase font-semibold text-sand bg-gold px-3 py-1 rounded-full mb-5">MARKO</span>
       <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] mb-4 text-navy-deep">Asistente inteligente de ventas</h2>
-      <p class="text-base leading-relaxed text-dim">Un chatbot con IA que conoce tu catálogo, tus ofertas y tus pasillos de memoria, y ayuda a cada cliente a encontrar lo que busca — y a cerrar la compra.</p>
-      <ul class="arrow-list dark mt-6 mb-9 list-none">
-        <li>Sabe qué hay en oferta y dónde</li>
-        <li>Ubica productos por pasillo y anaquel</li>
-        <li>Recomienda productos complementarios</li>
-        <li>Conectado a tu catálogo e inventario</li>
-      </ul>
-      <button class="btn-navy">Conocer MARKO</button>
+      <p class="text-base leading-relaxed text-dim mb-9">Un chatbot con IA que conoce tu catálogo de memoria y guía a cada cliente hasta la compra.</p>
+      <button class="btn-navy" onclick="openModal('markoModal')">Conocer MARKO</button>
     </div>
   </div>
 </section>
@@ -231,7 +233,8 @@
     <div class="tier-card">
       <div class="text-[11px] tracking-[0.16em] uppercase text-mut font-semibold mb-6">insygt</div>
       <div class="font-serif text-[32px] font-bold text-navy-deep leading-[1.15] mb-2.5">Pantallas<br>inteligentes</div>
-      <p class="text-[13.5px] text-dim leading-relaxed mb-6 min-h-[38px]">Para negocios que quieren empezar por observar y entender a su audiencia.</p>
+      <p class="text-[13.5px] text-dim leading-relaxed mb-5 min-h-[38px]">Para negocios que quieren empezar por observar y entender a su audiencia.</p>
+      <div class="font-serif text-[26px] font-bold text-gold mb-6">$X <span class="text-[13px] font-sans font-normal text-dim">MXN/mes</span></div>
       <button class="block w-full text-center py-3 rounded-3xl text-[13px] font-semibold border border-navy/20 text-navy-deep bg-transparent transition-all hover:border-gold hover:text-gold hover:bg-gold/5 hover:-translate-y-px cursor-pointer">Cotizar insygt</button>
       <ul class="tier-list list-none mt-8">
         <li><span class="check-c">✓</span>Detección de audiencia en tiempo real</li>
@@ -243,7 +246,8 @@
     <div class="tier-card tier-pop">
       <div class="text-[11px] tracking-[0.16em] uppercase text-mut font-semibold mb-6">Sistema completo</div>
       <div class="font-serif text-[32px] font-bold text-navy-deep leading-[1.15] mb-2.5">insygt<br>+ MARKO</div>
-      <p class="text-[13.5px] text-dim leading-relaxed mb-6 min-h-[38px]">Para negocios que quieren el ecosistema completo desde el día uno.</p>
+      <p class="text-[13.5px] text-dim leading-relaxed mb-5 min-h-[38px]">Para negocios que quieren el ecosistema completo desde el día uno.</p>
+      <div class="font-serif text-[26px] font-bold text-gold mb-6">$X <span class="text-[13px] font-sans font-normal text-dim">MXN/mes</span></div>
       <button class="block w-full text-center py-3 rounded-3xl text-[13px] font-semibold border border-navy/10 bg-white text-navy-deep transition-all hover:border-gold hover:text-gold hover:bg-gold/5 hover:-translate-y-px cursor-pointer">Cotizar sistema completo</button>
       <ul class="tier-list list-none mt-8">
         <li><span class="check-c">✓</span>Todo lo de insygt</li>
@@ -255,7 +259,8 @@
     <div class="tier-card">
       <div class="text-[11px] tracking-[0.16em] uppercase text-mut font-semibold mb-6">MARKO</div>
       <div class="font-serif text-[32px] font-bold text-navy-deep leading-[1.15] mb-2.5">Asistente<br>de ventas</div>
-      <p class="text-[13.5px] text-dim leading-relaxed mb-6 min-h-[38px]">Para negocios que quieren empezar por convertir con IA conversacional.</p>
+      <p class="text-[13.5px] text-dim leading-relaxed mb-5 min-h-[38px]">Para negocios que quieren empezar por convertir con IA conversacional.</p>
+      <div class="font-serif text-[26px] font-bold text-gold mb-6">$X <span class="text-[13px] font-sans font-normal text-dim">MXN/mes</span></div>
       <button class="block w-full text-center py-3 rounded-3xl text-[13px] font-semibold border border-navy/20 text-navy-deep bg-transparent transition-all hover:border-gold hover:text-gold hover:bg-gold/5 hover:-translate-y-px cursor-pointer">Cotizar MARKO</button>
       <ul class="tier-list list-none mt-8">
         <li><span class="check-c">✓</span>Conectado a tu catálogo</li>
@@ -310,17 +315,17 @@
   <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] mb-4 text-navy-deep">DYM Systems</h2>
   <p class="text-base leading-relaxed text-dim mx-auto max-w-[640px]">DYM Systems nace para crear el primer sistema integral de inteligencia comercial y ventas asistidas para espacios físicos en México.</p>
   <div class="flex justify-center mt-8">
-    <button onclick="openAboutModal()" class="w-40 h-[72px] rounded-[10px] bg-gold flex items-center justify-center cursor-pointer border-0 transition-all hover:scale-[1.04] hover:brightness-110" aria-label="Conocer más sobre DYM Systems">
-      <img src="assets/images/logo-dym.png" alt="DYM" class="h-11 w-auto">
+    <button onclick="openModal('aboutModal')" class="w-40 h-[72px] rounded-[10px] bg-gold flex items-center justify-center cursor-pointer border-0 transition-all hover:scale-[1.04] hover:brightness-110 overflow-visible" aria-label="Conocer más sobre DYM Systems">
+      <img src="assets/images/logo-dym.png" alt="DYM" class="h-14 w-auto">
     </button>
   </div>
 </section>
 
 <!-- MODAL — Quiénes somos -->
 <div id="aboutModal" class="hidden fixed inset-0 z-[100] items-center justify-center p-5">
-  <div onclick="closeAboutModal()" class="absolute inset-0 bg-navy-deep/50 backdrop-blur-sm"></div>
+  <div onclick="closeModal('aboutModal')" class="absolute inset-0 bg-navy-deep/50 backdrop-blur-sm"></div>
   <div class="relative bg-cream rounded-[20px] shadow-[0_30px_70px_rgba(61,50,41,0.3)] max-w-[480px] w-full p-9 sm:p-11 text-center">
-    <button onclick="closeAboutModal()" class="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-navy/50 hover:text-navy-deep hover:bg-navy/5 transition-colors cursor-pointer border-0 bg-transparent text-lg" aria-label="Cerrar">✕</button>
+    <button onclick="closeModal('aboutModal')" class="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-navy/50 hover:text-navy-deep hover:bg-navy/5 transition-colors cursor-pointer border-0 bg-transparent text-lg" aria-label="Cerrar">✕</button>
     <div class="w-20 h-20 rounded-[14px] bg-gold flex items-center justify-center mx-auto mb-6">
       <img src="assets/images/logo-dym.png" alt="DYM" class="h-10 w-auto">
     </div>
@@ -329,13 +334,64 @@
   </div>
 </div>
 
+<!-- MODAL — insygt -->
+<div id="insygtModal" class="hidden fixed inset-0 z-[100] items-center justify-center p-5">
+  <div onclick="closeModal('insygtModal')" class="absolute inset-0 bg-navy-deep/50 backdrop-blur-sm"></div>
+  <div class="relative bg-cream rounded-[20px] shadow-[0_30px_70px_rgba(61,50,41,0.3)] max-w-[600px] w-full p-9 sm:p-11 text-left max-h-[85vh] overflow-y-auto">
+    <button onclick="closeModal('insygtModal')" class="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-navy/50 hover:text-navy-deep hover:bg-navy/5 transition-colors cursor-pointer border-0 bg-transparent text-lg" aria-label="Cerrar">✕</button>
+    <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3">insygt</p>
+    <h3 class="font-serif font-bold text-2xl sm:text-3xl mb-4 text-navy-deep">Inteligencia de audiencia en tu punto de venta</h3>
+    <p class="text-[15px] leading-relaxed text-dim mb-6">insygt es una pantalla inteligente con sensor de audiencia que detecta quién está frente a tu negocio, analiza tráfico y ajusta el contenido que muestra en tiempo real — todo sin almacenar datos personales identificables.</p>
+    <ul class="arrow-list list-none mb-7">
+      <li>Sensor de audiencia 4K (8MP) de alta precisión</li>
+      <li>Detección de tráfico, permanencia y atención</li>
+      <li>Contenido reactivo según el perfil de quien observa</li>
+      <li>Instalación plug-and-play, sin obra</li>
+      <li>Dashboard de métricas en tiempo real</li>
+      <li>Procesamiento anonimizado, cumple con la LFPDPPP</li>
+    </ul>
+    <button class="btn-gold" onclick="closeModal('insygtModal'); document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Cotizar insygt</button>
+  </div>
+</div>
+
+<!-- MODAL — MARKO -->
+<div id="markoModal" class="hidden fixed inset-0 z-[100] items-center justify-center p-5">
+  <div onclick="closeModal('markoModal')" class="absolute inset-0 bg-navy-deep/50 backdrop-blur-sm"></div>
+  <div class="relative bg-cream rounded-[20px] shadow-[0_30px_70px_rgba(61,50,41,0.3)] max-w-[600px] w-full p-9 sm:p-11 text-left max-h-[85vh] overflow-y-auto">
+    <button onclick="closeModal('markoModal')" class="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-navy/50 hover:text-navy-deep hover:bg-navy/5 transition-colors cursor-pointer border-0 bg-transparent text-lg" aria-label="Cerrar">✕</button>
+    <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3">MARKO</p>
+    <h3 class="font-serif font-bold text-2xl sm:text-3xl mb-4 text-navy-deep">Un asistente de ventas con IA, disponible 24/7</h3>
+    <p class="text-[15px] leading-relaxed text-dim mb-6">MARKO conversa con cada cliente, conoce tu catálogo de memoria y lo guía hasta la compra — en la pantalla de insygt, por WhatsApp o donde tu negocio lo necesite.</p>
+    <ul class="arrow-list list-none mb-7">
+      <li>Conectado a tu catálogo e inventario en tiempo real</li>
+      <li>Ubica productos por pasillo y anaquel</li>
+      <li>Sabe qué hay en oferta y lo recomienda al momento</li>
+      <li>Recomienda productos complementarios</li>
+      <li>Disponible 24/7, sin depender de que alguien esté ahí</li>
+      <li>Aprende de las preguntas más frecuentes de tus clientes</li>
+    </ul>
+    <button class="btn-navy" onclick="closeModal('markoModal'); document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Cotizar MARKO</button>
+  </div>
+</div>
+
 <!-- 13. CONTACTO -->
 <section class="reveal reveal-left py-[110px] px-5 sm:px-10 bg-cream" id="cnt">
-  <div class="max-w-[560px] mx-auto text-center">
-    <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3.5">Contacto</p>
-    <div class="w-11 h-0.5 bg-gold/50 mx-auto mb-5"></div>
-    <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] mb-4 text-navy-deep">Hablemos de tu negocio</h2>
-    <p class="text-base leading-relaxed text-dim mx-auto mb-8">Cuéntanos sobre tu operación y te mostramos cómo DYM Systems se adapta a tu tienda.</p>
+  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-9 md:gap-16 items-start">
+    <div class="text-left md:sticky md:top-28">
+      <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3.5">Contacto</p>
+      <div class="w-11 h-0.5 bg-gold/50 mb-5"></div>
+      <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] mb-4 text-navy-deep">Hablemos de tu negocio</h2>
+      <p class="text-base leading-relaxed text-dim mb-8">Cuéntanos sobre tu operación y te mostramos cómo DYM Systems se adapta a tu tienda.</p>
+      <div class="flex items-center gap-3 mb-6">
+        <a href="#" target="_blank" rel="noopener" aria-label="Facebook de DYM Systems" class="w-10 h-10 rounded-full bg-gold flex items-center justify-center transition-all hover:-translate-y-px hover:brightness-110">
+          <svg viewBox="0 0 24 24" class="w-4 h-4 fill-sand"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.91h-2.33V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg>
+        </a>
+        <a href="#" target="_blank" rel="noopener" aria-label="Instagram de DYM Systems" class="w-10 h-10 rounded-full bg-gold flex items-center justify-center transition-all hover:-translate-y-px hover:brightness-110">
+          <svg viewBox="0 0 24 24" class="w-4 h-4 fill-sand"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.55.55.9 1.11 1.15 1.76.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43-.26.66-.6 1.21-1.15 1.76-.55.55-1.11.9-1.76 1.15-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47-.66-.26-1.21-.6-1.76-1.15-.55-.55-.9-1.11-1.15-1.76-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76.55-.55 1.11-.9 1.76-1.15.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2m0 1.8c-2.67 0-2.99.01-4.04.06-.87.04-1.34.18-1.65.3-.42.16-.71.36-1.03.68-.32.32-.52.61-.68 1.03-.12.31-.26.78-.3 1.65-.05 1.05-.06 1.37-.06 4.04s.01 2.99.06 4.04c.04.87.18 1.34.3 1.65.16.42.36.71.68 1.03.32.32.61.52 1.03.68.31.12.78.26 1.65.3 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.87-.04 1.34-.18 1.65-.3.42-.16.71-.36 1.03-.68.32-.32.52-.61.68-1.03.12-.31.26-.78.3-1.65.05-1.05.06-1.37.06-4.04s-.01-2.99-.06-4.04c-.04-.87-.18-1.34-.3-1.65-.16-.42-.36-.71-.68-1.03-.32-.32-.61-.52-1.03-.68-.31-.12-.78-.26-1.65-.3C14.99 3.81 14.67 3.8 12 3.8m0 3.05a5.15 5.15 0 110 10.3 5.15 5.15 0 010-10.3m0 1.8a3.35 3.35 0 100 6.7 3.35 3.35 0 000-6.7m5.35-1.99a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0"/></svg>
+        </a>
+      </div>
+      <p class="text-xs text-dim">DYM Systems · contacto@dymsystems.com · 660 211 4254 · Chihuahua, México</p>
+    </div>
     <form class="flex flex-col gap-3 text-left" onsubmit="return false">
       <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <input class="field" placeholder="Nombre" type="text">
@@ -365,7 +421,6 @@
       <textarea class="field min-h-[110px] resize-y" placeholder="Cuéntanos sobre tu negocio"></textarea>
       <button class="btn-gold w-full" type="submit">Enviar mensaje</button>
     </form>
-    <p class="mt-6 text-xs text-dim">DYM Systems · contacto@dymsystems.com · 660 211 4254 · Chihuahua, México</p>
   </div>
 </section>
 
