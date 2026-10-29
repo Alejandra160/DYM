@@ -1,23 +1,28 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #6B5D4F;
-  --color-navy-deep: #3D3229;
-  --color-cream: #F3EDE4;
-  --color-graybg: #E9DFD1;
-  --color-gold: #8B2D3A;
-  --color-gold-light: #C7A876;
-  --color-sand: #F5EFE6;
-  --color-dim: #5E5245;
-  --color-mut: #A69A8A;
-  --font-sans: "Inter", sans-serif;
-  --font-serif: "Fraunces", serif;
+  /* Paleta oficial DYM · Retail Media Intelligence (los nombres de token se conservan:
+     gold = acento de marca, navy-deep = fondo/tinta profunda, cream/graybg = fondos claros) */
+  --color-navy: #242C5C;
+  --color-navy-deep: #033140;
+  --color-cream: #F3F6F7;
+  --color-graybg: #E4F2F9;
+  --color-gold: #1C74BC;
+  --color-gold-light: #6CC4F4;
+  --color-sand: #FFFFFF;
+  --color-dim: #3F5360;
+  --color-mut: #7C8E99;
+  --color-teal: #2C7C7C;
+  --color-sky: #2C9CE4;
+  --color-ink: #0E1831;
+  --font-sans: "Montserrat", sans-serif;
+  --font-serif: "Montserrat", sans-serif;
 }
 
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
-  scrollbar-color: #bc9f79 #F3EDE4;
+  scrollbar-color: #1C74BC #F3F6F7;
   overflow-x: hidden;
   overscroll-behavior-x: none;
   width: 100%;
@@ -27,15 +32,15 @@ html {
   width: 12px;
 }
 ::-webkit-scrollbar-track {
-  background: #F3EDE4;
+  background: #F3F6F7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C6AD8B;
+  background: #8DBBE0;
   border-radius: 8px;
-  border: 3px solid #F3EDE4;
+  border: 3px solid #F3F6F7;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #A9814F;
+  background: #1C74BC;
 }
 
 body {
@@ -44,12 +49,18 @@ body {
 }
 
 @layer components {
-  /* Hero: fondo con degradado cálido + resplandor, inspirado en la referencia */
+  /* Hero: portada oscura de la marca (teal profundo) con resplandor azul */
   .hero-glow {
     background-image:
-      radial-gradient(ellipse 170% 115% at 50% 116%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 28%, rgba(255,255,255,0) 72%),
-      linear-gradient(180deg, #ECE1CF 0%, #D6C1A2 50%, #BC9F79 100%);
+      radial-gradient(ellipse 60% 70% at 85% 15%, rgba(44,156,228,0.22) 0%, rgba(44,156,228,0) 70%),
+      radial-gradient(ellipse 70% 60% at 10% 100%, rgba(44,124,124,0.25) 0%, rgba(44,124,124,0) 70%),
+      linear-gradient(180deg, #033140 0%, #033140 60%, #0E1831 100%);
   }
+
+  .btn-outline-light {
+    @apply inline-block bg-transparent text-white font-medium text-sm border border-white/40 px-8 py-[15px] rounded-full transition-all cursor-pointer;
+  }
+  .btn-outline-light:hover { @apply border-gold-light text-gold-light -translate-y-px; }
 
   /* Buttons */
   .btn-gold {
@@ -77,7 +88,7 @@ body {
 
   .field-select {
     @apply w-full bg-white border border-navy/15 rounded-2xl px-4 py-[14px] text-sm text-navy-deep outline-none transition-colors appearance-none bg-no-repeat pr-10;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='rgba(61,50,41,0.4)' stroke-width='1.5'/%3E%3C/svg%3E");
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='rgba(3,49,64,0.4)' stroke-width='1.5'/%3E%3C/svg%3E");
     background-position: right 16px center;
   }
   .field-select:focus { @apply border-gold; }
@@ -112,7 +123,7 @@ body {
     @apply p-9 rounded-[22px] bg-white border border-navy/[0.08] shadow-sm relative transition-transform text-left;
   }
   .tier-card.tier-pop {
-    @apply p-11 bg-graybg border-gold/40 shadow-[0_25px_55px_rgba(61,50,41,0.14)] scale-[1.06] z-10;
+    @apply p-11 bg-graybg border-gold/40 shadow-[0_25px_55px_rgba(3,49,64,0.14)] scale-[1.06] z-10;
   }
   .tier-list li {
     @apply flex items-center gap-3 py-[13px] border-t border-navy/[0.08] text-[13.5px] text-dim;
