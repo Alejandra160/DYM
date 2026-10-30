@@ -12,52 +12,75 @@
   targets.forEach(function (el) { io.observe(el); });
 })();
 
-// Carrusel de Verticales
+// Verticales: escenario que cambia solo (círculo de color que cubre la sección + foto circular)
 (function () {
-  var track = document.getElementById('vertScroll');
-  var dots = document.querySelectorAll('#vertDots .vert-dot');
-  if (!track) return;
+  var sec = document.getElementById('vtCard');
+  if (!sec) return;
+  var wipe = document.getElementById('vtWipe');
+  var photo = document.getElementById('vtPhoto');
+  var imgs = sec.querySelectorAll('.vt-img');
+  var slides = sec.querySelectorAll('.vt-slide');
+  var pills = sec.querySelectorAll('.vt-pill');
+  var colors = ['#03313F', '#212F5B', '#2D7A7B', '#1A74B8'];
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DUR = 5500;
+  var cur = 0, busy = false, timer = null;
 
-  function itemWidth() {
-    var it = track.querySelector('.vert-item');
-    return it ? it.offsetWidth + 16 : 236;
-  }
-
-  function setActiveDot(i) {
-    dots.forEach(function (d, idx) {
-      if (idx === i) {
-        d.classList.add('w-7', 'bg-white');
-        d.classList.remove('w-2', 'bg-white/25');
-      } else {
-        d.classList.add('w-2', 'bg-white/25');
-        d.classList.remove('w-7', 'bg-white');
-      }
+  function show(n) {
+    [imgs, slides, pills].forEach(function (list) {
+      list.forEach(function (el, idx) { el.classList.toggle('on', idx === n); });
     });
   }
 
-  window.vertGoTo = function (i) {
-    track.scrollTo({ left: i * itemWidth(), behavior: 'smooth' });
-    setActiveDot(i);
-  };
+  function origin() {
+    var r = photo.getBoundingClientRect(), s = sec.getBoundingClientRect();
+    return [
+      ((r.left + r.width / 2 - s.left) / s.width * 100) + '%',
+      ((r.top + r.height / 2 - s.top) / s.height * 100) + '%'
+    ];
+  }
 
-  window.vertNext = function () {
-    var i = Math.round(track.scrollLeft / itemWidth()) + 1;
-    if (i >= dots.length) i = 0;
-    vertGoTo(i);
-  };
+  function go(n) {
+    if (n === cur || busy) return;
+    busy = true;
+    var o = origin();
+    wipe.style.setProperty('--ox', o[0]);
+    wipe.style.setProperty('--oy', o[1]);
+    wipe.style.backgroundColor = colors[n];
+    wipe.classList.remove('run');
+    void wipe.offsetWidth;
+    wipe.classList.add('run');
+    show(n);
+    cur = n;
+    setTimeout(function () {
+      sec.style.backgroundColor = colors[n];
+      wipe.classList.remove('run');
+      busy = false;
+    }, reduce ? 0 : 1050);
+  }
 
-  window.vertPrev = function () {
-    var i = Math.round(track.scrollLeft / itemWidth()) - 1;
-    if (i < 0) i = dots.length - 1;
-    vertGoTo(i);
-  };
+  function stop() { clearInterval(timer); timer = null; }
+  function start() {
+    stop();
+    if (reduce) return;
+    timer = setInterval(function () { go((cur + 1) % slides.length); }, DUR);
+  }
 
-  track.addEventListener('scroll', function () {
-    var i = Math.round(track.scrollLeft / itemWidth());
-    setActiveDot(i);
+  pills.forEach(function (p, idx) {
+    p.addEventListener('click', function () { go(idx); start(); });
   });
-})();
 
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        pills[cur].classList.remove('on');
+        void pills[cur].offsetWidth;
+        pills[cur].classList.add('on');
+        start();
+      } else { stop(); }
+    }, { threshold: 0.3 }).observe(sec);
+  }
+})();
 // Carrusel de imágenes de insygt (tarjeta oscura con peek lateral)
 (function () {
   var img = document.getElementById('insImg');
@@ -109,32 +132,101 @@
   setInterval(next, 4500);
 })();
 
-// Carrusel de imágenes de MARKO
+// MARKO: panel que cambia solo (círculo de color + teléfono que entra deslizándose)
 (function () {
-  var img = document.getElementById('mkImg');
-  if (!img) return;
-  var dots = document.querySelectorAll('#mkDots .mk-img-dot');
-  var slides = [
-    { src: 'assets/images/Marko_1.png', alt: 'Conversación de MARKO por chat' },
-    { src: 'assets/images/Marko_2.png', alt: 'MARKO enviando promociones por WhatsApp' }
-  ];
-  var i = 0;
+  var panel = document.getElementById('mkPanel');
+  if (!panel) return;
+  var sec = panel;
+  var wipe = document.getElementById('mkWipe');
+  var slides = panel.querySelectorAll('.mk-slide');
+  var pills = panel.querySelectorAll('.vt-pill');
+  var colors = ['#0A4A5E', '#2B5F8A'];
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var DUR = 5500;
+  var cur = 0, busy = false, timer = null;
 
-  function render() {
-    img.src = slides[i].src;
-    img.alt = slides[i].alt;
-    dots.forEach(function (d, idx) {
-      d.classList.toggle('w-6', idx === i);
-      d.classList.toggle('bg-navy-deep', idx === i);
-      d.classList.toggle('w-2', idx !== i);
-      d.classList.toggle('bg-navy-deep/25', idx !== i);
-    });
+  function go(n) {
+    if (n === cur || busy) return;
+    busy = true;
+    var prev = cur;
+    var circle = slides[n].querySelector('.mk-circle').getBoundingClientRect();
+    var r = sec.getBoundingClientRect();
+    wipe.style.setProperty('--ox', ((circle.left + circle.width / 2 - r.left) / r.width * 100) + '%');
+    wipe.style.setProperty('--oy', ((circle.top + circle.height / 2 - r.top) / r.height * 100) + '%');
+    wipe.style.backgroundColor = colors[n];
+    wipe.classList.remove('run');
+    void wipe.offsetWidth;
+    wipe.classList.add('run');
+    slides[prev].classList.remove('on');
+    slides[prev].classList.add('off');
+    slides[n].classList.remove('off');
+    slides[n].classList.add('on');
+    pills.forEach(function (p, idx) { p.classList.toggle('on', idx === n); });
+    cur = n;
+    setTimeout(function () {
+      sec.style.backgroundColor = colors[n];
+      wipe.classList.remove('run');
+      slides[prev].classList.remove('off');
+      busy = false;
+    }, reduce ? 0 : 1050);
   }
 
-  window.mkNext = function () { i = (i + 1) % slides.length; render(); };
-  window.mkPrev = function () { i = (i - 1 + slides.length) % slides.length; render(); };
-})();
+  function stop() { clearInterval(timer); timer = null; }
+  function start() {
+    stop();
+    if (reduce) return;
+    timer = setInterval(function () { go((cur + 1) % slides.length); }, DUR);
+  }
 
+  pills.forEach(function (p, idx) {
+    p.addEventListener('click', function () { go(idx); start(); });
+  });
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) {
+        pills[cur].classList.remove('on');
+        void pills[cur].offsetWidth;
+        pills[cur].classList.add('on');
+        start();
+      } else { stop(); }
+    }, { threshold: 0.3 }).observe(panel);
+  }
+})();
+// Franja de palabras: Detecta → Conversa → Vende (se disuelven entre sí)
+(function () {
+  var stage = document.getElementById('wordStage');
+  if (!stage) return;
+  var words = stage.querySelectorAll('.vw');
+  var phrases = stage.querySelectorAll('.vp');
+  var dots = stage.querySelectorAll('.vd');
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var cur = 0, timer = null;
+
+  function show(n) {
+    var prev = cur;
+    [words, phrases, dots].forEach(function (list) {
+      list.forEach(function (el, idx) { el.classList.toggle('on', idx === n); });
+    });
+    if (prev !== n) {
+      words[prev].classList.add('out');
+      setTimeout(function () { words[prev].classList.remove('out'); }, 1000);
+    }
+    cur = n;
+  }
+  function stop() { clearInterval(timer); timer = null; }
+  function start() {
+    stop();
+    if (reduce) return;
+    timer = setInterval(function () { show((cur + 1) % words.length); }, 2800);
+  }
+
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(function (entries) {
+      if (entries[0].isIntersecting) start(); else stop();
+    }, { threshold: 0.3 }).observe(stage);
+  }
+})();
 // Ventanas modales (Quiénes somos, insygt, MARKO)
 function openModal(id) {
   var modal = document.getElementById(id);
