@@ -1,0 +1,14 @@
+﻿LOGOS DE CLIENTES
+Coloca aqui los logos con estos nombres exactos (SVG preferible; tambien se acepta PNG con el mismo nombre):
+
+  san-pedro-garza-garcia.svg
+  geos.svg
+  expo-chihuahua.svg
+  index.svg
+  bankaool.svg
+  brasa.svg
+  hospital-angeles.svg
+  tribunal-superior-de-justicia.svg
+
+La pagina los muestra en un solo color (blanco o azul marino) y sin fondo.
+Si un archivo falta, se muestra el nombre en texto.

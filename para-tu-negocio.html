@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es-MX">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Para tu negocio | DYM</title>
+<link rel="icon" type="image/png" href="assets/images/isotipo-dym-y.png">
+<meta name="description" content="Cómo se usan los datos de DYM y cómo se genera el valor para el comercio y sus marcas.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="dist/css/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="fixed top-0 inset-x-0 z-50 bg-navy-deep/90 backdrop-blur-2xl border-b border-white/10">
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-10 py-2">
+    <div class="flex items-center gap-2.5 flex-none">
+      <a href="index.html"><img id="navLogo" src="assets/images/logo-dym-rmi.png" alt="DYM · Retail Media Intelligence" class="h-9 sm:h-10 w-auto block"></a>
+    </div>
+    <ul class="hidden lg:flex gap-7 list-none">
+      <li><a href="index.html#solucion" class="text-xs text-white/70 hover:text-gold-light transition-colors">Solución</a></li>
+      <li><a href="index.html#recorrido" class="text-xs text-white/70 hover:text-gold-light transition-colors">Cómo funciona</a></li>
+      <li><a href="para-tu-negocio.html" class="text-xs text-white/70 hover:text-gold-light transition-colors">Para tu negocio</a></li>
+      <li><a href="index.html#empezar" class="text-xs text-white/70 hover:text-gold-light transition-colors">Cómo empezar</a></li>
+      <li><a href="index.html#faq" class="text-xs text-white/70 hover:text-gold-light transition-colors">FAQ</a></li>
+      <li><a href="index.html#cnt" class="text-xs text-white/70 hover:text-gold-light transition-colors">Contacto</a></li>
+    </ul>
+    <button class="flex-none bg-gold-light text-ink border border-gold-light rounded-full px-3 py-1.5 text-[10px] sm:px-4.5 sm:py-[7px] sm:text-[11px] font-semibold uppercase tracking-wider cursor-pointer transition-all hover:bg-white hover:border-white hover:-translate-y-px whitespace-nowrap" onclick="location.href='index.html#cnt'">
+      <span class="lg:hidden">Pruébalo</span>
+      <span class="hidden lg:inline">Pruébalo en vivo</span>
+    </button>
+  </div>
+</nav>
+
+<!-- Para tu negocio: encabezado -->
+<section class="reveal reveal-fade pt-[120px] pb-[40px] px-5 sm:px-10 text-white" style="background:linear-gradient(180deg,#03313F,#1D6E98)">
+  <div class="max-w-6xl mx-auto">
+    <p class="kicker !text-teal-300 mb-3.5">Para tu negocio</p>
+    <div class="w-11 h-0.5 bg-teal-300/50 mb-5"></div>
+    <h1 class="font-serif font-medium text-[clamp(30px,4vw,56px)] tracking-[-0.02em] leading-[1.1] text-white max-w-[820px]">Cómo se usan los datos y cómo se genera el valor</h1>
+  </div>
+</section>
+<!-- 11. DATOS QUE SIRVEN A VARIOS NIVELES — explorador por rol con reporte de ejemplo (ilustrativo, sin cifras reales) -->
+<section class="reveal reveal-up py-[40px] md:py-[44px] px-5 sm:px-10 text-white" id="datos" style="background:linear-gradient(180deg,#1D6E98,#216C98)">
+  <div class="max-w-6xl mx-auto">
+    <p class="kicker !text-teal-300 mb-3.5">Datos</p>
+    <div class="w-11 h-0.5 bg-teal-300/50 mb-4"></div>
+    <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] mb-2 text-white">Datos que sirven a varios niveles</h2>
+    <p class="text-base leading-relaxed text-white/85 mb-4 max-w-[760px]">Los datos de audiencia y de conversación le sirven a toda la organización y a su cadena de valor. Elige un rol y mira qué decide con ellos.</p>
+
+    <div class="flex flex-wrap gap-2 mb-3" id="dtRoles" role="group" aria-label="Rol">
+      <button type="button" class="dt-role on" aria-pressed="true">Gerente de tienda</button>
+      <button type="button" class="dt-role" aria-pressed="false">Categoría</button>
+      <button type="button" class="dt-role" aria-pressed="false">Dirección</button>
+      <button type="button" class="dt-role" aria-pressed="false">Proveedor</button>
+    </div>
+
+    <div class="grid lg:grid-cols-[minmax(0,1fr)_minmax(0,1fr)] gap-4 lg:gap-5">
+      <article class="rounded-[24px] p-5 sm:p-6 flex flex-col" style="background:#212F5B">
+        <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-300 mb-1">Nivel</p>
+        <p id="dtNivel" class="font-serif text-[26px] font-medium leading-tight mb-1">Operativo</p>
+        <p id="dtQuien" class="text-[14px] text-white/75 mb-5">Gerente de tienda o de departamento</p>
+        <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-300 mb-1.5">Ejemplo de decisión</p>
+        <p id="dtDecision" class="text-[16px] leading-snug">Ajustar personal, reposición o degustaciones según afluencia por hora y segmento.</p>
+      </article>
+      <article class="rounded-[24px] border border-white/20 bg-white/10 p-5 sm:p-6">
+        <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-gold-light mb-1">Reporte de ejemplo</p>
+        <p id="dtReport" class="font-serif text-[18px] font-medium mb-4">Afluencia por hora y segmento</p>
+        <div id="dtBars" class="flex items-end gap-2.5 h-[90px]" aria-hidden="true"></div>
+        <div id="dtLabels" class="flex gap-2.5 mt-2 text-[10.5px] text-white/70" aria-hidden="true"></div>
+        <p class="mt-3 text-[10px] uppercase tracking-[0.14em] text-white/60">Ejemplo ilustrativo</p>
+      </article>
+    </div>
+
+    <div class="mt-4 grid md:grid-cols-[auto_1fr] gap-x-5 gap-y-2 items-baseline">
+      <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-teal-300">Dimensiones de los datos</p>
+      <div class="flex flex-wrap gap-1.5"><span class="dt-chip">Tienda</span><span class="dt-chip">Plaza o región</span><span class="dt-chip">Ubicación del tótem</span><span class="dt-chip">Fecha y franja horaria</span><span class="dt-chip">Segmento</span><span class="dt-chip">Contenido o campaña</span><span class="dt-chip">Marca</span><span class="dt-chip">Categoría</span><span class="dt-chip">Impresiones</span><span class="dt-chip">Escaneos y tasa de escaneo</span></div>
+      <p class="text-[11px] font-semibold uppercase tracking-[0.14em] text-gold-light">Del asistente (agregados)</p>
+      <div class="flex flex-wrap gap-1.5"><span class="dt-chip dt-chip-b">Categoría buscada</span><span class="dt-chip dt-chip-b">Búsquedas sin resultado</span><span class="dt-chip dt-chip-b">Recetas solicitadas</span><span class="dt-chip dt-chip-b">Ofertas consultadas</span><span class="dt-chip dt-chip-b">Recomendaciones aceptadas</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 13. CÓMO SE GENERA EL VALOR — marcas pagan por espacios y recomendaciones; el comercio monetiza su tráfico -->
+<section class="reveal reveal-up py-[40px] md:py-[44px] px-5 sm:px-10 text-white" id="valor" style="background:linear-gradient(180deg,#216C98,#276A93)">
+  <div class="max-w-6xl mx-auto">
+    <p class="kicker !text-teal-300 mb-3.5">Valor</p>
+    <div class="w-11 h-0.5 bg-teal-300/50 mb-4"></div>
+    <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] mb-6 text-white">Cómo se genera el valor</h2>
+
+    <div class="grid lg:grid-cols-[minmax(0,1.5fr)_minmax(0,1fr)] gap-5 lg:gap-6 items-stretch">
+      <div class="flex flex-col gap-4">
+        <div class="grid md:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-3 items-center">
+          <div class="rounded-[22px] p-5" style="background:#212F5B">
+            <p class="font-serif text-[22px] font-medium mb-1">Marcas</p>
+            <p class="text-[13.5px] leading-snug text-white/80">Proveedores que buscan al comprador en el punto de decisión.</p>
+          </div>
+          <div class="flex md:flex-col items-center justify-center gap-1 text-center">
+            <svg viewBox="0 0 24 24" class="w-7 h-7 text-teal-300 rotate-90 md:rotate-0" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            <p class="text-[10.5px] font-semibold uppercase tracking-[0.1em] text-teal-300 md:max-w-[110px]">Pagan por espacios y recomendaciones</p>
+          </div>
+          <div class="rounded-[22px] p-5" style="background:#1A74B8">
+            <p class="font-serif text-[22px] font-medium mb-1">El comercio</p>
+            <p class="text-[13.5px] leading-snug text-white/90">Monetiza su tráfico y conoce mejor a su cliente.</p>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-4">
+          <article class="rounded-[22px] border border-white/15 bg-white/[0.07] p-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-full bg-white/15 mb-3"><svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2"/></svg></span>
+            <h3 class="font-serif text-[17px] font-medium mb-1.5">Valor directo</h3>
+            <ul class="list-none">
+            <li class="flex items-start gap-2.5 py-1.5 text-[13.5px] leading-snug text-white/90"><span class="flex-none text-teal-300 font-semibold">→</span><span>Marketing segmentado dentro de la tienda</span></li>
+            <li class="flex items-start gap-2.5 py-1.5 text-[13.5px] leading-snug text-white/90"><span class="flex-none text-teal-300 font-semibold">→</span><span>Analítica de audiencia por zona y horario</span></li>
+            <li class="flex items-start gap-2.5 py-1.5 text-[13.5px] leading-snug text-white/90"><span class="flex-none text-teal-300 font-semibold">→</span><span>Experiencia de compra asistida</span></li>
+            <li class="flex items-start gap-2.5 py-1.5 text-[13.5px] leading-snug text-white/90"><span class="flex-none text-teal-300 font-semibold">→</span><span>Ruta hacia lealtad y pickup</span></li>
+            </ul>
+          </article>
+          <article class="rounded-[22px] border border-white/15 bg-white/[0.07] p-5">
+            <span class="flex items-center justify-center w-9 h-9 rounded-full bg-white/15 mb-3"><svg viewBox="0 0 24 24" class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 18l5-5 4 3 7-9"/><path d="M15 7h5v5"/></svg></span>
+            <h3 class="font-serif text-[17px] font-medium mb-1.5">Nueva línea de ingresos</h3>
+            <ul class="list-none">
+            <li class="flex items-start gap-2.5 py-1.5 text-[13.5px] leading-snug text-white/90"><span class="flex-none text-teal-300 font-semibold">→</span><span>Venta de espacios de loop y segmentos reactivos en los tótems</span></li>
+            <li class="flex items-start gap-2.5 py-1.5 text-[13.5px] leading-snug text-white/90"><span class="flex-none text-teal-300 font-semibold">→</span><span>Productos patrocinados en las recomendaciones del asistente</span></li>
+            <li class="flex items-start gap-2.5 py-1.5 text-[13.5px] leading-snug text-white/90"><span class="flex-none text-teal-300 font-semibold">→</span><span>Audiencia medida que eleva el valor de cada espacio</span></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+
+      <div class="rounded-[26px] overflow-hidden min-h-[260px] shadow-[0_30px_70px_rgba(0,0,0,0.3)]">
+        <img src="assets/images/cliente-totem.jpeg" alt="Una clienta frente a un tótem que muestra una oferta de su perfil" class="w-full h-full object-cover block" loading="lazy">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Para tu negocio: cierre -->
+<section class="reveal reveal-up pt-[150px] pb-[64px] px-5 sm:px-10 text-center" style="background:linear-gradient(180deg,#276A93,#E2EDF3 60%)">
+  <div class="max-w-3xl mx-auto">
+    <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] mb-5 text-navy">Pruébalo en vivo</h2>
+    <a href="index.html#cnt" class="btn-gold">Hablemos</a>
+  </div>
+</section>
+<footer class="border-t border-line py-14 px-5 sm:px-10" style="background:#F3F8FA">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[2.2fr_1fr_1fr_1.2fr] gap-10">
+    <div>
+      <img src="assets/images/logo-dym-rmi-dark.png" alt="DYM · Retail Media Intelligence" class="h-12 w-auto mb-3 block">
+      <p class="text-xs text-dim leading-relaxed max-w-[300px]">Inteligencia en tienda que conecta cada pantalla con una conversación.</p>
+      <div class="mt-5 flex items-center gap-3">
+        <span class="text-[15px] font-medium tracking-[0.18em] text-navy">INTELEZO</span>
+        <span class="text-[13px] font-semibold text-teal" aria-label="por">×</span>
+        <img src="assets/images/logo-integral-dark.webp" alt="INTEGRAL · Positive Artificial Intelligence" class="h-11 w-auto block mix-blend-multiply">
+      </div>
+    </div>
+    <div>
+      <h5 class="text-[10px] font-semibold uppercase tracking-wider text-navy mb-3.5">Solución</h5>
+      <a href="index.html#solucion" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">DYM</a>
+      <a href="index.html#rdp" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Retail Data Point</a>
+      <a href="index.html#ragent" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Retail Agent</a>
+      <a href="index.html#recorrido" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Cómo funciona</a>
+    </div>
+    <div>
+      <h5 class="text-[10px] font-semibold uppercase tracking-wider text-navy mb-3.5">Empresa</h5>
+      <a href="index.html#mercado" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Mercado</a>
+      <a href="para-tu-negocio.html" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Para tu negocio</a>
+      <a href="index.html#empezar" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Cómo empezar</a>
+      <a href="index.html#faq" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Preguntas frecuentes</a>
+    </div>
+    <div>
+      <h5 class="text-[10px] font-semibold uppercase tracking-wider text-navy mb-3.5">Contacto</h5>
+      <a href="mailto:contacto@intelezo.com" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">contacto@intelezo.com</a>
+      <a href="tel:+526602114254" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">660 211 4254</a>
+      <a href="index.html#cnt" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Pruébalo en vivo</a>
+    </div>
+  </div>
+  <div class="max-w-6xl mx-auto mt-8 pt-5 border-t border-line text-[11px] text-mut">
+    <span>© 2026 DYM · Retail Media Intelligence</span>
+  </div>
+</footer>
+
+<!-- VOLVER ARRIBA -->
+<button id="toTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-navy-deep border border-white/25 flex items-center justify-center shadow-[0_4px_20px_rgba(3,49,64,0.35)] transition-all cursor-pointer border-0 opacity-0 pointer-events-none translate-y-2 hover:scale-[1.08]" aria-label="Volver arriba">
+  <img src="assets/images/isotipo-dym-y.png" alt="" class="w-6 h-6 object-contain">
+</button>
+
+<script src="src/js/main.js"></script>
+</body>
+</html>

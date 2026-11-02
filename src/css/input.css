@@ -285,7 +285,7 @@ body {
   color: rgba(255,255,255,.9); font-weight: 600; transition: background-color .25s, color .25s, border-color .25s;
 }
 .rd-gen { padding: 8px 18px; border-radius: 9999px; font-size: 13px; }
-.rd-age { padding: 8px 0; border-radius: 12px; font-size: 12px; }
+.rd-age { padding: 7px 0; border-radius: 10px; font-size: 10.5px; }
 .rd-gen:hover, .rd-age:hover { border-color: #fff; }
 .rd-gen.on, .rd-age.on { background: #fff; color: #212F5B; border-color: #fff; }
 .rd-totem { background: #0E1830; }
@@ -334,3 +334,77 @@ body {
 .sc-dot { background: #0A4A5E; border: 2px solid #74C6C0; transition: background-color .4s ease; }
 .sc-step.on .sc-dot { background: #74C6C0; }
 @media (prefers-reduced-motion: reduce) { .sc-step { opacity: 1; transition: none; } .sc-dot { background: #74C6C0; } }
+/* Versión corta: el detalle de cada paso aparece al pasar el cursor, enfocar o tocar */
+.rc-detail { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .35s ease, opacity .35s ease; }
+.rc-step:hover .rc-detail, .rc-step:focus .rc-detail, .rc-step:focus-within .rc-detail { max-height: 160px; opacity: 1; }
+@media (hover: none) { .rc-detail { max-height: 160px; opacity: 1; } }
+/* El recorrido como mapa de metro: las estaciones se encienden con el scroll y la línea se llena */
+svg .rc-step { opacity: .5; transform: none; cursor: pointer; outline: none; transition: opacity .4s ease; }
+svg .rc-step.on { opacity: 1; background-color: transparent; }
+.rc-c { fill: #0A4A5E; transition: fill .4s ease; }
+svg .rc-step.on .rc-c, svg .rc-step:hover .rc-c, svg .rc-step:focus .rc-c { fill: var(--c); }
+svg .rc-step:hover, svg .rc-step:focus { opacity: 1; }
+svg .rc-step:focus-visible .rc-c { stroke: #fff; }
+.rc-num { fill: #fff; font: 600 17px Montserrat, sans-serif; pointer-events: none; }
+.rc-name { fill: #fff; font: 500 22px Montserrat, sans-serif; pointer-events: none; }
+.rc-line-label { font: 600 13px Montserrat, sans-serif; letter-spacing: .18em; }
+#rcTeal, #rcBlue { transition: stroke-dashoffset .6s ease; }
+@media (prefers-reduced-motion: reduce) { svg .rc-step, .rc-c, #rcTeal, #rcBlue { transition: none; } }
+/* El recorrido como verbos gigantes: al abrir un paso, el texto que lo explica aparece arriba y el verbo baja */
+.rw { position: relative; cursor: pointer; text-align: center; outline: none; padding: 2px 0; }
+.rw-line {
+  max-height: 0; opacity: 0; overflow: hidden; font-size: 14.5px; line-height: 1.35; color: rgba(255,255,255,.95);
+  transform: translateY(-8px); padding: 0 6%;
+  transition: max-height .45s cubic-bezier(.2,.65,.3,1), opacity .35s ease, transform .45s cubic-bezier(.2,.65,.3,1);
+}
+.rw-dato { display: block; margin-top: 3px; font-size: 12.5px; color: rgba(255,255,255,.7); }
+.rw-dato strong { font-weight: 600; color: var(--w); }
+.rw-word { font: 600 clamp(40px, 5.4vw, 78px) Montserrat, sans-serif; letter-spacing: -0.02em; line-height: 1.05; text-transform: uppercase; color: var(--w); }
+.rw:hover .rw-line, .rw:focus-visible .rw-line, .rw.is-open .rw-line { max-height: 110px; opacity: 1; transform: none; padding-bottom: 6px; }
+.rw:focus-visible .rw-word { outline: 2px solid var(--w); outline-offset: 4px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { .rw-line { transition: none; } }
+/* Quiénes confían: tiras infinitas en sentidos opuestos, con bordes que se desvanecen y pausa al pasar el cursor */
+.mq { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.mq-track { display: flex; width: max-content; animation: mq-run 42s linear infinite; }
+.mq-rev .mq-track { animation-direction: reverse; }
+.mq:hover .mq-track { animation-play-state: paused; }
+.mq-half { display: flex; flex: none; align-items: center; gap: 56px; padding-right: 56px; }
+.mq-item { flex: none; display: flex; align-items: center; justify-content: center; height: 60px; }
+.mq-item img { height: 50px; width: auto; max-width: 190px; object-fit: contain; transition: opacity .3s ease; }
+.mq-on-dark .mq-item img { filter: brightness(0) invert(1); opacity: .85; }
+.mq-on-light .mq-item img { filter: brightness(0); opacity: .6; }
+.mq-item:hover img { opacity: 1; }
+.mq-item img[alt="Hospital Ángeles"] { height: 60px; }
+.mq-text { font-size: 15px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+.mq-on-dark .mq-text { color: rgba(255,255,255,.9); }
+.mq-on-light .mq-text { color: rgba(33,47,91,.75); }
+@keyframes mq-run { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .mq { -webkit-mask-image: none; mask-image: none; }
+  .mq-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }
+  .mq-half[aria-hidden="true"] { display: none; }
+}
+/* Retail Data Point: tótem de piso (losa alta, marco delgado, cuerpo oscuro, base y sombra) */
+.tt-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.tt-chip { display: inline-flex; align-items: center; gap: 7px; padding: 5px 13px; border-radius: 9999px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); font-size: 11px; color: rgba(255,255,255,.9); }
+.tt-chip strong { font-weight: 600; color: #fff; }
+.tt-dot { width: 7px; height: 7px; border-radius: 9999px; background: #5BE3A2; box-shadow: 0 0 0 0 rgba(91,227,162,.6); animation: tt-ping 1.8s infinite; }
+@keyframes tt-ping { 70% { box-shadow: 0 0 0 7px rgba(91,227,162,0); } 100% { box-shadow: 0 0 0 0 rgba(91,227,162,0); } }
+.tt { position: relative; width: 150px; margin: 0 auto; }
+.tt-body { background: #0E1830; border-radius: 9px 9px 3px 3px; padding: 6px 6px 0; box-shadow: 0 18px 40px rgba(0,0,0,.4), inset 0 0 0 1px rgba(255,255,255,.07); }
+.tt-lens { position: relative; width: 9px; height: 9px; margin: 0 auto 6px; border-radius: 9999px; background: #18264A; border: 1.5px solid #3B4C70; }
+.tt-led { position: absolute; right: -12px; top: 2px; width: 3px; height: 3px; border-radius: 9999px; background: #5BE3A2; }
+.tt-screen { position: relative; min-height: 196px; border-radius: 3px; padding: 10px 9px; display: flex; flex-direction: column; text-align: center; overflow: hidden; }
+.tt-screen::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 38%); }
+.tt-lower { height: 64px; margin: 0 -6px; display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg,#121C38,#0A1124); border-top: 1px solid rgba(255,255,255,.06); }
+.tt-brand { font-size: 8px; font-weight: 600; letter-spacing: .5em; text-indent: .5em; color: rgba(255,255,255,.35); }
+.tt-foot { width: 196px; height: 12px; margin: 0 -23px; position: relative; border-radius: 3px 3px 9px 9px; background: linear-gradient(180deg,#1A2542,#0A1124); box-shadow: 0 2px 0 rgba(255,255,255,.05) inset; }
+.tt-shadow { width: 230px; height: 16px; margin: -3px -40px 0; background: radial-gradient(ellipse at center, rgba(0,0,0,.5), rgba(0,0,0,0) 70%); }
+@media (prefers-reduced-motion: reduce) { .tt-dot { animation: none; } }
+/* Retail Agent: el teléfono con el mismo lenguaje del tótem (marco oscuro delgado, reflejo, sombra en el piso) */
+.ph { position: relative; width: 250px; margin: 0 auto; }
+.ph-body { position: relative; background: #0E1830; border-radius: 30px; padding: 6px; box-shadow: 0 18px 40px rgba(0,0,0,.4), inset 0 0 0 1px rgba(255,255,255,.07); }
+.ph-island { position: absolute; top: 12px; left: 50%; z-index: 2; width: 54px; height: 12px; transform: translateX(-50%); border-radius: 9999px; background: #0A1124; }
+.ph-screen { position: relative; display: flex; flex-direction: column; height: 322px; border-radius: 25px; overflow: hidden; text-align: left; background: #E8E4DC; }
+.ph-screen::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 36%); }.mq-item img[alt="San Pedro Garza García"]{height:66px}
+.mq-item img[alt="Tribunal Superior de Justicia"]{height:62px}

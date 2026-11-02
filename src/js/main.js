@@ -12,75 +12,6 @@
   targets.forEach(function (el) { io.observe(el); });
 })();
 
-// Verticales: escenario que cambia solo (círculo de color que cubre la sección + foto circular)
-(function () {
-  var sec = document.getElementById('vtCard');
-  if (!sec) return;
-  var wipe = document.getElementById('vtWipe');
-  var photo = document.getElementById('vtPhoto');
-  var imgs = sec.querySelectorAll('.vt-img');
-  var slides = sec.querySelectorAll('.vt-slide');
-  var pills = sec.querySelectorAll('.vt-pill');
-  var colors = ['#03313F', '#212F5B', '#2D7A7B', '#1A74B8'];
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var DUR = 5500;
-  var cur = 0, busy = false, timer = null;
-
-  function show(n) {
-    [imgs, slides, pills].forEach(function (list) {
-      list.forEach(function (el, idx) { el.classList.toggle('on', idx === n); });
-    });
-  }
-
-  function origin() {
-    var r = photo.getBoundingClientRect(), s = sec.getBoundingClientRect();
-    return [
-      ((r.left + r.width / 2 - s.left) / s.width * 100) + '%',
-      ((r.top + r.height / 2 - s.top) / s.height * 100) + '%'
-    ];
-  }
-
-  function go(n) {
-    if (n === cur || busy) return;
-    busy = true;
-    var o = origin();
-    wipe.style.setProperty('--ox', o[0]);
-    wipe.style.setProperty('--oy', o[1]);
-    wipe.style.backgroundColor = colors[n];
-    wipe.classList.remove('run');
-    void wipe.offsetWidth;
-    wipe.classList.add('run');
-    show(n);
-    cur = n;
-    setTimeout(function () {
-      sec.style.backgroundColor = colors[n];
-      wipe.classList.remove('run');
-      busy = false;
-    }, reduce ? 0 : 1050);
-  }
-
-  function stop() { clearInterval(timer); timer = null; }
-  function start() {
-    stop();
-    if (reduce) return;
-    timer = setInterval(function () { go((cur + 1) % slides.length); }, DUR);
-  }
-
-  pills.forEach(function (p, idx) {
-    p.addEventListener('click', function () { go(idx); start(); });
-  });
-
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) {
-        pills[cur].classList.remove('on');
-        void pills[cur].offsetWidth;
-        pills[cur].classList.add('on');
-        start();
-      } else { stop(); }
-    }, { threshold: 0.3 }).observe(sec);
-  }
-})();
 // Franja de palabras: Detecta → Conversa → Vende (se disuelven entre sí)
 (function () {
   var stage = document.getElementById('wordStage');
@@ -169,35 +100,6 @@
       if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); card.classList.toggle('is-flipped'); }
     });
   });
-})();
-// Oportunidad: las palabras se encienden una a una según el avance del scroll por la sección
-(function () {
-  var sec = document.getElementById('oportunidad');
-  if (!sec) return;
-  var words = sec.querySelectorAll('.ow');
-  if (!words.length) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    words.forEach(function (w) { w.classList.add('lit'); });
-    return;
-  }
-  var ticking = false;
-
-  function update() {
-    var r = sec.getBoundingClientRect();
-    var vh = window.innerHeight;
-    // 0 cuando la sección asoma por abajo, 1 cuando su borde superior llega al 35% de la pantalla
-    var p = (vh * 0.9 - r.top) / (vh * 0.9 - vh * 0.35);
-    p = Math.max(0, Math.min(1, p));
-    var n = Math.round(p * words.length);
-    words.forEach(function (w, i) { w.classList.toggle('lit', i < n); });
-    ticking = false;
-  }
-  function onScroll() {
-    if (!ticking) { ticking = true; requestAnimationFrame(update); }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  update();
 })();
 // Retail Data Point: el tótem de ejemplo cambia de oferta según género y rango de edad (contenido ilustrativo)
 (function () {
@@ -356,33 +258,25 @@
     }, { threshold: 0.4 }).observe(sec);
   } else { started = true; play(flows.intro); }
 })();
-// El recorrido del cliente: los 6 pasos se encienden uno a uno según el avance del scroll
+// El recorrido: en pantallas táctiles (y con Enter o Espacio) el paso se abre al tocarlo; con el cursor se abre solo con hover
 (function () {
   var sec = document.getElementById('recorrido');
   if (!sec) return;
-  var steps = sec.querySelectorAll('.rc-step');
-  if (!steps.length) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    steps.forEach(function (s) { s.classList.add('on'); });
-    return;
+  var rows = sec.querySelectorAll('.rw');
+  function setOpen(row, open) {
+    row.classList.toggle('is-open', open);
+    row.setAttribute('aria-expanded', open ? 'true' : 'false');
   }
-  var ticking = false;
-
-  function update() {
-    var r = sec.getBoundingClientRect();
-    var vh = window.innerHeight;
-    var p = (vh * 0.85 - r.top) / (vh * 0.85 - vh * 0.3);
-    p = Math.max(0, Math.min(1, p));
-    var n = Math.round(p * steps.length);
-    steps.forEach(function (s, i) { s.classList.toggle('on', i < n); });
-    ticking = false;
-  }
-  function onScroll() {
-    if (!ticking) { ticking = true; requestAnimationFrame(update); }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  update();
+  rows.forEach(function (row) {
+    row.addEventListener('click', function () {
+      var open = !row.classList.contains('is-open');
+      rows.forEach(function (r) { setOpen(r, false); });
+      setOpen(row, open);
+    });
+    row.addEventListener('keydown', function (e) {
+      if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); row.click(); }
+    });
+  });
 })();
 // Datos por nivel: el rol elegido cambia la decisión y el reporte de ejemplo (alturas ilustrativas, sin cifras reales)
 (function () {
@@ -436,36 +330,20 @@
   btns.forEach(function (b, idx) { b.addEventListener('click', function () { render(idx); }); });
   render(0);
 })();
-// Escalabilidad: los 4 peldaños y la línea se llenan según el avance del scroll
+// Logos de clientes: prueba .svg, luego .png y, si no existe ninguno, muestra el nombre en texto
 (function () {
-  var sec = document.getElementById('implementacion');
-  if (!sec) return;
-  var steps = sec.querySelectorAll('.sc-step');
-  var fill = document.getElementById('scFill');
-  if (!steps.length) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    steps.forEach(function (s) { s.classList.add('on'); });
-    if (fill) fill.style.width = '100%';
-    return;
+  var imgs = document.querySelectorAll('.mq-item img');
+  function fallback(img) {
+    if (/\.svg$/.test(img.src)) { img.src = img.src.replace(/\.svg$/, '.png'); return; }
+    var t = document.createElement('span');
+    t.className = 'mq-text';
+    t.textContent = img.alt;
+    if (img.parentNode) img.parentNode.replaceChild(t, img);
   }
-  var ticking = false;
-
-  function update() {
-    var r = sec.getBoundingClientRect();
-    var vh = window.innerHeight;
-    var p = (vh * 0.8 - r.top) / (vh * 0.8 - vh * 0.1);
-    p = Math.max(0, Math.min(1, p));
-    var n = Math.min(steps.length, Math.max(0, Math.ceil(p * steps.length)));
-    steps.forEach(function (s, i) { s.classList.toggle('on', i < n); });
-    if (fill) fill.style.width = (n <= 1 ? 0 : (n - 1) / (steps.length - 1) * 100) + '%';
-    ticking = false;
-  }
-  function onScroll() {
-    if (!ticking) { ticking = true; requestAnimationFrame(update); }
-  }
-  window.addEventListener('scroll', onScroll, { passive: true });
-  window.addEventListener('resize', onScroll);
-  update();
+  imgs.forEach(function (img) {
+    img.addEventListener('error', function () { fallback(img); });
+    if (img.complete && img.naturalWidth === 0) fallback(img);
+  });
 })();
 // Logo del header: oculto mientras se ve el logo grande del hero, aparece al hacer scroll
 (function () {
