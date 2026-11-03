@@ -1,475 +1,387 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-MX">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>DYM Systems — insygt + MARKO</title>
-<meta name="description" content="DYM Systems une insygt (inteligencia de audiencia) y MARKO (asistente de ventas con IA) en un solo ecosistema para espacios físicos.">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<title>DYM | Retail Media Intelligence</title>
+<link rel="icon" type="image/png" href="assets/images/isotipo-dym-y.png">
+<meta name="description" content="Inteligencia en tienda que conecta cada pantalla con una conversación.">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="dist/css/style.css">
 </head>
 <body>
 
 <!-- NAV -->
-<nav class="fixed top-0 inset-x-0 z-50 bg-[#ECE1CF]/90 backdrop-blur-2xl border-b border-navy/[0.08]">
-  <div class="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-10 py-2.5">
+<nav class="fixed top-0 inset-x-0 z-50 bg-navy-deep/90 backdrop-blur-2xl border-b border-white/10">
+  <div class="max-w-6xl mx-auto flex items-center justify-between px-5 sm:px-10 py-2">
     <div class="flex items-center gap-2.5 flex-none">
-      <img src="assets/images/logo-dym.png" alt="DYM" class="h-6 sm:h-7 w-auto block brightness-0">
-      <span class="hidden sm:inline text-[11px] tracking-[0.14em] uppercase text-navy/40">Systems</span>
+      <img id="navLogo" src="assets/images/logo-dym-rmi.png" alt="DYM · Retail Media Intelligence" class="h-9 sm:h-10 w-auto block opacity-0 transition-opacity duration-500">
     </div>
     <ul class="hidden lg:flex gap-7 list-none">
-      <li><a href="#feat" class="text-xs text-dim hover:text-gold transition-colors">Sistema</a></li>
-      <li><a href="#ins" class="text-xs text-dim hover:text-gold transition-colors">insygt</a></li>
-      <li><a href="#mrk" class="text-xs text-dim hover:text-gold transition-colors">MARKO</a></li>
-      <li><a href="#mod" class="text-xs text-dim hover:text-gold transition-colors">Modalidades</a></li>
-      <li><a href="#faq" class="text-xs text-dim hover:text-gold transition-colors">FAQ</a></li>
-      <li><a href="#cnt" class="text-xs text-dim hover:text-gold transition-colors">Contacto</a></li>
+      <li><a href="#solucion" class="text-xs text-white/70 hover:text-gold-light transition-colors">Solución</a></li>
+      <li><a href="#recorrido" class="text-xs text-white/70 hover:text-gold-light transition-colors">Cómo funciona</a></li>
+      <li><a href="para-tu-negocio.html" class="text-xs text-white/70 hover:text-gold-light transition-colors">Para tu negocio</a></li>
+      <li><a href="#empezar" class="text-xs text-white/70 hover:text-gold-light transition-colors">Cómo empezar</a></li>
+      <li><a href="#faq" class="text-xs text-white/70 hover:text-gold-light transition-colors">FAQ</a></li>
+      <li><a href="#cnt" class="text-xs text-white/70 hover:text-gold-light transition-colors">Contacto</a></li>
     </ul>
-    <button class="flex-none bg-transparent text-gold border border-gold/40 rounded-full px-3 py-1.5 text-[10px] sm:px-4.5 sm:py-[7px] sm:text-[11px] font-semibold uppercase tracking-wider cursor-pointer transition-all hover:bg-gold hover:text-sand hover:border-gold hover:-translate-y-px whitespace-nowrap" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">
-      <span class="lg:hidden">Contacto</span>
-      <span class="hidden lg:inline">Conocer el sistema</span>
+    <button class="flex-none bg-gold-light text-ink border border-gold-light rounded-full px-3 py-1.5 text-[10px] sm:px-4.5 sm:py-[7px] sm:text-[11px] font-semibold uppercase tracking-wider cursor-pointer transition-all hover:bg-white hover:border-white hover:-translate-y-px whitespace-nowrap" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">
+      <span class="lg:hidden">Pruébalo</span>
+      <span class="hidden lg:inline">Pruébalo en vivo</span>
     </button>
   </div>
 </nav>
 
-<!-- 1. HERO — una columna, centrado -->
-<section class="reveal reveal-fade hero-glow min-h-[92vh] flex items-center justify-center px-5 sm:px-10 pt-20 pb-20 relative overflow-hidden">
-  <div class="max-w-[640px] mx-auto text-center">
-    <img src="assets/images/logo-dym.png" alt="DYM Systems" class="w-[75%] sm:w-[340px] md:w-[400px] h-auto max-w-full mx-auto mb-5 block brightness-0">
-    <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3.5">DYM Systems</p>
-    <div class="w-11 h-0.5 bg-gold/50 mx-auto mb-5"></div>
-    <h1 class="font-serif font-medium text-[clamp(20px,3.2vw,36px)] leading-[1.2] tracking-tight mb-9 text-navy-deep sm:whitespace-nowrap">A una <em class="italic text-gold">vista</em> de la <em class="italic text-gold">venta</em></h1>
-    <div class="flex gap-3.5 flex-wrap justify-center">
-      <button class="btn-gold" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Conocer el sistema</button>
-      <button class="btn-outline" onclick="document.getElementById('feat').scrollIntoView({behavior:'smooth'})">Cómo funciona</button>
+<!-- 1. HERO — petróleo con barras ascendentes (motivo de marca) -->
+<section class="reveal reveal-fade hero-glow min-h-[100vh] min-h-[100svh] flex items-center px-5 sm:px-10 pt-24 pb-16 relative overflow-hidden">
+  <div class="pointer-events-none absolute -right-48 top-1/2 -translate-y-1/2 w-[760px] h-[760px] rounded-full border border-white/[0.07]"></div>
+  <div class="pointer-events-none absolute -right-20 top-1/2 -translate-y-1/2 w-[520px] h-[520px] rounded-full border border-white/[0.07]"></div>
+  <div class="relative z-[2] max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+    <div class="text-left">
+      <img id="heroLogo" src="assets/images/logo-dym-rmi.png" alt="DYM · Retail Media Intelligence" class="w-[260px] sm:w-[340px] h-auto max-w-full mb-8 block">
+      <h1 class="font-medium text-[clamp(30px,4vw,56px)] leading-[1.12] tracking-[-0.02em] mb-10 text-white">Inteligencia en tienda que conecta cada <em class="italic text-gold-light">pantalla</em> con una <em class="italic text-gold-light">conversación</em>.</h1>
+      <div class="flex gap-3.5 flex-wrap">
+        <button class="btn-sky" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Pruébalo en vivo</button>
+        <button class="btn-outline-light" onclick="document.getElementById('recorrido').scrollIntoView({behavior:'smooth'})">Ver cómo funciona</button>
+      </div>
+    </div>
+    <div class="relative h-[260px] md:h-[440px] flex items-end" aria-hidden="true">
+      <div class="bars h-full"><span></span><span></span><span></span><span></span><span></span><span></span></div>
     </div>
   </div>
 </section>
+<!-- 2. ESCENARIO — así se ve en la práctica: solo el video, con fondo de marca (círculos, resplandor y capas) -->
+<section class="reveal reveal-up relative overflow-hidden py-14 px-5 sm:px-10" id="demo" style="background:linear-gradient(180deg,#03313F,#0A4A5E)">
+  <div class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[980px] h-[980px] rounded-full border border-white/[0.08]" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] rounded-full border border-white/[0.08]" aria-hidden="true"></div>
+  <div class="pointer-events-none absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-[860px] h-[420px] rounded-full blur-[90px]" style="background:radial-gradient(closest-side,rgba(108,192,245,.45),rgba(108,192,245,0))" aria-hidden="true"></div>
+  <div class="relative z-[2] mx-auto" style="max-width:min(960px,calc((100svh - 230px) * 16 / 9));min-width:min(100%,320px)">
+    <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-[24px] bg-white/10" aria-hidden="true"></div>
+    <div class="absolute inset-0 -translate-x-3 -translate-y-3 rounded-[24px] border border-white/30" aria-hidden="true"></div>
+    <div class="relative rounded-[24px] overflow-hidden bg-ink aspect-video shadow-[0_30px_70px_rgba(3,49,64,0.45)]">
+      <video id="demoVideo" class="w-full h-full object-cover block" src="assets/video/asi-se-ve-en-la-practica.mp4" poster="assets/video/asi-se-ve-en-la-practica.jpg" muted loop playsinline controls preload="metadata" aria-label="Así se ve en la práctica: un cliente entra, el tótem lo detecta y el asistente lo atiende"></video>
+    </div>
+  </div>
+</section>
+<!-- 1b. PALABRAS — franja tipográfica: una palabra se disuelve en la siguiente (Detecta → Conversa → Vende) -->
+<section class="reveal reveal-fade py-[56px] md:py-[72px] px-5 sm:px-10 text-center overflow-hidden" id="words" style="background:linear-gradient(180deg,#0A4A5E,#0E5470)">
+  <p class="text-[13px] tracking-[0.2em] uppercase font-semibold text-white/80 mb-3">El sistema en tres verbos</p>
+  <div id="wordStage" class="max-w-6xl mx-auto">
+    <div class="vwrap grid place-items-center" aria-live="off">
+      <span class="vw on text-teal-300">Detecta</span>
+      <span class="vw text-gold-light">Conversa</span>
+      <span class="vw text-white">Vende</span>
+    </div>
+    <div class="grid place-items-center mt-3 min-h-[64px]">
+      <p class="vp on">El tótem estima el perfil de quien está frente a la pantalla, de forma anónima.</p>
+      <p class="vp">El asistente atiende por WhatsApp y guía a cada cliente hasta la compra.</p>
+      <p class="vp">Todo suma en un solo tablero de datos anónimos y conversiones.</p>
+    </div>
+    <div class="flex justify-center gap-2 mt-6" aria-hidden="true">
+      <span class="vd on"></span><span class="vd"></span><span class="vd"></span>
+    </div>
+  </div>
+</section>
+<!-- SOLUCIÓN (versión corta): Retail Data Point + Retail Agent en una sola sección, con el tótem y el teléfono como protagonistas -->
+<section class="reveal reveal-up py-[40px] md:py-[48px] px-5 sm:px-10 text-white" id="solucion" style="background:linear-gradient(180deg,#0E5470,#17688F)">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] mb-7 text-white text-center">Un tótem, un escaneo, una conversación</h2>
+    <div class="grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-8 lg:gap-6 items-start">
 
-<!-- 2. ESCENARIO — tarjeta de prueba, franja media -->
-<section class="reveal reveal-up py-16 px-5 sm:px-10 bg-graybg">
-  <div class="max-w-[760px] mx-auto bg-white border border-navy/10 shadow-sm rounded-[20px] p-8 sm:p-11 flex flex-col sm:flex-row gap-7 items-center text-center sm:text-left">
-    <div class="flex-none w-16 h-16 rounded-full bg-gold/10 flex items-center justify-center text-2xl">🛒</div>
+      <div id="rdp" class="flex flex-col items-center text-center">
+        <h3 class="font-serif text-[24px] font-medium">Retail Data Point</h3>
+        <p class="text-[14px] text-white/80 mb-4">Detecta, comunica y mide.</p>
+        <div class="tt-wrap">
+          <div class="tt-chip" aria-live="polite"><span class="tt-dot" aria-hidden="true"></span>Perfil estimado: <strong id="rdProfile">Mujer · 25–34</strong></div>
+          <div id="rdTotem" class="tt" role="img" aria-label="Tótem de piso con una oferta de ejemplo">
+            <div class="tt-body">
+              <div class="tt-lens" aria-hidden="true"><i class="tt-led"></i></div>
+              <div id="rdScreen" class="rd-screen tt-screen">
+                <p id="rdTitle" class="font-serif text-[15px] font-medium leading-tight mt-1">Cena fácil en casa</p>
+                <p id="rdLine" class="text-[10.5px] leading-snug text-white/85 mt-1.5">Ingredientes frescos y recetas listas para esta noche.</p>
+                <div class="mt-auto mx-auto w-[52px] h-[52px] rounded-lg bg-white p-1.5"><svg viewBox="0 0 13 13" class="w-full h-full" fill="#212F5B" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h5v5H0zM1 1v3h3V1z" fill-rule="evenodd"/><rect x="2" y="2" width="1" height="1"/><path d="M8 0h5v5H8zM9 1v3h3V1z" fill-rule="evenodd"/><rect x="10" y="2" width="1" height="1"/><path d="M0 8h5v5H0zM1 9v3h3V9z" fill-rule="evenodd"/><rect x="2" y="10" width="1" height="1"/><rect x="5" y="0" width="1" height="1"/><rect x="6" y="0" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="7" y="1" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="5" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="7" y="5" width="1" height="1"/><rect x="11" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="7" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/><rect x="12" y="6" width="1" height="1"/><rect x="1" y="7" width="1" height="1"/><rect x="2" y="7" width="1" height="1"/><rect x="5" y="7" width="1" height="1"/><rect x="7" y="7" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="11" y="7" width="1" height="1"/><rect x="6" y="8" width="1" height="1"/><rect x="10" y="8" width="1" height="1"/><rect x="6" y="9" width="1" height="1"/><rect x="7" y="9" width="1" height="1"/><rect x="9" y="9" width="1" height="1"/><rect x="10" y="9" width="1" height="1"/><rect x="12" y="9" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="7" y="10" width="1" height="1"/><rect x="9" y="10" width="1" height="1"/><rect x="10" y="10" width="1" height="1"/><rect x="5" y="11" width="1" height="1"/><rect x="7" y="11" width="1" height="1"/><rect x="9" y="11" width="1" height="1"/><rect x="10" y="11" width="1" height="1"/><rect x="12" y="11" width="1" height="1"/><rect x="6" y="12" width="1" height="1"/><rect x="7" y="12" width="1" height="1"/><rect x="8" y="12" width="1" height="1"/><rect x="10" y="12" width="1" height="1"/><rect x="12" y="12" width="1" height="1"/></svg></div>
+                <p class="text-[8.5px] text-white/80 mt-1.5">Escanea para obtenerla</p>
+              </div>
+              <div class="tt-lower" aria-hidden="true"><span class="tt-brand">DYM</span></div>
+            </div>
+            <div class="tt-foot" aria-hidden="true"></div>
+            <div class="tt-shadow" aria-hidden="true"></div>
+          </div>
+        </div>
+        <div class="mt-3 flex gap-2" role="group" aria-label="Género">
+          <button type="button" class="rd-gen on" data-gen="0" aria-pressed="true">Mujer</button>
+          <button type="button" class="rd-gen" data-gen="1" aria-pressed="false">Hombre</button>
+        </div>
+        <div class="mt-2 grid grid-cols-8 gap-1 w-full max-w-[400px]" role="group" aria-label="Rango de edad" id="rdAges"><button type="button" class="rd-age" data-age="0" aria-pressed="false">15–24</button> <button type="button" class="rd-age on" data-age="1" aria-pressed="true">25–34</button> <button type="button" class="rd-age" data-age="2" aria-pressed="false">35–44</button> <button type="button" class="rd-age" data-age="3" aria-pressed="false">45–54</button> <button type="button" class="rd-age" data-age="4" aria-pressed="false">55–64</button> <button type="button" class="rd-age" data-age="5" aria-pressed="false">65–74</button> <button type="button" class="rd-age" data-age="6" aria-pressed="false">75–84</button> <button type="button" class="rd-age" data-age="7" aria-pressed="false">85+</button></div>
+        <p class="mt-2 text-[10px] uppercase tracking-[0.14em] text-white/65">Ejemplo ilustrativo · anónimo, sin reconocimiento facial</p>
+        <div class="mt-3 flex flex-wrap justify-center gap-1.5"><span class="dt-chip">Publicidad por segmento</span><span class="dt-chip">Datos de audiencia</span><span class="dt-chip">Lead magnet</span></div>
+      </div>
+
+      <div class="flex flex-col items-center justify-center gap-2 lg:pt-24">
+        <div class="sol-qr w-[84px] h-[84px] rounded-[16px] bg-white p-2.5 shadow-[0_20px_45px_rgba(0,0,0,0.3)]"><svg viewBox="0 0 13 13" class="w-full h-full" fill="#212F5B" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h5v5H0zM1 1v3h3V1z" fill-rule="evenodd"/><rect x="2" y="2" width="1" height="1"/><path d="M8 0h5v5H8zM9 1v3h3V1z" fill-rule="evenodd"/><rect x="10" y="2" width="1" height="1"/><path d="M0 8h5v5H0zM1 9v3h3V9z" fill-rule="evenodd"/><rect x="2" y="10" width="1" height="1"/><rect x="5" y="0" width="1" height="1"/><rect x="6" y="0" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="7" y="1" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="5" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="7" y="5" width="1" height="1"/><rect x="11" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="7" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/><rect x="12" y="6" width="1" height="1"/><rect x="1" y="7" width="1" height="1"/><rect x="2" y="7" width="1" height="1"/><rect x="5" y="7" width="1" height="1"/><rect x="7" y="7" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="11" y="7" width="1" height="1"/><rect x="6" y="8" width="1" height="1"/><rect x="10" y="8" width="1" height="1"/><rect x="6" y="9" width="1" height="1"/><rect x="7" y="9" width="1" height="1"/><rect x="9" y="9" width="1" height="1"/><rect x="10" y="9" width="1" height="1"/><rect x="12" y="9" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="7" y="10" width="1" height="1"/><rect x="9" y="10" width="1" height="1"/><rect x="10" y="10" width="1" height="1"/><rect x="5" y="11" width="1" height="1"/><rect x="7" y="11" width="1" height="1"/><rect x="9" y="11" width="1" height="1"/><rect x="10" y="11" width="1" height="1"/><rect x="12" y="11" width="1" height="1"/><rect x="6" y="12" width="1" height="1"/><rect x="7" y="12" width="1" height="1"/><rect x="8" y="12" width="1" height="1"/><rect x="10" y="12" width="1" height="1"/><rect x="12" y="12" width="1" height="1"/></svg></div>
+        <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/85 text-center max-w-[110px]">Un escaneo los conecta</p>
+      </div>
+
+      <div id="ragent" class="flex flex-col items-center text-center">
+        <h3 class="font-serif text-[24px] font-medium">Retail Agent</h3>
+        <p class="text-[14px] text-white/80 mb-4">Conversa y acompaña la compra.</p>
+        <div class="tt-wrap">
+          <div class="tt-chip"><span class="tt-dot" aria-hidden="true"></span>Chat iniciado con el <strong>QR</strong></div>
+          <div class="ph">
+            <div class="ph-body">
+              <div class="ph-island" aria-hidden="true"></div>
+              <div class="ph-screen">
+                <div class="flex items-center gap-2.5 px-4 pt-6 pb-2.5 text-white" style="background:#0A4A5E">
+                  <span class="flex items-center justify-center w-7 h-7 rounded-full bg-white text-[12px] font-semibold" style="color:#0A4A5E">A</span>
+                  <div class="leading-tight"><p class="text-[12.5px] font-semibold">Asistente</p><p class="text-[10px] text-white/70">Retail Agent</p></div>
+                </div>
+                <div id="raChat" class="flex-1 overflow-hidden flex flex-col justify-end gap-2 px-3 py-3 text-[12px] leading-snug" role="log" aria-live="polite" aria-label="Conversación de ejemplo con el asistente"></div>
+                <div class="px-3 pb-3">
+                  <div id="raChips" class="flex flex-wrap gap-1.5">
+                    <button type="button" class="ra-chip" data-flow="ofertas">Ofertas</button>
+                    <button type="button" class="ra-chip" data-flow="lista">Mi lista</button>
+                    <button type="button" class="ra-chip" data-flow="recetas">Recetas</button>
+                    <button type="button" class="ra-chip" data-flow="donde">¿Dónde está…?</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tt-shadow" aria-hidden="true"></div>
+          </div>
+        </div>
+        <p class="mt-2 text-[10px] uppercase tracking-[0.14em] text-white/65">Ejemplo ilustrativo</p>
+        <div class="mt-3 flex flex-wrap justify-center gap-1.5"><span class="dt-chip">Recomendaciones</span><span class="dt-chip">Lista de mandado</span><span class="dt-chip">Recetas</span><span class="dt-chip">Ubicación</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- CÓMO FUNCIONA — verbos gigantes; al pasar el cursor (o tocar) el verbo baja y arriba aparece el texto que lo explica -->
+<section class="reveal reveal-up py-[40px] md:py-[48px] px-5 sm:px-10 text-white" id="recorrido" style="background:linear-gradient(180deg,#17688F,#2B6489)">
+  <div class="max-w-6xl mx-auto">
+    <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] mb-2 text-white text-center">El recorrido del cliente</h2>
+    <p class="text-center text-[13px] text-white/70 mb-6"><span class="hidden md:inline">Pasa el cursor sobre cada paso.</span><span class="md:hidden">Toca cada paso.</span></p>
+    <div class="grid md:grid-cols-2 gap-x-10 gap-y-6">
+      <div>
+        <p class="mx-auto mb-2 w-fit rounded-full px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.14em]" style="background:#2D7A7B">En la tienda</p>
+        <div class="rw" tabindex="0" role="button" aria-expanded="false" style="--c:#2D7A7B;--w:#8FD6CF">
+          <p class="rw-line">Cruza la entrada de la tienda. <span class="rw-dato">Dato: <strong>afluencia y horario</strong></span></p>
+          <h3 class="rw-word">Entra</h3>
+        </div>
+        <div class="rw" tabindex="0" role="button" aria-expanded="false" style="--c:#2D7A7B;--w:#8FD6CF">
+          <p class="rw-line">El sensor estima su perfil, de forma anónima. <span class="rw-dato">Dato: <strong>perfil de audiencia</strong></span></p>
+          <h3 class="rw-word">Detecta</h3>
+        </div>
+        <div class="rw" tabindex="0" role="button" aria-expanded="false" style="--c:#2D7A7B;--w:#8FD6CF">
+          <p class="rw-line">El tótem le muestra la oferta de su perfil y un QR. <span class="rw-dato">Dato: <strong>impresiones por segmento</strong></span></p>
+          <h3 class="rw-word">Activa</h3>
+        </div>
+      </div>
+      <div>
+        <p class="mx-auto mb-2 w-fit rounded-full px-4 py-1 text-[11px] font-semibold uppercase tracking-[0.14em]" style="background:#1A74B8">En WhatsApp</p>
+        <div class="rw" tabindex="0" role="button" aria-expanded="false" style="--c:#1A74B8;--w:#8DCBF8">
+          <p class="rw-line">Escanea el QR y abre WhatsApp. <span class="rw-dato">Dato: <strong>tasa de escaneo</strong></span></p>
+          <h3 class="rw-word">Escanea</h3>
+        </div>
+        <div class="rw" tabindex="0" role="button" aria-expanded="false" style="--c:#1A74B8;--w:#8DCBF8">
+          <p class="rw-line">El asistente muestra ofertas y gestiona sus necesidades. <span class="rw-dato">Dato: <strong>uso de funciones</strong></span></p>
+          <h3 class="rw-word">Conversa</h3>
+        </div>
+        <div class="rw" tabindex="0" role="button" aria-expanded="false" style="--c:#1A74B8;--w:#8DCBF8">
+          <p class="rw-line">Valida si encontró lo que buscaba y pide autorización para enviar ofertas. <span class="rw-dato">Dato: <strong>recurrencia de uso</strong></span></p>
+          <h3 class="rw-word">Posventa</h3>
+        </div>
+      </div>
+    </div>
+    <p class="mt-6 text-center text-[15px] text-white/85">Cada paso deja un dato.</p>
+  </div>
+</section>
+<!-- MERCADO (versión corta): una cifra grande y tres casos, sin tarjetas -->
+<section class="reveal reveal-up py-[40px] md:py-[48px] px-5 sm:px-10 text-white" id="mercado" style="background:linear-gradient(180deg,#2B6489,#2B5F8A)">
+  <div class="max-w-6xl mx-auto text-center">
+    <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] mb-2 text-white">La tienda física ya es un medio</h2>
+    <p class="text-[clamp(56px,9vw,128px)] font-medium leading-none tracking-[-0.03em]"><span data-count="2130" data-prefix="US$" data-format="int">US$2,130</span></p>
+    <p class="mt-1 mb-8 text-[clamp(15px,1.5vw,20px)] text-white/85">millones · retail media en México hacia 2028</p>
+    <div class="grid sm:grid-cols-3 gap-8 sm:gap-4">
+      <div class="text-center"><p class="text-[clamp(44px,6vw,84px)] font-medium leading-none tracking-[-0.03em]" >~35%</p><p class="mt-2 font-serif text-[18px] font-medium">Walmart</p><p class="text-[13px] text-white/75">ticket mayor con su asistente</p></div>
+      <div class="text-center"><p class="text-[clamp(44px,6vw,84px)] font-medium leading-none tracking-[-0.03em]" data-count="68" data-prefix="+" data-suffix="%">+68%</p><p class="mt-2 font-serif text-[18px] font-medium">Carrefour Emiratos</p><p class="text-[13px] text-white/75">en ventas del producto</p></div>
+      <div class="text-center"><p class="text-[clamp(44px,6vw,84px)] font-medium leading-none tracking-[-0.03em]" data-count="43.75" data-prefix="+" data-suffix="%" data-decimals="2">+43.75%</p><p class="mt-2 font-serif text-[18px] font-medium">Tesco</p><p class="text-[13px] text-white/75">uplift omnicanal</p></div>
+    </div>
+    <p class="mt-8"><a href="para-tu-negocio.html" class="btn-outline-light">Ver cómo se usan los datos y se genera el valor</a></p>
+    <p class="mt-6 text-[11px] leading-relaxed text-white/60 max-w-[760px] mx-auto">Resultados de campañas o estudios específicos, no de toda la cadena. Fuentes: eMarketer (proyección en dólares, Bloomberg Línea 2024), Walmart (2026), Tesco Media, Advertima y benchmarking de Intelezo.</p>
+  </div>
+</section>
+<!-- QUIÉNES CONFÍAN — dos tiras que corren en sentidos opuestos, con logos monocromos sin fondo (logos en assets/logos; mientras falten se muestra el nombre en texto) -->
+<section class="reveal reveal-up py-[36px] md:py-[44px] text-center overflow-hidden" id="confian" style="background:linear-gradient(180deg,#2B5F8A,#C9DCE8)">
+  <p class="text-[13px] tracking-[0.2em] uppercase font-semibold text-white mb-6 px-5">Quiénes ya confían en nosotros</p>
+  <div class="flex flex-col gap-3">
+    <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80 -mb-1">Intelezo</p>
+      <div class="mq mq-on-dark"><div class="mq-track"><div class="mq-half"><div class="mq-item"><img src="assets/logos/san-pedro-garza-garcia.png" alt="San Pedro Garza García" loading="lazy"></div><div class="mq-item"><img src="assets/logos/geos.svg" alt="GEOS" loading="lazy"></div><div class="mq-item"><img src="assets/logos/expo-chihuahua.png" alt="Expo Chihuahua" loading="lazy"></div><div class="mq-item"><img src="assets/logos/index.png" alt="Index" loading="lazy"></div><div class="mq-item"><img src="assets/logos/san-pedro-garza-garcia.png" alt="San Pedro Garza García" loading="lazy"></div><div class="mq-item"><img src="assets/logos/geos.svg" alt="GEOS" loading="lazy"></div><div class="mq-item"><img src="assets/logos/expo-chihuahua.png" alt="Expo Chihuahua" loading="lazy"></div><div class="mq-item"><img src="assets/logos/index.png" alt="Index" loading="lazy"></div></div><div class="mq-half" aria-hidden="true"><div class="mq-item"><img src="assets/logos/san-pedro-garza-garcia.png" alt="San Pedro Garza García" loading="lazy"></div><div class="mq-item"><img src="assets/logos/geos.svg" alt="GEOS" loading="lazy"></div><div class="mq-item"><img src="assets/logos/expo-chihuahua.png" alt="Expo Chihuahua" loading="lazy"></div><div class="mq-item"><img src="assets/logos/index.png" alt="Index" loading="lazy"></div><div class="mq-item"><img src="assets/logos/san-pedro-garza-garcia.png" alt="San Pedro Garza García" loading="lazy"></div><div class="mq-item"><img src="assets/logos/geos.svg" alt="GEOS" loading="lazy"></div><div class="mq-item"><img src="assets/logos/expo-chihuahua.png" alt="Expo Chihuahua" loading="lazy"></div><div class="mq-item"><img src="assets/logos/index.png" alt="Index" loading="lazy"></div></div></div></div>
+    <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#212F5B]/80 -mb-1 mt-2">Integral</p>
+      <div class="mq mq-rev mq-on-light"><div class="mq-track"><div class="mq-half"><div class="mq-item"><img src="assets/logos/bankaool.png" alt="Bankaool" loading="lazy"></div><div class="mq-item"><img src="assets/logos/brasa.png" alt="Brasa" loading="lazy"></div><div class="mq-item"><img src="assets/logos/hospital-angeles.png" alt="Hospital Ángeles" loading="lazy"></div><div class="mq-item"><img src="assets/logos/tribunal-superior-de-justicia.png" alt="Tribunal Superior de Justicia" loading="lazy"></div><div class="mq-item"><img src="assets/logos/bankaool.png" alt="Bankaool" loading="lazy"></div><div class="mq-item"><img src="assets/logos/brasa.png" alt="Brasa" loading="lazy"></div><div class="mq-item"><img src="assets/logos/hospital-angeles.png" alt="Hospital Ángeles" loading="lazy"></div><div class="mq-item"><img src="assets/logos/tribunal-superior-de-justicia.png" alt="Tribunal Superior de Justicia" loading="lazy"></div></div><div class="mq-half" aria-hidden="true"><div class="mq-item"><img src="assets/logos/bankaool.png" alt="Bankaool" loading="lazy"></div><div class="mq-item"><img src="assets/logos/brasa.png" alt="Brasa" loading="lazy"></div><div class="mq-item"><img src="assets/logos/hospital-angeles.png" alt="Hospital Ángeles" loading="lazy"></div><div class="mq-item"><img src="assets/logos/tribunal-superior-de-justicia.png" alt="Tribunal Superior de Justicia" loading="lazy"></div><div class="mq-item"><img src="assets/logos/bankaool.png" alt="Bankaool" loading="lazy"></div><div class="mq-item"><img src="assets/logos/brasa.png" alt="Brasa" loading="lazy"></div><div class="mq-item"><img src="assets/logos/hospital-angeles.png" alt="Hospital Ángeles" loading="lazy"></div><div class="mq-item"><img src="assets/logos/tribunal-superior-de-justicia.png" alt="Tribunal Superior de Justicia" loading="lazy"></div></div></div></div>
+  </div>
+  <p class="mt-6 text-[13px] font-semibold text-[#212F5B] px-5">1.er lugar en IA, World Police Summit 2025</p>
+</section>
+<!-- CÓMO EMPEZAR (versión corta): tres paquetes y tres pasos en una línea -->
+<section class="reveal reveal-up py-[40px] md:py-[48px] px-5 sm:px-10 text-[#212F5B]" id="empezar" style="background:linear-gradient(180deg,#C9DCE8,#E2EDF3)">
+  <div class="max-w-5xl mx-auto text-center">
+    <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] mb-2 text-navy">Elige cuántos tótems</h2>
+    <p class="text-[14px] text-dim mb-7">Cada paquete incluye tótem, sensor, asistente, dashboard y soporte.</p>
+    <div class="grid md:grid-cols-3 gap-4 mb-8">
+      <article class="sol-card rounded-[24px] border border-line p-6 text-center flex flex-col" style="background:#fff;color:#212F5B">
+        <span class="block h-[28px]"></span>
+        <h3 class="font-serif text-[28px] font-medium leading-tight mb-5">1 tótem</h3>
+        <button type="button" class="btn-outline mt-auto" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Cotizar</button>
+      </article>
+      <article class="sol-card rounded-[24px] border border-gold shadow-[0_24px_55px_rgba(33,47,91,0.3)] md:scale-[1.05] z-[1] p-6 text-center flex flex-col" style="background:#212F5B;color:#fff">
+        <span class="inline-block mb-2 rounded-full bg-gold-light px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-ink">Recomendado</span>
+        <h3 class="font-serif text-[28px] font-medium leading-tight mb-5">2 tótems</h3>
+        <button type="button" class="btn-sky mt-auto" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Cotizar</button>
+      </article>
+      <article class="sol-card rounded-[24px] border border-line p-6 text-center flex flex-col" style="background:#fff;color:#212F5B">
+        <span class="block h-[28px]"></span>
+        <h3 class="font-serif text-[28px] font-medium leading-tight mb-5">3 tótems</h3>
+        <button type="button" class="btn-outline mt-auto" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Cotizar</button>
+      </article>
+    </div>
+    <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[13.5px] font-semibold">
+      <span class="rounded-full bg-white px-4 py-2 border border-line">1 · Showroom</span><span aria-hidden="true" class="text-gold">→</span>
+      <span class="rounded-full bg-white px-4 py-2 border border-line">2 · Piloto de 1 mes</span><span aria-hidden="true" class="text-gold">→</span>
+      <span class="rounded-full bg-white px-4 py-2 border border-line">3 · Decisión de escala</span>
+    </div>
+  </div>
+</section>
+<!-- 17. PREGUNTAS FRECUENTES — sin afirmar cumplimiento legal ni "plug-and-play"; faltan 2 preguntas que dependen de decisiones tuyas -->
+<section class="reveal reveal-fade py-[56px] md:py-[64px] px-5 sm:px-10" id="faq" style="background:linear-gradient(180deg,#E2EDF3,#EEF4F6)">
+  <div class="max-w-6xl mx-auto flex justify-between items-start gap-10 flex-wrap mb-7">
     <div>
-      <span class="inline-block text-[10px] font-semibold tracking-[0.12em] uppercase text-gold bg-gold/[0.12] px-3 py-1 rounded mb-2.5">Así se ve en la práctica</span>
-      <h4 class="font-serif text-xl font-semibold mb-2 text-navy-deep">Un cliente entra, insygt lo detecta, MARKO lo atiende</h4>
-      <p class="text-sm text-dim leading-relaxed">Mientras insygt reconoce tráfico y ajusta el contenido en pantalla, MARKO responde por chat "¿dónde está el café?" o "¿tienen esto en oferta?" — y cierra la venta sin que nadie del staff intervenga.</p>
+      <p class="kicker mb-3.5">Preguntas frecuentes</p>
+      <div class="w-11 h-0.5 bg-teal/40 mb-5"></div>
+      <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] max-w-[640px] text-navy">Respuestas a las preguntas que más nos hacen</h2>
     </div>
-  </div>
-</section>
-
-<!-- 3. INTRO — angosta, centrada -->
-<section class="reveal reveal-scale py-[110px] px-5 sm:px-10 bg-cream">
-  <div class="max-w-[640px] mx-auto text-center mb-8">
-    <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3.5">El sistema</p>
-    <div class="w-11 h-0.5 bg-gold/50 mx-auto mb-5"></div>
-    <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] text-navy-deep">Dos tecnologías, una sola inteligencia comercial</h2>
-  </div>
-  <div class="max-w-[640px] mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8">
-    <p class="text-[14.5px] text-navy/65 leading-relaxed transition-colors duration-300 cursor-default hover:text-navy-deep hover:font-medium">Insygt detecta quién está frente a tu punto de venta y qué le interesa, sin almacenar datos personales.</p>
-    <p class="text-[14.5px] text-navy/65 leading-relaxed transition-colors duration-300 cursor-default hover:text-navy-deep hover:font-medium">Esa información alimenta a MARKO, que conversa con el cliente y resuelve sus dudas al instante.</p>
-    <p class="text-[14.5px] text-navy/65 leading-relaxed transition-colors duration-300 cursor-default hover:text-navy-deep hover:font-medium">Todo sucede en el mismo momento — y tú recibes los resultados en un solo dashboard.</p>
-  </div>
-</section>
-
-<!-- 4. CORE FEATURES — dos columnas, 4 items con icono -->
-<section class="reveal reveal-left py-[110px] px-5 sm:px-10 bg-cream text-navy" id="feat">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-9 md:gap-16 items-center">
-    <div>
-      <span class="inline-block text-[11px] tracking-[0.2em] uppercase font-semibold text-sand bg-gold px-3 py-1 rounded-full mb-5">Por qué DYM</span>
-      <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] mb-4 text-navy-deep">Todo lo que necesitas para vender sin depender de que alguien esté ahí</h2>
-      <p class="text-base leading-relaxed text-dim">DYM Systems reemplaza el trabajo repetitivo de atención al cliente con un sistema que observa, conversa y aprende — disponible siempre, en cada sucursal.</p>
-    </div>
-    <div class="grid grid-cols-2 gap-5">
-      <div class="bg-white border border-navy/[0.07] rounded-xl p-5">
-        <span class="block w-8 h-[3px] rounded-full bg-gold mb-4"></span>
-        <h5 class="font-serif text-[15px] font-semibold mb-1.5 text-navy-deep">Detección en tiempo real</h5>
-        <p class="text-[12.5px] text-mut leading-relaxed">Audiencia y tráfico analizados al instante.</p>
-      </div>
-      <div class="bg-white border border-navy/[0.07] rounded-xl p-5">
-        <span class="block w-8 h-[3px] rounded-full bg-gold mb-4"></span>
-        <h5 class="font-serif text-[15px] font-semibold mb-1.5 text-navy-deep">Conversación con IA</h5>
-        <p class="text-[12.5px] text-mut leading-relaxed">Responde y vende como tu mejor vendedor.</p>
-      </div>
-      <div class="bg-white border border-navy/[0.07] rounded-xl p-5">
-        <span class="block w-8 h-[3px] rounded-full bg-gold mb-4"></span>
-        <h5 class="font-serif text-[15px] font-semibold mb-1.5 text-navy-deep">Catálogo conectado</h5>
-        <p class="text-[12.5px] text-mut leading-relaxed">Inventario, ofertas y ubicación siempre al día.</p>
-      </div>
-      <div class="bg-white border border-navy/[0.07] rounded-xl p-5">
-        <span class="block w-8 h-[3px] rounded-full bg-gold mb-4"></span>
-        <h5 class="font-serif text-[15px] font-semibold mb-1.5 text-navy-deep">Dashboard unificado</h5>
-        <p class="text-[12.5px] text-mut leading-relaxed">Audiencia y ventas en un solo panel.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- 5. INSYGT — dos columnas -->
-<section class="reveal reveal-right py-[110px] px-5 sm:px-10 bg-graybg" id="ins">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-9 md:gap-16 items-center">
-    <div class="relative rounded-[32px] p-5 sm:p-8 overflow-hidden">
-      <div class="flex items-center justify-center gap-4 sm:gap-5">
-        <div id="insPeekWrap" class="hidden sm:flex w-[20%] h-[260px] rounded-2xl items-center justify-center overflow-hidden opacity-30 scale-[0.96] transition-all">
-          <img id="insPeek" src="assets/images/insygt_2.jpeg" alt="" aria-hidden="true" class="w-full h-full object-cover transition-opacity duration-500">
-        </div>
-        <div id="insImgWrap" class="w-[74%] sm:w-[58%] h-[290px] sm:h-[320px] rounded-2xl shadow-[0_25px_60px_rgba(61,50,41,0.2)] flex items-center justify-center overflow-hidden transition-all">
-          <img id="insImg" src="assets/images/insygt_1.jpeg" alt="Pantalla insygt mostrando una oferta reactiva a una clienta" class="w-full h-full object-cover transition-opacity duration-500">
-        </div>
-      </div>
-      <div id="insDots" class="flex items-center justify-center gap-2 mt-6">
-        <span class="ins-dot w-6 h-2 rounded-full bg-gold transition-all"></span>
-        <span class="ins-dot w-2 h-2 rounded-full bg-navy-deep/20 transition-all"></span>
-        <span class="ins-dot w-2 h-2 rounded-full bg-navy-deep/20 transition-all"></span>
-      </div>
-    </div>
-    <div>
-      <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3.5">insygt</p>
-      <div class="w-11 h-0.5 bg-gold/50 mb-5"></div>
-      <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] mb-4 text-navy-deep">Inteligencia de audiencia</h2>
-      <p class="text-base leading-relaxed text-dim mb-9">Pantallas inteligentes con IA que detectan y entienden a tu audiencia en tiempo real.</p>
-      <button class="btn-outline" onclick="openModal('insygtModal')">Conocer insygt</button>
-    </div>
-  </div>
-</section>
-
-<!-- 6. MARKO — dos columnas, invertida -->
-<section class="reveal reveal-left py-[110px] px-5 sm:px-10 bg-cream text-navy" id="mrk">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-9 md:gap-16 items-center">
-    <div class="md:order-2 flex flex-col items-center gap-5">
-      <img id="mkImg" src="assets/images/Marko_1.png" alt="Conversación de MARKO por chat" class="w-[190px] sm:w-[230px] rounded-2xl shadow-[0_30px_70px_rgba(61,50,41,0.18)]">
-      <div class="flex items-center gap-4">
-        <button class="group w-11 h-11 flex-none rounded-full bg-navy-deep flex items-center justify-center cursor-pointer transition-colors hover:bg-gold" onclick="mkPrev()" aria-label="Imagen anterior">
-          <svg viewBox="0 0 24 24" class="w-3 h-3 fill-white group-hover:fill-navy-deep ml-0.5 -scale-x-100"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-        <div id="mkDots" class="flex items-center gap-2">
-          <span class="mk-img-dot w-6 h-2 rounded-full bg-navy-deep transition-all"></span>
-          <span class="mk-img-dot w-2 h-2 rounded-full bg-navy-deep/25 transition-all"></span>
-        </div>
-        <button class="group w-11 h-11 flex-none rounded-full bg-navy-deep flex items-center justify-center cursor-pointer transition-colors hover:bg-gold" onclick="mkNext()" aria-label="Siguiente imagen">
-          <svg viewBox="0 0 24 24" class="w-3 h-3 fill-white group-hover:fill-navy-deep ml-0.5"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="md:order-1">
-      <span class="inline-block text-[11px] tracking-[0.2em] uppercase font-semibold text-sand bg-gold px-3 py-1 rounded-full mb-5">MARKO</span>
-      <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] mb-4 text-navy-deep">Asistente inteligente de ventas</h2>
-      <p class="text-base leading-relaxed text-dim mb-9">Un chatbot con IA que conoce tu catálogo de memoria y guía a cada cliente hasta la compra.</p>
-      <button class="btn-navy" onclick="openModal('markoModal')">Conocer MARKO</button>
-    </div>
-  </div>
-</section>
-
-<!-- 7. INTEGRACIÓN — dos columnas con mini pasos -->
-<section class="reveal reveal-up py-[110px] px-5 sm:px-10 bg-graybg" id="int">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-9 md:gap-16 items-center">
-    <div>
-      <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3.5">Integración</p>
-      <div class="w-11 h-0.5 bg-gold/50 mb-5"></div>
-      <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] mb-4 text-navy-deep">De la instalación a los resultados</h2>
-      <p class="text-base leading-relaxed text-dim">insygt y MARKO se implementan juntos y trabajan como un solo sistema desde el primer día.</p>
-    </div>
-    <ul class="mini-steps list-none">
-      <li><b>Instalamos insygt</b>Pantalla + sensor en tu espacio, plug-and-play.</li>
-      <li><b>Configuramos MARKO</b>Conectamos catálogo, ofertas e inventario.</li>
-      <li><b>El sistema opera</b>Detecta, conversa y vende — 24/7, automático.</li>
-      <li><b>Recibes insights</b>Dashboard unificado de audiencia y conversiones.</li>
-    </ul>
-  </div>
-</section>
-
-<!-- 8. VERTICALES — dos columnas + carrusel -->
-<section class="reveal reveal-scale py-[110px] px-5 sm:px-10 bg-cream text-navy" id="vert">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-9 md:gap-16 items-center">
-    <div class="md:order-1 min-w-0">
-      <div id="vertScroll" class="flex gap-4 overflow-x-auto pb-2 snap-x snap-mandatory scrollbar-hide">
-        <div class="flex-none w-[220px] snap-start rounded-2xl overflow-hidden min-h-[180px] relative flex flex-col justify-end p-5">
-          <img src="assets/images/Supermercado.jpeg" alt="" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
-          <h4 class="relative font-serif text-base font-semibold text-white mb-1">Supermercados</h4>
-          <p class="relative text-xs text-white/70 italic leading-snug">"Pasillo 4, cereal en oferta"</p>
-        </div>
-        <div class="flex-none w-[220px] snap-start rounded-2xl overflow-hidden min-h-[180px] relative flex flex-col justify-end p-5">
-          <img src="assets/images/Restaurante.jpeg" alt="" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
-          <h4 class="relative font-serif text-base font-semibold text-white mb-1">Restaurantes</h4>
-          <p class="relative text-xs text-white/70 italic leading-snug">"Hamburguesa del día, 20% off"</p>
-        </div>
-        <div class="flex-none w-[220px] snap-start rounded-2xl overflow-hidden min-h-[180px] relative flex flex-col justify-end p-5">
-          <img src="assets/images/Farmacia.jpeg" alt="" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
-          <h4 class="relative font-serif text-base font-semibold text-white mb-1">Farmacias</h4>
-          <p class="relative text-xs text-white/70 italic leading-snug">"2×1 en vitaminas esta semana"</p>
-        </div>
-        <div class="flex-none w-[220px] snap-start rounded-2xl overflow-hidden min-h-[180px] relative flex flex-col justify-end p-5">
-          <img src="assets/images/Retail.jpeg" alt="" class="absolute inset-0 w-full h-full object-cover">
-          <div class="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent"></div>
-          <h4 class="relative font-serif text-base font-semibold text-white mb-1">Retail</h4>
-          <p class="relative text-xs text-white/70 italic leading-snug">"Tu producto está en exhibición"</p>
-        </div>
-      </div>
-      <div class="flex items-center gap-4 mt-5">
-        <button class="group w-12 h-12 flex-none rounded-full bg-navy-deep flex items-center justify-center cursor-pointer transition-colors hover:bg-gold" onclick="vertPrev()" aria-label="Anterior">
-          <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 fill-white group-hover:fill-navy-deep ml-0.5 -scale-x-100"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-        <div id="vertDots" class="flex items-center gap-2 bg-navy-deep rounded-3xl px-5 py-[15px]">
-          <button class="vert-dot w-7 h-2 rounded-full bg-white border-0 p-0 cursor-pointer transition-all" onclick="vertGoTo(0)"></button>
-          <button class="vert-dot w-2 h-2 rounded-full bg-white/25 border-0 p-0 cursor-pointer transition-all" onclick="vertGoTo(1)"></button>
-          <button class="vert-dot w-2 h-2 rounded-full bg-white/25 border-0 p-0 cursor-pointer transition-all" onclick="vertGoTo(2)"></button>
-          <button class="vert-dot w-2 h-2 rounded-full bg-white/25 border-0 p-0 cursor-pointer transition-all" onclick="vertGoTo(3)"></button>
-        </div>
-        <button class="group w-12 h-12 flex-none rounded-full bg-navy-deep flex items-center justify-center cursor-pointer transition-colors hover:bg-gold" onclick="vertNext()" aria-label="Siguiente">
-          <svg viewBox="0 0 24 24" class="w-3.5 h-3.5 fill-white group-hover:fill-navy-deep ml-0.5"><path d="M8 5v14l11-7z"/></svg>
-        </button>
-      </div>
-    </div>
-    <div class="md:order-2">
-      <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-navy mb-3.5">Verticales</p>
-      <div class="w-11 h-0.5 bg-navy/25 mb-5"></div>
-      <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] mb-4 text-navy-deep">Diseñado para espacios donde la gente compra en persona</h2>
-      <p class="text-base leading-relaxed text-dim">Supermercados, restaurantes, farmacias, retail, conveniencia y centros comerciales — el mismo motor, entrenado con tu catálogo.</p>
-    </div>
-  </div>
-</section>
-
-<!-- 9. MODALIDADES — 3 tarjetas -->
-<section class="reveal reveal-right py-[110px] px-5 sm:px-10 bg-graybg text-center" id="mod">
-  <div class="max-w-[640px] mx-auto">
-    <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3.5">Modalidades</p>
-    <div class="w-11 h-0.5 bg-gold/50 mx-auto mb-5"></div>
-    <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] mb-4 text-navy-deep">Elige cómo empezar</h2>
-    <p class="text-base leading-relaxed text-dim mx-auto">Puedes empezar con una sola tecnología o con el sistema completo — DYM crece contigo.</p>
-  </div>
-  <div class="max-w-[1120px] mx-auto grid md:grid-cols-3 gap-5 items-center mt-14">
-    <div class="tier-card">
-      <div class="text-[11px] tracking-[0.16em] uppercase text-mut font-semibold mb-6">insygt</div>
-      <div class="font-serif text-[32px] font-bold text-navy-deep leading-[1.15] mb-2.5">Pantallas<br>inteligentes</div>
-      <p class="text-[13.5px] text-dim leading-relaxed mb-5 min-h-[38px]">Para negocios que quieren empezar por observar y entender a su audiencia.</p>
-      <div class="font-serif text-[26px] font-bold text-gold mb-6">$X <span class="text-[13px] font-sans font-normal text-dim">MXN/mes</span></div>
-      <button class="block w-full text-center py-3 rounded-3xl text-[13px] font-semibold border border-navy/20 text-navy-deep bg-transparent transition-all hover:border-gold hover:text-gold hover:bg-gold/5 hover:-translate-y-px cursor-pointer">Cotizar insygt</button>
-      <ul class="tier-list list-none mt-8">
-        <li><span class="check-c">✓</span>Detección de audiencia en tiempo real</li>
-        <li><span class="check-c">✓</span>Contenido reactivo</li>
-        <li><span class="check-c">✓</span>Dashboard de métricas</li>
-        <li><span class="check-c">✓</span>Cumple LFPDPPP</li>
-      </ul>
-    </div>
-    <div class="tier-card tier-pop">
-      <div class="text-[11px] tracking-[0.16em] uppercase text-mut font-semibold mb-6">Sistema completo</div>
-      <div class="font-serif text-[32px] font-bold text-navy-deep leading-[1.15] mb-2.5">insygt<br>+ MARKO</div>
-      <p class="text-[13.5px] text-dim leading-relaxed mb-5 min-h-[38px]">Para negocios que quieren el ecosistema completo desde el día uno.</p>
-      <div class="font-serif text-[26px] font-bold text-gold mb-6">$X <span class="text-[13px] font-sans font-normal text-dim">MXN/mes</span></div>
-      <button class="block w-full text-center py-3 rounded-3xl text-[13px] font-semibold border border-navy/10 bg-white text-navy-deep transition-all hover:border-gold hover:text-gold hover:bg-gold/5 hover:-translate-y-px cursor-pointer">Cotizar sistema completo</button>
-      <ul class="tier-list list-none mt-8">
-        <li><span class="check-c">✓</span>Todo lo de insygt</li>
-        <li><span class="check-c">✓</span>Todo lo de MARKO</li>
-        <li><span class="check-c">✓</span>Dashboard unificado</li>
-        <li><span class="check-c">✓</span>Integración prioritaria</li>
-      </ul>
-    </div>
-    <div class="tier-card">
-      <div class="text-[11px] tracking-[0.16em] uppercase text-mut font-semibold mb-6">MARKO</div>
-      <div class="font-serif text-[32px] font-bold text-navy-deep leading-[1.15] mb-2.5">Asistente<br>de ventas</div>
-      <p class="text-[13.5px] text-dim leading-relaxed mb-5 min-h-[38px]">Para negocios que quieren empezar por convertir con IA conversacional.</p>
-      <div class="font-serif text-[26px] font-bold text-gold mb-6">$X <span class="text-[13px] font-sans font-normal text-dim">MXN/mes</span></div>
-      <button class="block w-full text-center py-3 rounded-3xl text-[13px] font-semibold border border-navy/20 text-navy-deep bg-transparent transition-all hover:border-gold hover:text-gold hover:bg-gold/5 hover:-translate-y-px cursor-pointer">Cotizar MARKO</button>
-      <ul class="tier-list list-none mt-8">
-        <li><span class="check-c">✓</span>Conectado a tu catálogo</li>
-        <li><span class="check-c">✓</span>Ubica productos y ofertas</li>
-        <li><span class="check-c">✓</span>Recomienda complementos</li>
-        <li><span class="check-c">✓</span>Disponible 24/7</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-<!-- 10. FAQ -->
-<section class="reveal reveal-fade py-[110px] px-5 sm:px-10 bg-cream" id="faq">
-  <div class="max-w-6xl mx-auto flex justify-between items-start gap-10 flex-wrap mb-10">
-    <div>
-      <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3.5">Preguntas frecuentes</p>
-      <div class="w-11 h-0.5 bg-gold/50 mb-5"></div>
-      <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] max-w-[520px] text-navy-deep">Respuestas a las preguntas que más nos hacen</h2>
-    </div>
-    <p class="text-sm text-dim leading-relaxed max-w-[340px]">Conoce cómo funciona DYM Systems, qué incluye cada tecnología y qué esperar al implementarlo en tu negocio.</p>
+    <p class="text-sm text-dim leading-relaxed max-w-[340px]">Conoce cómo funciona DYM, qué incluye cada solución y qué esperar al implementarla en tu negocio.</p>
   </div>
   <div class="max-w-6xl mx-auto grid md:grid-cols-[260px_1fr] gap-6 items-start text-left">
     <div>
-      <div class="bg-white border border-navy/[0.08] shadow-sm rounded-2xl p-1.5 flex flex-col gap-0.5">
+      <div class="bg-white border border-line rounded-[24px] p-1.5 flex flex-col gap-0.5">
         <button class="faq-tab bg-navy-deep/[0.06] text-navy-deep text-[13.5px] font-medium px-4 py-3.5 rounded-[11px] text-center cursor-pointer transition-all border-0" data-cat="general" onclick="faqTab(this)">General</button>
         <button class="faq-tab text-dim text-[13.5px] font-medium px-4 py-3.5 rounded-[11px] text-center cursor-pointer transition-all border-0 bg-transparent hover:text-navy-deep hover:bg-navy-deep/[0.04]" data-cat="instalacion" onclick="faqTab(this)">Instalación y catálogo</button>
         <button class="faq-tab text-dim text-[13.5px] font-medium px-4 py-3.5 rounded-[11px] text-center cursor-pointer transition-all border-0 bg-transparent hover:text-navy-deep hover:bg-navy-deep/[0.04]" data-cat="privacidad" onclick="faqTab(this)">Privacidad y datos</button>
       </div>
-      <div class="mt-5 bg-white border border-navy/[0.08] shadow-sm rounded-2xl p-6">
-        <h4 class="font-serif text-lg font-semibold mb-2 text-navy-deep">¿Tienes dudas?</h4>
+      <div class="mt-5 bg-white border border-line rounded-[24px] p-6">
+        <h4 class="font-serif text-lg font-semibold mb-2 text-navy">¿Tienes dudas?</h4>
         <p class="text-[13px] text-dim leading-relaxed mb-3.5">¿No encuentras lo que buscas? Escríbenos, respondemos rápido.</p>
         <a href="#cnt" class="text-[13px] text-gold font-semibold no-underline">Contáctanos →</a>
       </div>
     </div>
     <div id="faqList" class="flex flex-col gap-3.5">
-      <details class="faq-item bg-white border border-navy/[0.08] shadow-sm rounded-2xl px-6 py-5" data-cat="general" open><summary>¿Puedo contratar solo MARKO sin insygt?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">Sí. Cada tecnología funciona de forma independiente o integrada — tú eliges cómo empezar.</p></details>
-      <details class="faq-item bg-white border border-navy/[0.08] shadow-sm rounded-2xl px-6 py-5" data-cat="general"><summary>¿Funciona en varias sucursales?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">Sí, el sistema está diseñado para escalar a múltiples puntos de venta desde un solo dashboard.</p></details>
-      <details class="faq-item bg-white border border-navy/[0.08] shadow-sm rounded-2xl px-6 py-5" data-cat="instalacion" style="display:none"><summary>¿Necesito instalación especializada?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">insygt es plug-and-play: pantalla y sensor listos para instalarse sin obra. Nuestro equipo te acompaña en todo el proceso.</p></details>
-      <details class="faq-item bg-white border border-navy/[0.08] shadow-sm rounded-2xl px-6 py-5" data-cat="instalacion" style="display:none"><summary>¿MARKO se conecta a mi punto de venta actual?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">MARKO se integra con tu catálogo e inventario existentes para responder con información real de tu tienda.</p></details>
-      <details class="faq-item bg-white border border-navy/[0.08] shadow-sm rounded-2xl px-6 py-5" data-cat="privacidad" style="display:none"><summary>¿insygt guarda datos personales de mis clientes?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">No. insygt analiza audiencia y tráfico de forma agregada y anónima, cumpliendo con la LFPDPPP.</p></details>
-      <details class="faq-item bg-white border border-navy/[0.08] shadow-sm rounded-2xl px-6 py-5" data-cat="privacidad" style="display:none"><summary>¿Cómo protege DYM la información de mi negocio?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">Tu catálogo, inventario y conversaciones se manejan con acceso restringido y buenas prácticas de seguridad, exclusivas para tu operación.</p></details>
+      <details class="faq-item bg-white border border-line rounded-[24px] px-6 py-5" data-cat="general" open><summary>¿Funciona en varias sucursales?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">Sí. Se puede empezar con un tótem como piloto y crecer a la tienda completa, a un formato y a todas las tiendas, todo desde un solo dashboard.</p></details>
+      <details class="faq-item bg-white border border-line rounded-[24px] px-6 py-5" data-cat="general"><summary>¿Cuánto dura el piloto?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">El piloto dura 1 mes, aparte de los meses de set-up, y se mide contra una línea base con indicadores acordados antes de arrancar.</p></details>
+      <details class="faq-item bg-white border border-line rounded-[24px] px-6 py-5" data-cat="instalacion" style="display:none"><summary>¿Necesito instalación especializada?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">La instalación es no invasiva y nuestro equipo te acompaña en todo el proceso.</p></details>
+      <details class="faq-item bg-white border border-line rounded-[24px] px-6 py-5" data-cat="instalacion" style="display:none"><summary>¿El asistente se conecta a mi catálogo?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">Sí. Se conecta a la base de cada tienda: precios, catálogo y promociones, tienda por tienda. La conexión se define con el equipo de TI del cliente.</p></details>
+      <details class="faq-item bg-white border border-line rounded-[24px] px-6 py-5" data-cat="privacidad" style="display:none"><summary>¿Se guardan datos personales de mis clientes?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">Los tótems estiman un perfil de forma anónima, sin reconocimiento facial, y los datos se manejan de forma anónima y agregada. La conversación con el asistente la inicia el cliente al escanear el QR.</p></details>
+      <details class="faq-item bg-white border border-line rounded-[24px] px-6 py-5" data-cat="privacidad" style="display:none"><summary>¿Cómo protegen mi información?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">Tu catálogo, inventario y conversaciones se manejan con acceso restringido, exclusivo para tu operación.</p></details>
     </div>
   </div>
 </section>
 
 
 
-<!-- 12. QUIÉNES SOMOS -->
-<section class="reveal reveal-up py-16 px-5 sm:px-10 bg-graybg text-navy text-center" id="about">
-  <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-navy mb-3.5">Quiénes somos</p>
-  <div class="w-11 h-0.5 bg-navy/25 mx-auto mb-5"></div>
-  <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] mb-4 text-navy-deep">DYM Systems</h2>
-  <p class="text-base leading-relaxed text-dim mx-auto max-w-[640px]">DYM Systems nace para crear el primer sistema integral de inteligencia comercial y ventas asistidas para espacios físicos en México.</p>
-  <div class="flex justify-center mt-8">
-    <button onclick="openModal('aboutModal')" class="w-40 h-[72px] rounded-[10px] bg-gold flex items-center justify-center cursor-pointer border-0 transition-all hover:scale-[1.04] hover:brightness-110 overflow-visible" aria-label="Conocer más sobre DYM Systems">
-      <img src="assets/images/logo-dym.png" alt="DYM" class="h-14 w-auto">
-    </button>
+<!-- 16. PRUÉBALO EN VIVO Y CONTACTO — QR (ilustrativo, el real queda pendiente), WhatsApp en móvil y formulario (sin envío todavía) -->
+<section class="reveal reveal-left relative py-[56px] md:py-[64px] px-5 sm:px-10" id="cnt" style="background:linear-gradient(180deg,#EEF4F6,#F3F8FA)">
+  <div class="relative z-[2] max-w-6xl mx-auto">
+    <div class="grid md:grid-cols-2 gap-8 md:gap-14 items-start">
+      <div class="text-left">
+        <p class="kicker mb-3.5">Contacto</p>
+        <div class="w-11 h-0.5 bg-teal/40 mb-5"></div>
+        <h2 class="font-serif font-medium text-[clamp(30px,4vw,52px)] tracking-[-0.01em] leading-[1.12] mb-4 text-navy">Pruébalo en vivo</h2>
+        <p class="text-base leading-relaxed text-dim mb-5 md:hidden">Escanea y vive la experiencia completa.</p>
+        <!-- Pendiente: enlace real de WhatsApp; confirmar que el 660 211 4254 sea una línea de WhatsApp -->
+        <a href="https://wa.me/526602114254" target="_blank" rel="noopener" class="btn-gold md:hidden">Abrir WhatsApp</a>
+        <div class="hidden md:block w-[230px] rounded-[26px] bg-white border-2 border-sky/70 p-5 text-center shadow-[0_24px_55px_rgba(33,47,91,0.15)]">
+          <div class="mx-auto w-[170px] h-[170px]"><svg viewBox="0 0 13 13" class="w-full h-full" fill="#212F5B" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h5v5H0zM1 1v3h3V1z" fill-rule="evenodd"/><rect x="2" y="2" width="1" height="1"/><path d="M8 0h5v5H8zM9 1v3h3V1z" fill-rule="evenodd"/><rect x="10" y="2" width="1" height="1"/><path d="M0 8h5v5H0zM1 9v3h3V9z" fill-rule="evenodd"/><rect x="2" y="10" width="1" height="1"/><rect x="5" y="0" width="1" height="1"/><rect x="6" y="0" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="7" y="1" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="5" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="7" y="5" width="1" height="1"/><rect x="11" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="7" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/><rect x="12" y="6" width="1" height="1"/><rect x="1" y="7" width="1" height="1"/><rect x="2" y="7" width="1" height="1"/><rect x="5" y="7" width="1" height="1"/><rect x="7" y="7" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="11" y="7" width="1" height="1"/><rect x="6" y="8" width="1" height="1"/><rect x="10" y="8" width="1" height="1"/><rect x="6" y="9" width="1" height="1"/><rect x="7" y="9" width="1" height="1"/><rect x="9" y="9" width="1" height="1"/><rect x="10" y="9" width="1" height="1"/><rect x="12" y="9" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="7" y="10" width="1" height="1"/><rect x="9" y="10" width="1" height="1"/><rect x="10" y="10" width="1" height="1"/><rect x="5" y="11" width="1" height="1"/><rect x="7" y="11" width="1" height="1"/><rect x="9" y="11" width="1" height="1"/><rect x="10" y="11" width="1" height="1"/><rect x="12" y="11" width="1" height="1"/><rect x="6" y="12" width="1" height="1"/><rect x="7" y="12" width="1" height="1"/><rect x="8" y="12" width="1" height="1"/><rect x="10" y="12" width="1" height="1"/><rect x="12" y="12" width="1" height="1"/></svg></div>
+          <p class="mt-3 text-[13px] font-semibold leading-snug text-[#1A74B8]">Escanea y vive la experiencia completa.</p>
+        </div>
+      </div>
+      <form class="flex flex-col gap-3 text-left bg-white rounded-[28px] border-2 border-sky/70 p-6 sm:p-7" onsubmit="return false">
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <input class="field" placeholder="Nombre" aria-label="Nombre" type="text">
+          <input class="field" placeholder="Empresa" aria-label="Empresa" type="text">
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+          <input class="field" placeholder="Correo" aria-label="Correo" type="email">
+          <input class="field" placeholder="Teléfono" aria-label="Teléfono" type="tel">
+        </div>
+        <select class="field-select" aria-label="Giro del negocio">
+          <option value="" disabled selected>Giro del negocio</option>
+          <option>Supermercado</option>
+          <option>Restaurante / QSR</option>
+          <option>Retail</option>
+          <option>Farmacia</option>
+          <option>Conveniencia</option>
+          <option>Centro comercial</option>
+          <option>Otro</option>
+        </select>
+        <select class="field-select" aria-label="Interés">
+          <option value="" disabled selected>¿Qué te interesa?</option>
+          <option>Retail Data Point</option>
+          <option>Retail Agent</option>
+          <option>DYM completo</option>
+          <option>No estoy seguro</option>
+        </select>
+        <textarea class="field min-h-[90px] resize-y" placeholder="Mensaje" aria-label="Mensaje"></textarea>
+        <label class="flex items-start gap-2.5 text-[12.5px] leading-snug text-dim"><input type="checkbox" class="mt-0.5 accent-[#1A74B8]"> <span>Acepto el aviso de privacidad.</span></label>
+        <button class="btn-gold w-full" type="submit">Enviar mensaje</button>
+      </form>
+    </div>
+
+    <div class="mt-8 rounded-[20px] px-6 py-4 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 text-[14px] text-white" style="background:#03313F">
+      <a href="mailto:contacto@intelezo.com" class="font-semibold hover:text-gold-light transition-colors">contacto@intelezo.com</a>
+      <a href="tel:+526602114254" class="font-semibold hover:text-gold-light transition-colors">660 211 4254</a>
+      <span class="text-white/80">Inteligencia que decide. Datos que actúan.</span>
+    </div>
   </div>
 </section>
-
-<!-- MODAL — Quiénes somos -->
-<div id="aboutModal" class="hidden fixed inset-0 z-[100] items-center justify-center p-5">
-  <div onclick="closeModal('aboutModal')" class="absolute inset-0 bg-navy-deep/50 backdrop-blur-sm"></div>
-  <div class="relative bg-cream rounded-[20px] shadow-[0_30px_70px_rgba(61,50,41,0.3)] max-w-[480px] w-full p-9 sm:p-11 text-center">
-    <button onclick="closeModal('aboutModal')" class="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-navy/50 hover:text-navy-deep hover:bg-navy/5 transition-colors cursor-pointer border-0 bg-transparent text-lg" aria-label="Cerrar">✕</button>
-    <div class="w-20 h-20 rounded-[14px] bg-gold flex items-center justify-center mx-auto mb-6">
-      <img src="assets/images/logo-dym.png" alt="DYM" class="h-10 w-auto">
-    </div>
-    <h3 class="font-serif font-bold text-2xl mb-3 text-navy-deep">DYM Systems</h3>
-    <p class="text-[15px] leading-relaxed text-dim">DYM Systems nace para crear el primer sistema integral de inteligencia comercial y ventas asistidas para espacios físicos en México.</p>
-  </div>
-</div>
-
-<!-- MODAL — insygt -->
-<div id="insygtModal" class="hidden fixed inset-0 z-[100] items-center justify-center p-5">
-  <div onclick="closeModal('insygtModal')" class="absolute inset-0 bg-navy-deep/50 backdrop-blur-sm"></div>
-  <div class="relative bg-cream rounded-[20px] shadow-[0_30px_70px_rgba(61,50,41,0.3)] max-w-[600px] w-full p-9 sm:p-11 text-left max-h-[85vh] overflow-y-auto">
-    <button onclick="closeModal('insygtModal')" class="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-navy/50 hover:text-navy-deep hover:bg-navy/5 transition-colors cursor-pointer border-0 bg-transparent text-lg" aria-label="Cerrar">✕</button>
-    <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3">insygt</p>
-    <h3 class="font-serif font-bold text-2xl sm:text-3xl mb-4 text-navy-deep">Inteligencia de audiencia en tu punto de venta</h3>
-    <p class="text-[15px] leading-relaxed text-dim mb-6">insygt es una pantalla inteligente con sensor de audiencia que detecta quién está frente a tu negocio, analiza tráfico y ajusta el contenido que muestra en tiempo real — todo sin almacenar datos personales identificables.</p>
-    <ul class="arrow-list list-none mb-7">
-      <li>Sensor de audiencia 4K (8MP) de alta precisión</li>
-      <li>Detección de tráfico, permanencia y atención</li>
-      <li>Contenido reactivo según el perfil de quien observa</li>
-      <li>Instalación plug-and-play, sin obra</li>
-      <li>Dashboard de métricas en tiempo real</li>
-      <li>Procesamiento anonimizado, cumple con la LFPDPPP</li>
-    </ul>
-    <button class="btn-gold" onclick="closeModal('insygtModal'); document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Cotizar insygt</button>
-  </div>
-</div>
-
-<!-- MODAL — MARKO -->
-<div id="markoModal" class="hidden fixed inset-0 z-[100] items-center justify-center p-5">
-  <div onclick="closeModal('markoModal')" class="absolute inset-0 bg-navy-deep/50 backdrop-blur-sm"></div>
-  <div class="relative bg-cream rounded-[20px] shadow-[0_30px_70px_rgba(61,50,41,0.3)] max-w-[600px] w-full p-9 sm:p-11 text-left max-h-[85vh] overflow-y-auto">
-    <button onclick="closeModal('markoModal')" class="absolute top-4 right-4 w-8 h-8 rounded-full flex items-center justify-center text-navy/50 hover:text-navy-deep hover:bg-navy/5 transition-colors cursor-pointer border-0 bg-transparent text-lg" aria-label="Cerrar">✕</button>
-    <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3">MARKO</p>
-    <h3 class="font-serif font-bold text-2xl sm:text-3xl mb-4 text-navy-deep">Un asistente de ventas con IA, disponible 24/7</h3>
-    <p class="text-[15px] leading-relaxed text-dim mb-6">MARKO conversa con cada cliente, conoce tu catálogo de memoria y lo guía hasta la compra — en la pantalla de insygt, por WhatsApp o donde tu negocio lo necesite.</p>
-    <ul class="arrow-list list-none mb-7">
-      <li>Conectado a tu catálogo e inventario en tiempo real</li>
-      <li>Ubica productos por pasillo y anaquel</li>
-      <li>Sabe qué hay en oferta y lo recomienda al momento</li>
-      <li>Recomienda productos complementarios</li>
-      <li>Disponible 24/7, sin depender de que alguien esté ahí</li>
-      <li>Aprende de las preguntas más frecuentes de tus clientes</li>
-    </ul>
-    <button class="btn-navy" onclick="closeModal('markoModal'); document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Cotizar MARKO</button>
-  </div>
-</div>
-
-<!-- 13. CONTACTO -->
-<section class="reveal reveal-left py-[110px] px-5 sm:px-10 bg-cream" id="cnt">
-  <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-9 md:gap-16 items-start">
-    <div class="text-left md:sticky md:top-28">
-      <p class="text-[11px] tracking-[0.2em] uppercase font-semibold text-gold mb-3.5">Contacto</p>
-      <div class="w-11 h-0.5 bg-gold/50 mb-5"></div>
-      <h2 class="font-serif font-bold text-[clamp(28px,4vw,44px)] leading-[1.12] mb-4 text-navy-deep">Hablemos de tu negocio</h2>
-      <p class="text-base leading-relaxed text-dim mb-8">Cuéntanos sobre tu operación y te mostramos cómo DYM Systems se adapta a tu tienda.</p>
-      <div class="flex items-center gap-3 mb-6">
-        <a href="#" target="_blank" rel="noopener" aria-label="Facebook de DYM Systems" class="w-10 h-10 rounded-full bg-gold flex items-center justify-center transition-all hover:-translate-y-px hover:brightness-110">
-          <svg viewBox="0 0 24 24" class="w-4 h-4 fill-sand"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5 3.66 9.15 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.51 1.49-3.9 3.78-3.9 1.1 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.91h-2.33V22c4.78-.79 8.44-4.94 8.44-9.94z"/></svg>
-        </a>
-        <a href="#" target="_blank" rel="noopener" aria-label="Instagram de DYM Systems" class="w-10 h-10 rounded-full bg-gold flex items-center justify-center transition-all hover:-translate-y-px hover:brightness-110">
-          <svg viewBox="0 0 24 24" class="w-4 h-4 fill-sand"><path d="M12 2c2.72 0 3.06.01 4.12.06 1.06.05 1.79.22 2.43.47.66.26 1.21.6 1.76 1.15.55.55.9 1.11 1.15 1.76.25.64.42 1.37.47 2.43.05 1.06.06 1.4.06 4.12s-.01 3.06-.06 4.12c-.05 1.06-.22 1.79-.47 2.43-.26.66-.6 1.21-1.15 1.76-.55.55-1.11.9-1.76 1.15-.64.25-1.37.42-2.43.47-1.06.05-1.4.06-4.12.06s-3.06-.01-4.12-.06c-1.06-.05-1.79-.22-2.43-.47-.66-.26-1.21-.6-1.76-1.15-.55-.55-.9-1.11-1.15-1.76-.25-.64-.42-1.37-.47-2.43C2.01 15.06 2 14.72 2 12s.01-3.06.06-4.12c.05-1.06.22-1.79.47-2.43.26-.66.6-1.21 1.15-1.76.55-.55 1.11-.9 1.76-1.15.64-.25 1.37-.42 2.43-.47C8.94 2.01 9.28 2 12 2m0 1.8c-2.67 0-2.99.01-4.04.06-.87.04-1.34.18-1.65.3-.42.16-.71.36-1.03.68-.32.32-.52.61-.68 1.03-.12.31-.26.78-.3 1.65-.05 1.05-.06 1.37-.06 4.04s.01 2.99.06 4.04c.04.87.18 1.34.3 1.65.16.42.36.71.68 1.03.32.32.61.52 1.03.68.31.12.78.26 1.65.3 1.05.05 1.37.06 4.04.06s2.99-.01 4.04-.06c.87-.04 1.34-.18 1.65-.3.42-.16.71-.36 1.03-.68.32-.32.52-.61.68-1.03.12-.31.26-.78.3-1.65.05-1.05.06-1.37.06-4.04s-.01-2.99-.06-4.04c-.04-.87-.18-1.34-.3-1.65-.16-.42-.36-.71-.68-1.03-.32-.32-.61-.52-1.03-.68-.31-.12-.78-.26-1.65-.3C14.99 3.81 14.67 3.8 12 3.8m0 3.05a5.15 5.15 0 110 10.3 5.15 5.15 0 010-10.3m0 1.8a3.35 3.35 0 100 6.7 3.35 3.35 0 000-6.7m5.35-1.99a1.2 1.2 0 11-2.4 0 1.2 1.2 0 012.4 0"/></svg>
-        </a>
-      </div>
-      <p class="text-xs text-dim">DYM Systems · contacto@dymsystems.com · 660 211 4254 · Chihuahua, México</p>
-    </div>
-    <form class="flex flex-col gap-3 text-left" onsubmit="return false">
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <input class="field" placeholder="Nombre" type="text">
-        <input class="field" placeholder="Empresa" type="text">
-      </div>
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
-        <input class="field" placeholder="Email" type="email">
-        <input class="field" placeholder="Teléfono" type="tel">
-      </div>
-      <select class="field-select">
-        <option value="" disabled selected>Giro del negocio</option>
-        <option>Supermercado</option>
-        <option>Restaurante / QSR</option>
-        <option>Retail</option>
-        <option>Farmacia</option>
-        <option>Conveniencia</option>
-        <option>Centro comercial</option>
-        <option>Otro</option>
-      </select>
-      <select class="field-select">
-        <option value="" disabled selected>¿Qué te interesa?</option>
-        <option>insygt</option>
-        <option>MARKO</option>
-        <option>Sistema completo</option>
-        <option>No estoy seguro</option>
-      </select>
-      <textarea class="field min-h-[110px] resize-y" placeholder="Cuéntanos sobre tu negocio"></textarea>
-      <button class="btn-gold w-full" type="submit">Enviar mensaje</button>
-    </form>
-  </div>
-</section>
-
 <!-- FOOTER -->
-<footer class="border-t border-navy/[0.08] py-14 px-5 sm:px-10 bg-graybg">
-  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[2.5fr_1fr_1fr_1fr] gap-10">
+<footer class="border-t border-line py-14 px-5 sm:px-10" style="background:#F3F8FA">
+  <div class="max-w-6xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-[2.2fr_1fr_1fr_1.2fr] gap-10">
     <div>
-      <img src="assets/images/logo-dym.png" alt="DYM" class="h-6 w-auto mb-2.5 block brightness-0">
-      <p class="text-xs text-dim leading-relaxed max-w-[280px]">Inteligencia comercial + ventas asistidas para espacios físicos.</p>
+      <img src="assets/images/logo-dym-rmi-dark.png" alt="DYM · Retail Media Intelligence" class="h-12 w-auto mb-3 block">
+      <p class="text-xs text-dim leading-relaxed max-w-[300px]">Inteligencia en tienda que conecta cada pantalla con una conversación.</p>
+      <div class="mt-5 flex items-center gap-3">
+        <span class="text-[15px] font-medium tracking-[0.18em] text-navy">INTELEZO</span>
+        <span class="text-[13px] font-semibold text-teal" aria-label="por">×</span>
+        <img src="assets/images/logo-integral-dark.webp" alt="INTEGRAL · Positive Artificial Intelligence" class="h-11 w-auto block mix-blend-multiply">
+      </div>
     </div>
     <div>
-      <h5 class="text-[10px] font-semibold uppercase tracking-wider text-mut mb-3.5">Sistema</h5>
-      <a href="#ins" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">insygt</a>
-      <a href="#mrk" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">MARKO</a>
-      <a href="#int" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Integración</a>
+      <h5 class="text-[10px] font-semibold uppercase tracking-wider text-navy mb-3.5">Solución</h5>
+      <a href="#solucion" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">DYM</a>
+      <a href="#rdp" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Retail Data Point</a>
+      <a href="#ragent" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Retail Agent</a>
+      <a href="#recorrido" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Cómo funciona</a>
     </div>
     <div>
-      <h5 class="text-[10px] font-semibold uppercase tracking-wider text-mut mb-3.5">Verticales</h5>
-      <a href="#vert" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Supermercados</a>
-      <a href="#vert" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Restaurantes</a>
-      <a href="#vert" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Retail</a>
+      <h5 class="text-[10px] font-semibold uppercase tracking-wider text-navy mb-3.5">Empresa</h5>
+      <a href="#mercado" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Mercado</a>
+      <a href="para-tu-negocio.html" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Para tu negocio</a>
+      <a href="#empezar" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Cómo empezar</a>
+      <a href="#faq" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Preguntas frecuentes</a>
     </div>
     <div>
-      <h5 class="text-[10px] font-semibold uppercase tracking-wider text-mut mb-3.5">Legal</h5>
-      <a href="#" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Aviso de privacidad</a>
-      <a href="#" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Términos</a>
-      <a href="#" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">LFPDPPP</a>
+      <h5 class="text-[10px] font-semibold uppercase tracking-wider text-navy mb-3.5">Contacto</h5>
+      <a href="mailto:contacto@intelezo.com" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">contacto@intelezo.com</a>
+      <a href="tel:+526602114254" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">660 211 4254</a>
+      <a href="#cnt" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Pruébalo en vivo</a>
     </div>
   </div>
-  <div class="max-w-6xl mx-auto mt-8 pt-5 border-t border-navy/[0.08] flex flex-col sm:flex-row justify-between gap-1.5 text-[11px] text-mut">
-    <span>© 2026 DYM Systems</span>
-    <span>Chihuahua, México</span>
+  <div class="max-w-6xl mx-auto mt-8 pt-5 border-t border-line text-[11px] text-mut">
+    <span>© 2026 DYM · Retail Media Intelligence</span>
   </div>
 </footer>
 
 <!-- VOLVER ARRIBA -->
-<button id="toTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-gold flex items-center justify-center shadow-[0_4px_20px_rgba(139,45,58,0.35)] transition-all cursor-pointer border-0 opacity-0 pointer-events-none translate-y-2 hover:scale-[1.08]" aria-label="Volver arriba">
-  <img src="assets/images/isotipo-dym.png" alt="" class="w-7 h-7 object-contain">
+<button id="toTopBtn" onclick="window.scrollTo({top:0,behavior:'smooth'})" class="fixed bottom-6 right-6 z-40 w-14 h-14 rounded-full bg-navy-deep border border-white/25 flex items-center justify-center shadow-[0_4px_20px_rgba(3,49,64,0.35)] transition-all cursor-pointer border-0 opacity-0 pointer-events-none translate-y-2 hover:scale-[1.08]" aria-label="Volver arriba">
+  <img src="assets/images/isotipo-dym-y.png" alt="" class="w-6 h-6 object-contain">
 </button>
 
 <script src="src/js/main.js"></script>

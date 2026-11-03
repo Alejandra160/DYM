@@ -1,23 +1,35 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy: #6B5D4F;
-  --color-navy-deep: #3D3229;
-  --color-cream: #F3EDE4;
-  --color-graybg: #E9DFD1;
-  --color-gold: #8B2D3A;
-  --color-gold-light: #C7A876;
-  --color-sand: #F5EFE6;
-  --color-dim: #5E5245;
-  --color-mut: #A69A8A;
-  --font-sans: "Inter", sans-serif;
-  --font-serif: "Fraunces", serif;
+  /* Paleta DYM · 50% Intelezo / 50% Integral (Especificaciones_Web_DYM §1.1).
+     Los nombres de token anteriores se conservan para no tocar todo el HTML:
+       navy      = Intelezo navy        navy-deep = Integral petróleo
+       gold      = azul cielo profundo (acento / botones)   gold-light = cielo claro (sobre oscuro)
+       cream     = fondo --bg           graybg    = fondo alterno */
+  --color-navy: #212F5B;
+  --color-navy-deep: #03313F;
+  --color-ink: #0E1830;
+  --color-cream: #EEF4F6;
+  --color-graybg: #E2EDF3;
+  --color-surface: #FCFDFD;
+  --color-line: #D9E1E5;
+  --color-gold: #1A74B8;
+  --color-gold-light: #6CC0F5;
+  --color-sky: #2A9AE3;
+  --color-sky-50: #E4F0FC;
+  --color-teal: #2D7A7B;
+  --color-teal-300: #74C6C0;
+  --color-navy-500: #3A4C8C;
+  --color-sand: #FFFFFF;
+  --color-dim: #4B535D;
+  --color-mut: #5E6773;
+  --font-sans: "Montserrat", sans-serif;
+  --font-serif: "Montserrat", sans-serif;
 }
-
 html {
   scroll-behavior: smooth;
   scroll-padding-top: 64px;
-  scrollbar-color: #bc9f79 #F3EDE4;
+  scrollbar-color: #1A74B8 #F3F6F7;
   overflow-x: hidden;
   overscroll-behavior-x: none;
   width: 100%;
@@ -27,29 +39,59 @@ html {
   width: 12px;
 }
 ::-webkit-scrollbar-track {
-  background: #F3EDE4;
+  background: #F3F6F7;
 }
 ::-webkit-scrollbar-thumb {
-  background: #C6AD8B;
+  background: #8DBBE0;
   border-radius: 8px;
-  border: 3px solid #F3EDE4;
+  border: 3px solid #F3F6F7;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #A9814F;
+  background: #1A74B8;
 }
 
 body {
-  @apply bg-cream text-navy-deep antialiased overflow-x-hidden;
+  @apply bg-cream text-dim antialiased overflow-x-hidden;
   overscroll-behavior-x: none;
 }
 
 @layer components {
-  /* Hero: fondo con degradado cálido + resplandor, inspirado en la referencia */
+  /* Hero: portada oscura de la marca (teal profundo) con resplandor azul */
   .hero-glow {
     background-image:
-      radial-gradient(ellipse 170% 115% at 50% 116%, rgba(255,255,255,1) 0%, rgba(255,255,255,0.95) 28%, rgba(255,255,255,0) 72%),
-      linear-gradient(180deg, #ECE1CF 0%, #D6C1A2 50%, #BC9F79 100%);
+      radial-gradient(ellipse 60% 70% at 85% 15%, rgba(44,156,228,0.22) 0%, rgba(44,156,228,0) 70%),
+      radial-gradient(ellipse 70% 60% at 10% 100%, rgba(44,124,124,0.25) 0%, rgba(44,124,124,0) 70%),
+      linear-gradient(180deg, #0E1830 0%, #03313F 100%);
   }
+
+
+  /* Motivo de marca: 6 barras ascendentes (3 navy, 1 verde azulado, 1 cielo, 1 cielo claro) */
+  .bars { @apply flex items-end gap-[3%] w-full; }
+  .bars > span {
+    @apply block flex-1 rounded-t-[6px] origin-bottom;
+    animation: bar-grow 1.1s cubic-bezier(.2,.65,.3,1) both;
+  }
+  .bars > span:nth-child(1) { height: 22%; background: #212F5B; animation-delay: .05s; }
+  .bars > span:nth-child(2) { height: 38%; background: #2A3D6A; animation-delay: .15s; }
+  .bars > span:nth-child(3) { height: 52%; background: #3A4C8C; animation-delay: .25s; }
+  .bars > span:nth-child(4) { height: 68%; background: #2D7A7B; animation-delay: .35s; }
+  .bars > span:nth-child(5) { height: 84%; background: #2A9AE3; animation-delay: .45s; }
+  .bars > span:nth-child(6) { height: 100%; background: #6CC0F5; animation-delay: .55s; }
+  @keyframes bar-grow { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+  @media (prefers-reduced-motion: reduce) { .bars > span { animation: none; } }
+
+  /* Kicker de sección */
+  .kicker { @apply text-[13px] tracking-[0.2em] uppercase font-semibold text-teal; }
+
+  /* Botón primario sobre fondo oscuro */
+  .btn-sky {
+    @apply inline-block bg-gold-light text-ink font-semibold text-sm tracking-[0.03em] px-8 py-[15px] rounded-full transition-all cursor-pointer border-0;
+  }
+  .btn-sky:hover { background-color: color-mix(in srgb, var(--color-gold-light) 80%, white); @apply -translate-y-px; }
+  .btn-outline-light {
+    @apply inline-block bg-transparent text-white font-medium text-sm border-2 border-white/40 px-8 py-[15px] rounded-full transition-all cursor-pointer;
+  }
+  .btn-outline-light:hover { @apply border-gold-light text-gold-light -translate-y-px; }
 
   /* Buttons */
   .btn-gold {
@@ -58,7 +100,7 @@ body {
   .btn-gold:hover { background-color: color-mix(in srgb, var(--color-gold) 80%, white); @apply -translate-y-px; }
 
   .btn-outline {
-    @apply inline-block bg-transparent text-gold font-medium text-sm border border-gold/40 px-8 py-[15px] rounded-full transition-all cursor-pointer;
+    @apply inline-block bg-transparent text-gold font-semibold text-sm border-2 border-gold/40 px-8 py-[15px] rounded-full transition-all cursor-pointer;
   }
   .btn-outline:hover { @apply border-gold bg-gold/5 -translate-y-px; }
 
@@ -69,18 +111,18 @@ body {
 
   /* Form fields (fondo claro) */
   .field {
-    @apply w-full bg-white border border-navy/15 rounded-2xl px-4 py-[14px] text-sm text-navy-deep outline-none transition-colors;
+    @apply w-full bg-white border border-line rounded-2xl px-4 py-[14px] text-sm text-navy-deep outline-none transition-colors;
   }
   .field::placeholder { @apply text-navy/30; }
-  .field:focus { @apply border-gold; }
+  .field:focus { @apply border-sky; }
   .field option { @apply bg-white text-navy-deep; }
 
   .field-select {
-    @apply w-full bg-white border border-navy/15 rounded-2xl px-4 py-[14px] text-sm text-navy-deep outline-none transition-colors appearance-none bg-no-repeat pr-10;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='rgba(61,50,41,0.4)' stroke-width='1.5'/%3E%3C/svg%3E");
+    @apply w-full bg-white border border-line rounded-2xl px-4 py-[14px] text-sm text-navy-deep outline-none transition-colors appearance-none bg-no-repeat pr-10;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='rgba(3,49,64,0.4)' stroke-width='1.5'/%3E%3C/svg%3E");
     background-position: right 16px center;
   }
-  .field-select:focus { @apply border-gold; }
+  .field-select:focus { @apply border-sky; }
   .field-select option { @apply bg-white text-navy-deep; }
 
   /* Arrow bullet lists (insygt / MARKO feature lists) — pensadas para fondo claro */
@@ -109,10 +151,10 @@ body {
 
   /* Tier cards (Modalidades) */
   .tier-card {
-    @apply p-9 rounded-[22px] bg-white border border-navy/[0.08] shadow-sm relative transition-transform text-left;
+    @apply p-9 rounded-[28px] bg-surface border border-line relative transition-transform text-left;
   }
   .tier-card.tier-pop {
-    @apply p-11 bg-graybg border-gold/40 shadow-[0_25px_55px_rgba(61,50,41,0.14)] scale-[1.06] z-10;
+    @apply p-11 bg-navy text-white border-navy shadow-[0_25px_55px_rgba(33,47,91,0.28)] scale-[1.06] z-10;
   }
   .tier-list li {
     @apply flex items-center gap-3 py-[13px] border-t border-navy/[0.08] text-[13.5px] text-dim;
@@ -134,24 +176,235 @@ body {
   }
 
   /* Transición al entrar/salir del viewport (scroll hacia abajo y hacia arriba).
-     .reveal da la opacidad + transición base; una clase reveal-* define de dónde
-     entra cada sección, para que no todas se muevan igual pero mantengan el mismo
+     Solo se anima el CONTENIDO de cada sección (sus hijos directos); la sección
+     y su color de fondo quedan siempre fijos. Una clase reveal-* define de dónde
+     entra el contenido, para que no todas se muevan igual pero mantengan el mismo
      timing/curva y se vean cohesivas. */
-  .reveal {
+  .reveal > * {
     opacity: 0;
     transition: opacity .7s cubic-bezier(.2,.65,.3,1), transform .7s cubic-bezier(.2,.65,.3,1);
     will-change: opacity, transform;
   }
-  .reveal.is-visible { opacity: 1; transform: none; }
+  .reveal.is-visible > * { opacity: 1; transform: none; }
 
-  .reveal-fade  { transform: none; }
-  .reveal-up    { transform: translateY(32px); }
-  .reveal-down  { transform: translateY(-32px); }
-  .reveal-left  { transform: translateX(-40px); }
-  .reveal-right { transform: translateX(40px); }
-  .reveal-scale { transform: scale(.94); }
+  .reveal-fade  > * { transform: none; }
+  .reveal-up    > * { transform: translateY(32px); }
+  .reveal-down  > * { transform: translateY(-32px); }
+  .reveal-left  > * { transform: translateX(-40px); }
+  .reveal-right > * { transform: translateX(40px); }
+  .reveal-scale > * { transform: scale(.94); }
 
   @media (prefers-reduced-motion: reduce) {
-    .reveal { opacity: 1; transform: none; transition: none; }
+    .reveal > * { opacity: 1; transform: none; transition: none; }
   }
 }
+
+/* Tarjeta destacada (navy): sin capa para ganarle a las utilidades de texto */
+.tier-card.tier-pop .font-serif { color: #fff; }
+.tier-card.tier-pop .font-serif.text-gold { color: var(--color-gold-light); }
+.tier-card.tier-pop p,
+.tier-card.tier-pop .text-dim,
+.tier-card.tier-pop .tier-list li { color: rgba(255,255,255,0.82); }
+.tier-card.tier-pop .text-mut { color: var(--color-teal-300); }
+.tier-card.tier-pop .tier-list li { border-color: rgba(255,255,255,0.15); }
+.tier-card.tier-pop .check-c { background: rgba(255,255,255,0.16); color: #fff; }
+/* Verticales: círculo de color que crece desde la foto y cubre la sección */
+.vt-wipe {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+  clip-path: circle(0% at var(--ox, 25%) var(--oy, 50%));
+}
+.vt-wipe.run {
+  clip-path: circle(150% at var(--ox, 25%) var(--oy, 50%));
+  transition: clip-path 1s cubic-bezier(.65, 0, .35, 1);
+}
+.vt-img { opacity: 0; transform: scale(1.12); transition: opacity .8s ease, transform 1.4s ease; }
+.vt-img.on { opacity: 1; transform: scale(1); }
+.vt-slide { opacity: 0; transform: translateY(14px); transition: opacity .45s ease, transform .45s ease; pointer-events: none; }
+.vt-slide.on { opacity: 1; transform: none; transition-delay: .35s; pointer-events: auto; }
+.vt-pill {
+  position: relative; overflow: hidden; cursor: pointer; user-select: none;
+  padding: 9px 18px; border-radius: 9999px; border: 1px solid rgba(255,255,255,.35);
+  background: transparent; color: rgba(255,255,255,.85); font-size: 13px; font-weight: 600;
+  transition: background-color .3s, color .3s, border-color .3s;
+}
+.vt-pill:hover { border-color: #fff; color: #fff; }
+.vt-pill.on { background: rgba(255,255,255,.16); border-color: #fff; color: #fff; }
+.vt-pill::after { content: ''; position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: #fff; }
+.vt-pill.on::after { animation: vt-prog 5.5s linear forwards; }
+@keyframes vt-prog { to { width: 100%; } }
+@media (prefers-reduced-motion: reduce) {
+  .vt-wipe.run, .vt-img, .vt-slide { transition: none; }
+  .vt-pill.on::after { animation: none; width: 100%; }
+}
+/* Franja de palabras: cada palabra se disuelve con desenfoque mientras entra la siguiente */
+.vw, .vp { grid-area: 1 / 1; }
+.vwrap { overflow: hidden; padding: 10px 0; }
+.vw {
+  font-size: clamp(56px, 11vw, 168px); font-weight: 500; line-height: 1.05; letter-spacing: -0.035em;
+  opacity: 0; filter: blur(6px); transform: translateY(-75%);
+  transition: opacity .6s ease, filter .6s ease, transform .85s cubic-bezier(.2,.65,.3,1);
+}
+.vw.on { opacity: 1; filter: blur(0); transform: none; }
+.vw.out { opacity: 0; filter: blur(6px); transform: translateY(75%); }
+.vp {
+  font-size: clamp(17px, 1.9vw, 24px); font-weight: 500; color: #fff; max-width: 640px;
+  opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease;
+}
+.vp.on { opacity: 1; transform: none; transition-delay: .1s; }
+.vd { width: 8px; height: 8px; border-radius: 9999px; background: rgba(255,255,255,.3); transition: width .4s ease, background-color .4s ease; }
+.vd.on { width: 28px; background: #fff; }
+@media (prefers-reduced-motion: reduce) {
+  .vw, .vp, .vd { transition: none; }
+}
+
+
+/* Mercado y referentes: tarjetas que se voltean (hover, foco o toque) para mostrar qué habilita DYM */
+.fc { perspective: 900px; display: grid; }
+.fc-inner { display: grid; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.2,.65,.3,1); }
+.fc-face { grid-area: 1 / 1; -webkit-backface-visibility: hidden; backface-visibility: hidden; }
+.fc-back { transform: rotateY(180deg); }
+.fc[role="button"] { cursor: pointer; }
+.fc[role="button"]:hover .fc-inner,
+.fc[role="button"]:focus-visible .fc-inner,
+.fc.is-flipped .fc-inner { transform: rotateY(180deg); }
+.fc[role="button"]:focus-visible { outline: 2px solid var(--color-gold-light); outline-offset: 4px; border-radius: 22px; }
+@media (prefers-reduced-motion: reduce) { .fc-inner { transition: none; } }
+/* Oportunidad: cada palabra se enciende cuando el scroll llega a ella */
+.ow { opacity: .2; transition: opacity .35s ease; }
+.ow.lit { opacity: 1; }
+@media (prefers-reduced-motion: reduce) { .ow { opacity: 1; transition: none; } }
+/* Solución: tarjetas que se levantan y QR que late suavemente */
+.sol-card { transition: transform .35s ease, box-shadow .35s ease; }
+.sol-card:hover { transform: translateY(-4px); box-shadow: 0 28px 60px rgba(0,0,0,0.28); }
+.sol-qr { animation: sol-pulse 2.8s ease-in-out infinite; }
+@keyframes sol-pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.06); } }
+@media (prefers-reduced-motion: reduce) { .sol-qr { animation: none; } .sol-card { transition: none; } }
+/* Retail Data Point: selector de perfil y vista previa del tótem */
+.rd-gen, .rd-age {
+  cursor: pointer; user-select: none; border: 1px solid rgba(255,255,255,.35); background: transparent;
+  color: rgba(255,255,255,.9); font-weight: 600; transition: background-color .25s, color .25s, border-color .25s;
+}
+.rd-gen { padding: 8px 18px; border-radius: 9999px; font-size: 13px; }
+.rd-age { padding: 7px 0; border-radius: 10px; font-size: 10.5px; }
+.rd-gen:hover, .rd-age:hover { border-color: #fff; }
+.rd-gen.on, .rd-age.on { background: #fff; color: #212F5B; border-color: #fff; }
+.rd-totem { background: #0E1830; }
+.rd-screen { color: #fff; background: linear-gradient(160deg, #2D7A7B, #0A4A5E); transition: background .5s ease; }
+.rd-screen > p { transition: opacity .25s ease; }
+.rd-screen.swap > p { opacity: 0; }
+@media (prefers-reduced-motion: reduce) { .rd-screen, .rd-screen > p { transition: none; } }
+/* Retail Agent: burbujas del chat de ejemplo y respuestas rápidas */
+.ra-msg { max-width: 84%; padding: 8px 11px; border-radius: 14px; animation: ra-in .35s ease both; }
+.ra-bot { align-self: flex-start; background: #fff; color: #1B2540; border-top-left-radius: 4px; }
+.ra-user { align-self: flex-end; background: #D3E9FA; color: #1B2540; border-top-right-radius: 4px; }
+.ra-typing { display: inline-flex; gap: 4px; padding: 11px 13px; }
+.ra-typing i { width: 6px; height: 6px; border-radius: 9999px; background: #9AA6B2; animation: ra-dot 1s infinite ease-in-out; }
+.ra-typing i:nth-child(2) { animation-delay: .15s; } .ra-typing i:nth-child(3) { animation-delay: .3s; }
+@keyframes ra-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+@keyframes ra-dot { 0%, 80%, 100% { opacity: .3; transform: translateY(0); } 40% { opacity: 1; transform: translateY(-3px); } }
+.ra-chip {
+  cursor: pointer; border: 1px solid #0A4A5E; background: #fff; color: #0A4A5E; font-size: 11px; font-weight: 600;
+  padding: 5px 10px; border-radius: 9999px; transition: background-color .2s, color .2s;
+}
+.ra-chip:hover:not(:disabled) { background: #0A4A5E; color: #fff; }
+.ra-chip:disabled { opacity: .45; cursor: default; }
+@media (prefers-reduced-motion: reduce) { .ra-msg { animation: none; } .ra-typing i { animation: none; } }
+/* El recorrido: los pasos se encienden conforme avanza el scroll */
+.rc-step { opacity: .45; transform: translateY(6px); transition: opacity .4s ease, transform .4s ease, background-color .4s ease; }
+.rc-step.on { opacity: 1; transform: none; background-color: rgba(255,255,255,.12); }
+.rc-dot { background: transparent; border: 2px solid var(--c); color: #fff; transition: background-color .4s ease; }
+.rc-step.on .rc-dot { background: var(--c); }
+@media (prefers-reduced-motion: reduce) { .rc-step { opacity: 1; transform: none; transition: none; } .rc-dot { background: var(--c); } }
+/* Datos por nivel: selector de rol, barras de ejemplo y dimensiones */
+.dt-role {
+  cursor: pointer; user-select: none; padding: 9px 18px; border-radius: 9999px; font-size: 13px; font-weight: 600;
+  border: 1px solid rgba(255,255,255,.4); background: transparent; color: rgba(255,255,255,.92);
+  transition: background-color .25s, color .25s, border-color .25s;
+}
+.dt-role:hover { border-color: #fff; }
+.dt-role.on { background: #fff; color: #212F5B; border-color: #fff; }
+.dt-bar { flex: 1; border-radius: 8px 8px 0 0; background: #6CC0F5; transition: height .6s cubic-bezier(.2,.65,.3,1); }
+.dt-bar:nth-child(odd) { background: #74C6C0; }
+.dt-chip { font-size: 11.5px; padding: 4px 10px; border-radius: 9999px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.2); }
+.dt-chip-b { background: rgba(108,192,245,.18); border-color: rgba(108,192,245,.4); }
+@media (prefers-reduced-motion: reduce) { .dt-bar { transition: none; } }
+/* Escalabilidad: línea de tiempo que se llena con el scroll */
+.sc-step { opacity: .45; transition: opacity .4s ease; }
+.sc-step.on { opacity: 1; }
+.sc-dot { background: #0A4A5E; border: 2px solid #74C6C0; transition: background-color .4s ease; }
+.sc-step.on .sc-dot { background: #74C6C0; }
+@media (prefers-reduced-motion: reduce) { .sc-step { opacity: 1; transition: none; } .sc-dot { background: #74C6C0; } }
+/* Versión corta: el detalle de cada paso aparece al pasar el cursor, enfocar o tocar */
+.rc-detail { max-height: 0; opacity: 0; overflow: hidden; transition: max-height .35s ease, opacity .35s ease; }
+.rc-step:hover .rc-detail, .rc-step:focus .rc-detail, .rc-step:focus-within .rc-detail { max-height: 160px; opacity: 1; }
+@media (hover: none) { .rc-detail { max-height: 160px; opacity: 1; } }
+/* El recorrido como mapa de metro: las estaciones se encienden con el scroll y la línea se llena */
+svg .rc-step { opacity: .5; transform: none; cursor: pointer; outline: none; transition: opacity .4s ease; }
+svg .rc-step.on { opacity: 1; background-color: transparent; }
+.rc-c { fill: #0A4A5E; transition: fill .4s ease; }
+svg .rc-step.on .rc-c, svg .rc-step:hover .rc-c, svg .rc-step:focus .rc-c { fill: var(--c); }
+svg .rc-step:hover, svg .rc-step:focus { opacity: 1; }
+svg .rc-step:focus-visible .rc-c { stroke: #fff; }
+.rc-num { fill: #fff; font: 600 17px Montserrat, sans-serif; pointer-events: none; }
+.rc-name { fill: #fff; font: 500 22px Montserrat, sans-serif; pointer-events: none; }
+.rc-line-label { font: 600 13px Montserrat, sans-serif; letter-spacing: .18em; }
+#rcTeal, #rcBlue { transition: stroke-dashoffset .6s ease; }
+@media (prefers-reduced-motion: reduce) { svg .rc-step, .rc-c, #rcTeal, #rcBlue { transition: none; } }
+/* El recorrido como verbos gigantes: al abrir un paso, el texto que lo explica aparece arriba y el verbo baja */
+.rw { position: relative; cursor: pointer; text-align: center; outline: none; padding: 2px 0; }
+.rw-line {
+  max-height: 0; opacity: 0; overflow: hidden; font-size: 14.5px; line-height: 1.35; color: rgba(255,255,255,.95);
+  transform: translateY(-8px); padding: 0 6%;
+  transition: max-height .45s cubic-bezier(.2,.65,.3,1), opacity .35s ease, transform .45s cubic-bezier(.2,.65,.3,1);
+}
+.rw-dato { display: block; margin-top: 3px; font-size: 12.5px; color: rgba(255,255,255,.7); }
+.rw-dato strong { font-weight: 600; color: var(--w); }
+.rw-word { font: 600 clamp(40px, 5.4vw, 78px) Montserrat, sans-serif; letter-spacing: -0.02em; line-height: 1.05; text-transform: uppercase; color: var(--w); }
+.rw:hover .rw-line, .rw:focus-visible .rw-line, .rw.is-open .rw-line { max-height: 110px; opacity: 1; transform: none; padding-bottom: 6px; }
+.rw:focus-visible .rw-word { outline: 2px solid var(--w); outline-offset: 4px; border-radius: 6px; }
+@media (prefers-reduced-motion: reduce) { .rw-line { transition: none; } }
+/* Quiénes confían: tiras infinitas en sentidos opuestos, con bordes que se desvanecen y pausa al pasar el cursor */
+.mq { overflow: hidden; -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+.mq-track { display: flex; width: max-content; animation: mq-run 42s linear infinite; }
+.mq-rev .mq-track { animation-direction: reverse; }
+.mq:hover .mq-track { animation-play-state: paused; }
+.mq-half { display: flex; flex: none; align-items: center; gap: 56px; padding-right: 56px; }
+.mq-item { flex: none; display: flex; align-items: center; justify-content: center; height: 60px; }
+.mq-item img { height: 50px; width: auto; max-width: 190px; object-fit: contain; transition: opacity .3s ease; }
+.mq-on-dark .mq-item img { filter: brightness(0) invert(1); opacity: .85; }
+.mq-on-light .mq-item img { filter: brightness(0); opacity: .6; }
+.mq-item:hover img { opacity: 1; }
+.mq-item img[alt="Hospital Ángeles"] { height: 60px; }
+.mq-text { font-size: 15px; font-weight: 600; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+.mq-on-dark .mq-text { color: rgba(255,255,255,.9); }
+.mq-on-light .mq-text { color: rgba(33,47,91,.75); }
+@keyframes mq-run { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) {
+  .mq { -webkit-mask-image: none; mask-image: none; }
+  .mq-track { animation: none; flex-wrap: wrap; width: auto; justify-content: center; }
+  .mq-half[aria-hidden="true"] { display: none; }
+}
+/* Retail Data Point: tótem de piso (losa alta, marco delgado, cuerpo oscuro, base y sombra) */
+.tt-wrap { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.tt-chip { display: inline-flex; align-items: center; gap: 7px; padding: 5px 13px; border-radius: 9999px; background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.25); font-size: 11px; color: rgba(255,255,255,.9); }
+.tt-chip strong { font-weight: 600; color: #fff; }
+.tt-dot { width: 7px; height: 7px; border-radius: 9999px; background: #5BE3A2; box-shadow: 0 0 0 0 rgba(91,227,162,.6); animation: tt-ping 1.8s infinite; }
+@keyframes tt-ping { 70% { box-shadow: 0 0 0 7px rgba(91,227,162,0); } 100% { box-shadow: 0 0 0 0 rgba(91,227,162,0); } }
+.tt { position: relative; width: 150px; margin: 0 auto; }
+.tt-body { background: #0E1830; border-radius: 9px 9px 3px 3px; padding: 6px 6px 0; box-shadow: 0 18px 40px rgba(0,0,0,.4), inset 0 0 0 1px rgba(255,255,255,.07); }
+.tt-lens { position: relative; width: 9px; height: 9px; margin: 0 auto 6px; border-radius: 9999px; background: #18264A; border: 1.5px solid #3B4C70; }
+.tt-led { position: absolute; right: -12px; top: 2px; width: 3px; height: 3px; border-radius: 9999px; background: #5BE3A2; }
+.tt-screen { position: relative; min-height: 196px; border-radius: 3px; padding: 10px 9px; display: flex; flex-direction: column; text-align: center; overflow: hidden; }
+.tt-screen::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 38%); }
+.tt-lower { height: 64px; margin: 0 -6px; display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg,#121C38,#0A1124); border-top: 1px solid rgba(255,255,255,.06); }
+.tt-brand { font-size: 8px; font-weight: 600; letter-spacing: .5em; text-indent: .5em; color: rgba(255,255,255,.35); }
+.tt-foot { width: 196px; height: 12px; margin: 0 -23px; position: relative; border-radius: 3px 3px 9px 9px; background: linear-gradient(180deg,#1A2542,#0A1124); box-shadow: 0 2px 0 rgba(255,255,255,.05) inset; }
+.tt-shadow { width: 230px; height: 16px; margin: -3px -40px 0; background: radial-gradient(ellipse at center, rgba(0,0,0,.5), rgba(0,0,0,0) 70%); }
+@media (prefers-reduced-motion: reduce) { .tt-dot { animation: none; } }
+/* Retail Agent: el teléfono con el mismo lenguaje del tótem (marco oscuro delgado, reflejo, sombra en el piso) */
+.ph { position: relative; width: 250px; margin: 0 auto; }
+.ph-body { position: relative; background: #0E1830; border-radius: 30px; padding: 6px; box-shadow: 0 18px 40px rgba(0,0,0,.4), inset 0 0 0 1px rgba(255,255,255,.07); }
+.ph-island { position: absolute; top: 12px; left: 50%; z-index: 2; width: 54px; height: 12px; transform: translateX(-50%); border-radius: 9999px; background: #0A1124; }
+.ph-screen { position: relative; display: flex; flex-direction: column; height: 322px; border-radius: 25px; overflow: hidden; text-align: left; background: #E8E4DC; }
+.ph-screen::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 36%); }.mq-item img[alt="San Pedro Garza García"]{height:66px}
+.mq-item img[alt="Tribunal Superior de Justicia"]{height:62px}
