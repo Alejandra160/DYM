@@ -408,3 +408,11 @@ svg .rc-step:focus-visible .rc-c { stroke: #fff; }
 .ph-screen { position: relative; display: flex; flex-direction: column; height: 322px; border-radius: 25px; overflow: hidden; text-align: left; background: #E8E4DC; }
 .ph-screen::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: linear-gradient(115deg, rgba(255,255,255,.12) 0%, rgba(255,255,255,0) 36%); }.mq-item img[alt="San Pedro Garza García"]{height:66px}
 .mq-item img[alt="Tribunal Superior de Justicia"]{height:62px}
+
+@media (max-width: 640px) {
+  #rdAges { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 6px; }
+  .rd-age { padding: 11px 0; font-size: 12px; }
+  .rd-gen { padding: 11px 22px; }
+  .ra-chip { padding: 11px 14px; }
+  footer a.block { padding: 8px 0; }
+}
