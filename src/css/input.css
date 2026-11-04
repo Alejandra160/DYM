@@ -416,3 +416,9 @@ svg .rc-step:focus-visible .rc-c { stroke: #fff; }
   .ra-chip { padding: 11px 14px; }
   footer a.block { padding: 8px 0; }
 }
+
+/* Celular: sin barras de marca en el hero (solo tipografia y brillo de fondo) */
+.hero-bars-mini { display: none; }
+@media (max-width: 767px) {
+  .hero-bars { display: none; }
+}
