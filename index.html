@@ -32,21 +32,37 @@
   </div>
 </nav>
 
-<!-- 1. HERO — petróleo con barras ascendentes (motivo de marca) -->
-<section class="reveal reveal-fade hero-glow min-h-[100vh] min-h-[100svh] flex items-center px-5 sm:px-10 pt-24 pb-16 relative overflow-hidden">
-  <div class="pointer-events-none absolute -right-48 top-1/2 -translate-y-1/2 w-[760px] h-[760px] rounded-full border border-white/[0.07]"></div>
-  <div class="pointer-events-none absolute -right-20 top-1/2 -translate-y-1/2 w-[520px] h-[520px] rounded-full border border-white/[0.07]"></div>
-  <div class="relative z-[2] max-w-6xl mx-auto w-full grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-    <div class="text-left">
-      <div class="hero-brand mb-8"><img id="heroLogo" src="assets/images/logo-dym-rmi.png" alt="DYM · Retail Media Intelligence" class="w-[260px] sm:w-[340px] h-auto max-w-full block"><div class="bars hero-bars-mini" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span><span></span></div></div>
-      <h1 class="font-medium text-[clamp(30px,4vw,56px)] leading-[1.12] tracking-[-0.02em] mb-10 text-white">Inteligencia en tienda que conecta cada <em class="italic text-gold-light">pantalla</em> con una <em class="italic text-gold-light">conversación</em>.</h1>
-      <div class="flex gap-3.5 flex-wrap">
-        <button class="btn-sky" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Pruébalo en vivo</button>
-        <button class="btn-outline-light" onclick="document.getElementById('recorrido').scrollIntoView({behavior:'smooth'})">Ver cómo funciona</button>
-      </div>
+<!-- 1. HERO — portada Al Súper × DYM con fotografía y textos nítidos -->
+<section class="hero-alsuper pt-[56px]">
+  <svg class="hero-alsuper__sparkles" viewBox="0 0 1440 240" preserveAspectRatio="none" aria-hidden="true">
+    <defs>
+      <linearGradient id="heroSparkleGradient" x1="0" y1="0" x2="1" y2="0">
+        <stop offset="0" stop-color="#f4b64e" stop-opacity="0"/>
+        <stop offset=".18" stop-color="#ffd98b"/>
+        <stop offset=".48" stop-color="#ffdc8a"/>
+        <stop offset=".76" stop-color="#ffc95c"/>
+        <stop offset="1" stop-color="#f4b64e" stop-opacity=".15"/>
+      </linearGradient>
+      <filter id="heroSparkleBlur" x="-10%" y="-100%" width="120%" height="300%">
+        <feGaussianBlur stdDeviation="9"/>
+      </filter>
+    </defs>
+    <path class="hero-alsuper__sparkle-glow" d="M-30 20 C150 38 205 139 410 151 S690 107 895 105 S1240 142 1470 42"/>
+    <path class="hero-alsuper__sparkle-line" d="M-30 20 C150 38 205 139 410 151 S690 107 895 105 S1240 142 1470 42"/>
+    <path class="hero-alsuper__sparkle-core" d="M-30 20 C150 38 205 139 410 151 S690 107 895 105 S1240 142 1470 42"/>
+  </svg>
+  <div class="hero-alsuper__content">
+    <div class="hero-alsuper__logos" aria-label="Al Súper y DYM">
+      <img src="assets/images/logo-alsuper.svg" alt="Al Súper" class="hero-alsuper__brand">
+      <span class="hero-alsuper__cross" aria-hidden="true">×</span>
+      <img src="assets/images/logo-dym-rmi.png" alt="DYM · Retail Media Intelligence" class="hero-alsuper__dym">
     </div>
-    <div class="hero-bars relative h-[260px] md:h-[440px] flex items-end" aria-hidden="true">
-      <div class="bars h-full"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    <h1>MÁS VALOR POR CLIENTE.<br>MÁS INGRESOS POR TIENDA.</h1>
+    <span class="hero-alsuper__rule" aria-hidden="true"></span>
+    <p>Monetizamos audiencia, conectamos marcas y generamos nuevas oportunidades de negocio.</p>
+    <div class="hero-alsuper__actions">
+      <button class="btn-sky" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Pruébalo en vivo</button>
+      <button class="btn-outline-light" onclick="document.getElementById('recorrido').scrollIntoView({behavior:'smooth'})">Ver cómo funciona</button>
     </div>
   </div>
 </section>
@@ -63,22 +79,116 @@
     </div>
   </div>
 </section>
-<!-- 1b. PALABRAS — franja tipográfica: una palabra se disuelve en la siguiente (Detecta → Conversa → Vende) -->
-<section class="reveal reveal-fade py-[56px] md:py-[72px] px-5 sm:px-10 text-center overflow-hidden" id="words" style="background:linear-gradient(180deg,#0A4A5E,#0E5470)">
-  <p class="text-[13px] tracking-[0.2em] uppercase font-semibold text-white/80 mb-3">El sistema en tres verbos</p>
-  <div id="wordStage" class="max-w-6xl mx-auto">
-    <div class="vwrap grid place-items-center" aria-live="off">
-      <span class="vw on text-teal-300">Detecta</span>
-      <span class="vw text-gold-light">Conversa</span>
-      <span class="vw text-white">Vende</span>
+<!-- Ecosistema DYM y modelo económico: introducción al simulador de revenue -->
+<section class="reveal reveal-fade py-[48px] md:py-[64px] px-5 sm:px-10 text-white" id="concepto" aria-labelledby="concepto-title" style="background:linear-gradient(180deg,#0A4A5E,#0E5470)">
+  <div class="max-w-6xl mx-auto">
+    <div class="mb-5">
+      <p class="kicker !text-teal-300 mb-3">El ecosistema DYM</p>
+      <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] text-white" id="concepto-title">Tres soluciones. Un nuevo canal de valor.</h2>
     </div>
-    <div class="grid place-items-center mt-3 min-h-[64px]">
-      <p class="vp on">El tótem estima el perfil de quien está frente a la pantalla, de forma anónima.</p>
-      <p class="vp">El asistente atiende por WhatsApp y guía a cada cliente hasta la compra.</p>
-      <p class="vp">Todo suma en un solo tablero de datos anónimos y conversiones.</p>
+    <div class="grid md:grid-cols-3 gap-3">
+      <article class="rounded-[20px] border border-white/15 bg-[#0A4A5E]/65 p-5">
+        <p class="text-[10px] font-bold tracking-[0.12em] text-gold-light">RETAIL MEDIA</p>
+        <h3 class="font-serif text-[20px] font-medium mt-2">Tótems inteligentes</h3>
+        <p class="text-sm leading-relaxed text-white/75 mt-2">Publicidad segmentada y campañas dentro de la tienda.</p>
+      </article>
+      <article class="rounded-[20px] border border-white/15 bg-[#0A4A5E]/65 p-5">
+        <p class="text-[10px] font-bold tracking-[0.12em] text-gold-light">COMMERCE MEDIA</p>
+        <h3 class="font-serif text-[20px] font-medium mt-2">Aurelio AI</h3>
+        <p class="text-sm leading-relaxed text-white/75 mt-2">Asistente en WhatsApp con recomendaciones patrocinadas.</p>
+      </article>
+      <article class="rounded-[20px] border border-white/15 bg-[#0A4A5E]/65 p-5">
+        <p class="text-[10px] font-bold tracking-[0.12em] text-gold-light">INTELIGENCIA PREDICTIVA</p>
+        <h3 class="font-serif text-[20px] font-medium mt-2">Analítica de tráfico</h3>
+        <p class="text-sm leading-relaxed text-white/75 mt-2">Anticipa demanda para optimizar campañas y operación.</p>
+      </article>
     </div>
-    <div class="flex justify-center gap-2 mt-6" aria-hidden="true">
-      <span class="vd on"></span><span class="vd"></span><span class="vd"></span>
+    <div class="mt-7 border-t border-white/15 pt-6">
+      <p class="kicker !text-teal-300 mb-2">El modelo económico</p>
+      <h2 class="font-serif font-medium text-[clamp(24px,3vw,36px)] tracking-[-0.01em] leading-[1.12] text-white">Ingresos de marcas menos servicio DYM.</h2>
+      <div class="grid md:grid-cols-[1fr_auto_1fr_auto_1fr] items-stretch gap-2 mt-4">
+        <div class="rounded-xl border border-white/10 bg-white/[0.07] p-4 flex flex-col justify-center">
+          <span class="text-[10px] font-bold tracking-[0.12em] uppercase text-white/60">Ingreso</span>
+          <strong class="text-lg leading-snug mt-2">Publicidad de marcas</strong>
+        </div>
+        <div class="grid place-items-center text-xl text-gold-light font-light" aria-hidden="true">−</div>
+        <div class="rounded-xl border border-white/10 bg-white/[0.07] p-4 flex flex-col justify-center">
+          <span class="text-[10px] font-bold tracking-[0.12em] uppercase text-white/60">Operación</span>
+          <strong class="text-lg leading-snug mt-2">Servicio mensual DYM</strong>
+        </div>
+        <div class="grid place-items-center text-xl text-gold-light font-light" aria-hidden="true">=</div>
+        <div class="rounded-xl border border-white/10 bg-navy p-4 flex flex-col justify-center shadow-[0_15px_32px_rgba(3,49,64,0.3)]">
+          <span class="text-[10px] font-bold tracking-[0.12em] uppercase text-gold-light">Resultado</span>
+          <strong class="text-lg leading-snug mt-2 text-white">Contribución del canal</strong>
+        </div>
+      </div>
+      <p class="mt-3 text-xs leading-relaxed text-white/65">Además de ingresos, el retailer obtiene datos para mejorar campañas y operación. La contribución no incluye otros costos aplicables.</p>
+    </div>
+  </div>
+</section>
+<!-- Modelo de revenue -->
+<section class="reveal reveal-up py-[48px] md:py-[64px] px-5 sm:px-10 text-white" id="modelo-revenue" aria-labelledby="mr-title" style="background:linear-gradient(180deg,#0E5470 0%,#17688F 50%,#0E5470 100%)">
+  <div class="max-w-6xl mx-auto">
+    <div class="max-w-[760px] mb-7">
+      <p class="kicker !text-teal-300 mb-3">Modelo de revenue</p>
+      <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] text-white" id="mr-title">¿Cuánto puede generar una tienda?</h2>
+      <p class="text-sm sm:text-base leading-relaxed text-white/75 mt-3">Mueve los supuestos. El escenario inicial contempla la mitad de los espacios vendidos.</p>
+    </div>
+    <div class="grid lg:grid-cols-2 gap-5 items-stretch">
+      <div class="rounded-[24px] bg-[#0A4A5E]/75 border border-white/15 p-5 sm:p-7 flex flex-col gap-6">
+        <div>
+          <span class="block text-sm font-semibold text-white mb-3" id="mr-l-t">Tótems por tienda</span>
+          <div class="flex flex-wrap gap-2" role="group" aria-labelledby="mr-l-t">
+            <button type="button" class="mr-chip" aria-pressed="false" data-t="1">1 tótem</button>
+            <button type="button" class="mr-chip is-selected" aria-pressed="true" data-t="2">2 tótems</button>
+            <button type="button" class="mr-chip" aria-pressed="false" data-t="3">3 tótems</button>
+          </div>
+        </div>
+        <div>
+          <label class="flex justify-between gap-3 text-sm font-semibold text-white" for="mr-occ"><span>Espacios vendidos a marcas</span><b class="text-gold-light tabular-nums" id="mr-occ-v">50%</b></label>
+          <input class="mt-2 w-full accent-[#1A74B8]" id="mr-occ" type="range" min="0" max="100" step="5" value="50">
+          <span class="block text-xs text-white/65 mt-1" id="mr-occ-h"></span>
+        </div>
+        <div>
+          <label class="flex justify-between gap-3 text-sm font-semibold text-white" for="mr-prods"><span>Productos patrocinados en el asistente</span><b class="text-gold-light tabular-nums" id="mr-prods-v">600</b></label>
+          <input class="mt-2 w-full accent-[#1A74B8]" id="mr-prods" type="range" min="0" max="800" step="25" value="600">
+          <span class="block text-xs text-white/65 mt-1">MXN 500 al mes por producto recomendado</span>
+        </div>
+        <div>
+          <label class="flex justify-between gap-3 text-sm font-semibold text-white" for="mr-shops"><span>Tiendas con DYM</span><b class="text-gold-light tabular-nums" id="mr-shops-v">10</b></label>
+          <input class="mt-2 w-full accent-[#1A74B8]" id="mr-shops" type="range" min="1" max="90" step="1" value="10">
+          <span class="block text-xs text-white/65 mt-1">De una tienda piloto a toda la cadena</span>
+        </div>
+        <p class="text-xs leading-relaxed text-white/60">Supuestos: 24 espacios de loop a MXN 3,000 y 16 segmentos reactivos a MXN 8,000 por tótem, al mes. Proyecciones, no garantías.</p>
+      </div>
+
+      <div class="rounded-[24px] bg-navy text-white p-5 sm:p-7 flex flex-col gap-5" aria-live="polite">
+        <div>
+          <span class="text-sm text-white/70">Ingreso de marcas por tienda, al mes</span>
+          <p class="font-medium text-[clamp(42px,6vw,64px)] leading-tight tracking-tight text-teal-300 tabular-nums" id="mr-store">$0</p>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div class="rounded-2xl bg-white/[0.07] p-4">
+            <span class="text-xs text-white/65">Espacios en tótems</span>
+            <strong class="block text-xl font-semibold text-white tabular-nums mt-1" id="mr-esp">$0</strong>
+          </div>
+          <div class="rounded-2xl bg-white/[0.07] p-4">
+            <span class="text-xs text-white/65">Recomendaciones en el asistente</span>
+            <strong class="block text-xl font-semibold text-white tabular-nums mt-1" id="mr-ast">$0</strong>
+          </div>
+        </div>
+        <div class="border-t border-white/15 pt-4 flex flex-col gap-1">
+          <span class="text-sm text-white/70" id="mr-chain-l">En 10 tiendas, al mes</span>
+          <strong class="font-medium text-3xl text-gold-light tabular-nums" id="mr-chain">$0</strong>
+          <span class="text-xs text-white/60 tabular-nums" id="mr-year">$0 al año</span>
+        </div>
+        <button type="button" class="mr-toggle self-start" id="mr-tg" aria-expanded="false" aria-controls="mr-inv">Ver inversión y punto de equilibrio</button>
+        <div class="rounded-2xl bg-white/[0.07] p-4 flex flex-col gap-2 text-sm" id="mr-inv" hidden>
+          <div class="flex justify-between gap-3"><span class="text-white/70">Mensualidad del paquete, desde el mes 4</span><strong class="tabular-nums" id="mr-fee">$0</strong></div>
+          <div class="flex justify-between gap-3"><span class="text-white/70">Resultado neto por tienda</span><strong class="font-semibold tabular-nums" id="mr-net">$0</strong></div>
+          <span class="text-xs text-white/70" id="mr-be"></span>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -99,7 +209,9 @@
               <div id="rdScreen" class="rd-screen tt-screen">
                 <p id="rdTitle" class="font-serif text-[15px] font-medium leading-tight mt-1">Cena fácil en casa</p>
                 <p id="rdLine" class="text-[10.5px] leading-snug text-white/85 mt-1.5">Ingredientes frescos y recetas listas para esta noche.</p>
-                <div class="mt-auto mx-auto w-[52px] h-[52px] rounded-lg bg-white p-1.5"><svg viewBox="0 0 13 13" class="w-full h-full" fill="#212F5B" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h5v5H0zM1 1v3h3V1z" fill-rule="evenodd"/><rect x="2" y="2" width="1" height="1"/><path d="M8 0h5v5H8zM9 1v3h3V1z" fill-rule="evenodd"/><rect x="10" y="2" width="1" height="1"/><path d="M0 8h5v5H0zM1 9v3h3V9z" fill-rule="evenodd"/><rect x="2" y="10" width="1" height="1"/><rect x="5" y="0" width="1" height="1"/><rect x="6" y="0" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="7" y="1" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="5" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="7" y="5" width="1" height="1"/><rect x="11" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="7" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/><rect x="12" y="6" width="1" height="1"/><rect x="1" y="7" width="1" height="1"/><rect x="2" y="7" width="1" height="1"/><rect x="5" y="7" width="1" height="1"/><rect x="7" y="7" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="11" y="7" width="1" height="1"/><rect x="6" y="8" width="1" height="1"/><rect x="10" y="8" width="1" height="1"/><rect x="6" y="9" width="1" height="1"/><rect x="7" y="9" width="1" height="1"/><rect x="9" y="9" width="1" height="1"/><rect x="10" y="9" width="1" height="1"/><rect x="12" y="9" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="7" y="10" width="1" height="1"/><rect x="9" y="10" width="1" height="1"/><rect x="10" y="10" width="1" height="1"/><rect x="5" y="11" width="1" height="1"/><rect x="7" y="11" width="1" height="1"/><rect x="9" y="11" width="1" height="1"/><rect x="10" y="11" width="1" height="1"/><rect x="12" y="11" width="1" height="1"/><rect x="6" y="12" width="1" height="1"/><rect x="7" y="12" width="1" height="1"/><rect x="8" y="12" width="1" height="1"/><rect x="10" y="12" width="1" height="1"/><rect x="12" y="12" width="1" height="1"/></svg></div>
+                <div class="mt-auto mx-auto w-[35px] h-[35px] rounded-md bg-white p-0.5">
+                  <img src="assets/images/qr-whatsapp.jpg" alt="Código QR de WhatsApp de DYM" class="block w-full h-full object-contain" loading="lazy">
+                </div>
                 <p class="text-[8.5px] text-white/80 mt-1.5">Escanea para obtenerla</p>
               </div>
               <div class="tt-lower" aria-hidden="true"><span class="tt-brand">DYM</span></div>
@@ -118,7 +230,9 @@
       </div>
 
       <div class="flex flex-col items-center justify-center gap-2 lg:pt-24">
-        <div class="sol-qr w-[84px] h-[84px] rounded-[16px] bg-white p-2.5 shadow-[0_20px_45px_rgba(0,0,0,0.3)]"><svg viewBox="0 0 13 13" class="w-full h-full" fill="#212F5B" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h5v5H0zM1 1v3h3V1z" fill-rule="evenodd"/><rect x="2" y="2" width="1" height="1"/><path d="M8 0h5v5H8zM9 1v3h3V1z" fill-rule="evenodd"/><rect x="10" y="2" width="1" height="1"/><path d="M0 8h5v5H0zM1 9v3h3V9z" fill-rule="evenodd"/><rect x="2" y="10" width="1" height="1"/><rect x="5" y="0" width="1" height="1"/><rect x="6" y="0" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="7" y="1" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="5" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="7" y="5" width="1" height="1"/><rect x="11" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="7" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/><rect x="12" y="6" width="1" height="1"/><rect x="1" y="7" width="1" height="1"/><rect x="2" y="7" width="1" height="1"/><rect x="5" y="7" width="1" height="1"/><rect x="7" y="7" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="11" y="7" width="1" height="1"/><rect x="6" y="8" width="1" height="1"/><rect x="10" y="8" width="1" height="1"/><rect x="6" y="9" width="1" height="1"/><rect x="7" y="9" width="1" height="1"/><rect x="9" y="9" width="1" height="1"/><rect x="10" y="9" width="1" height="1"/><rect x="12" y="9" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="7" y="10" width="1" height="1"/><rect x="9" y="10" width="1" height="1"/><rect x="10" y="10" width="1" height="1"/><rect x="5" y="11" width="1" height="1"/><rect x="7" y="11" width="1" height="1"/><rect x="9" y="11" width="1" height="1"/><rect x="10" y="11" width="1" height="1"/><rect x="12" y="11" width="1" height="1"/><rect x="6" y="12" width="1" height="1"/><rect x="7" y="12" width="1" height="1"/><rect x="8" y="12" width="1" height="1"/><rect x="10" y="12" width="1" height="1"/><rect x="12" y="12" width="1" height="1"/></svg></div>
+        <div class="sol-qr w-[92px] h-[92px] rounded-xl bg-white p-1.5 shadow-[0_12px_28px_rgba(0,0,0,0.25)]">
+          <img src="assets/images/qr-whatsapp.jpg" alt="Código QR de WhatsApp de DYM" class="block w-full h-full object-contain" loading="lazy">
+        </div>
         <p class="text-[10px] font-semibold uppercase tracking-[0.14em] text-white/85 text-center max-w-[110px]">Un escaneo los conecta</p>
       </div>
 
@@ -201,46 +315,44 @@
     <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] mb-2 text-white">La tienda física ya es un medio</h2>
     <p class="text-[clamp(56px,9vw,128px)] font-medium leading-none tracking-[-0.03em]"><span data-count="2130" data-prefix="US$" data-format="int">US$2,130</span></p>
     <p class="mt-1 mb-8 text-[clamp(15px,1.5vw,20px)] text-white/85">millones · retail media en México hacia 2028</p>
-    <div class="grid sm:grid-cols-3 gap-8 sm:gap-4">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-4">
       <div class="text-center"><p class="text-[clamp(44px,6vw,84px)] font-medium leading-none tracking-[-0.03em]" >~35%</p><p class="mt-2 font-serif text-[18px] font-medium">Walmart</p><p class="text-[13px] text-white/75">ticket mayor con su asistente</p></div>
       <div class="text-center"><p class="text-[clamp(44px,6vw,84px)] font-medium leading-none tracking-[-0.03em]" data-count="68" data-prefix="+" data-suffix="%">+68%</p><p class="mt-2 font-serif text-[18px] font-medium">Carrefour Emiratos</p><p class="text-[13px] text-white/75">en ventas del producto</p></div>
-      <div class="text-center"><p class="text-[clamp(44px,6vw,84px)] font-medium leading-none tracking-[-0.03em]" data-count="43.75" data-prefix="+" data-suffix="%" data-decimals="2">+43.75%</p><p class="mt-2 font-serif text-[18px] font-medium">Tesco</p><p class="text-[13px] text-white/75">uplift omnicanal</p></div>
+      <div class="text-center"><p class="text-[clamp(44px,6vw,84px)] font-medium leading-none tracking-[-0.03em]" data-count="25" data-prefix="+" data-suffix="%">+25%</p><p class="mt-2 font-serif text-[18px] font-medium">Mercadona</p><p class="text-[13px] text-white/75">precisión de inventario y disponibilidad</p><p class="text-[13px] text-white/75 mt-1">Analiza la demanda y repone mejor, con menos desperdicio operativo.</p></div>
+      <div class="text-center"><p class="text-[clamp(44px,6vw,84px)] font-medium leading-none tracking-[-0.03em]" data-count="24" data-suffix=" M">24 M</p><p class="mt-2 font-serif text-[18px] font-medium">Soriana Media</p><p class="text-[13px] text-white/75">ofrece audiencias de clientes</p></div>
     </div>
     <p class="mt-8"><a href="para-tu-negocio.html" class="btn-outline-light">Ver cómo se usan los datos y se genera el valor</a></p>
-    <p class="mt-6 text-[11px] leading-relaxed text-white/60 max-w-[760px] mx-auto">Resultados de campañas o estudios específicos, no de toda la cadena. Fuentes: eMarketer (proyección en dólares, Bloomberg Línea 2024), Walmart (2026), Tesco Media, Advertima y benchmarking de Intelezo.</p>
+    <p class="mt-6 text-[11px] leading-relaxed text-white/60 max-w-[760px] mx-auto">Resultados de campañas o estudios específicos, no de toda la cadena. Fuentes: eMarketer (proyección en dólares, Bloomberg Línea 2024), Walmart (2026), Advertima y benchmarking de Intelezo. Datos de Mercadona y Soriana Media proporcionados por DYM.</p>
   </div>
 </section>
 <!-- QUIÉNES CONFÍAN — dos tiras que corren en sentidos opuestos, con logos monocromos sin fondo (logos en assets/logos; mientras falten se muestra el nombre en texto) -->
 <section class="reveal reveal-up py-[36px] md:py-[44px] text-center overflow-hidden" id="confian" style="background:linear-gradient(180deg,#2B5F8A,#C9DCE8)">
   <p class="text-[13px] tracking-[0.2em] uppercase font-semibold text-white mb-6 px-5">Quiénes ya confían en nosotros</p>
   <div class="flex flex-col gap-3">
-    <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/80 -mb-1">Intelezo</p>
       <div class="mq mq-on-dark"><div class="mq-track"><div class="mq-half"><div class="mq-item"><img src="assets/logos/san-pedro-garza-garcia.png" alt="San Pedro Garza García" loading="lazy"></div><div class="mq-item"><img src="assets/logos/geos.svg" alt="GEOS" loading="lazy"></div><div class="mq-item"><img src="assets/logos/expo-chihuahua.png" alt="Expo Chihuahua" loading="lazy"></div><div class="mq-item"><img src="assets/logos/index.png" alt="Index" loading="lazy"></div><div class="mq-item"><img src="assets/logos/san-pedro-garza-garcia.png" alt="San Pedro Garza García" loading="lazy"></div><div class="mq-item"><img src="assets/logos/geos.svg" alt="GEOS" loading="lazy"></div><div class="mq-item"><img src="assets/logos/expo-chihuahua.png" alt="Expo Chihuahua" loading="lazy"></div><div class="mq-item"><img src="assets/logos/index.png" alt="Index" loading="lazy"></div></div><div class="mq-half" aria-hidden="true"><div class="mq-item"><img src="assets/logos/san-pedro-garza-garcia.png" alt="San Pedro Garza García" loading="lazy"></div><div class="mq-item"><img src="assets/logos/geos.svg" alt="GEOS" loading="lazy"></div><div class="mq-item"><img src="assets/logos/expo-chihuahua.png" alt="Expo Chihuahua" loading="lazy"></div><div class="mq-item"><img src="assets/logos/index.png" alt="Index" loading="lazy"></div><div class="mq-item"><img src="assets/logos/san-pedro-garza-garcia.png" alt="San Pedro Garza García" loading="lazy"></div><div class="mq-item"><img src="assets/logos/geos.svg" alt="GEOS" loading="lazy"></div><div class="mq-item"><img src="assets/logos/expo-chihuahua.png" alt="Expo Chihuahua" loading="lazy"></div><div class="mq-item"><img src="assets/logos/index.png" alt="Index" loading="lazy"></div></div></div></div>
-    <p class="text-[11px] font-semibold uppercase tracking-[0.18em] text-[#212F5B]/80 -mb-1 mt-2">Integral</p>
       <div class="mq mq-rev mq-on-light"><div class="mq-track"><div class="mq-half"><div class="mq-item"><img src="assets/logos/bankaool.png" alt="Bankaool" loading="lazy"></div><div class="mq-item"><img src="assets/logos/brasa.png" alt="Brasa" loading="lazy"></div><div class="mq-item"><img src="assets/logos/hospital-angeles.png" alt="Hospital Ángeles" loading="lazy"></div><div class="mq-item"><img src="assets/logos/tribunal-superior-de-justicia.png" alt="Tribunal Superior de Justicia" loading="lazy"></div><div class="mq-item"><img src="assets/logos/bankaool.png" alt="Bankaool" loading="lazy"></div><div class="mq-item"><img src="assets/logos/brasa.png" alt="Brasa" loading="lazy"></div><div class="mq-item"><img src="assets/logos/hospital-angeles.png" alt="Hospital Ángeles" loading="lazy"></div><div class="mq-item"><img src="assets/logos/tribunal-superior-de-justicia.png" alt="Tribunal Superior de Justicia" loading="lazy"></div></div><div class="mq-half" aria-hidden="true"><div class="mq-item"><img src="assets/logos/bankaool.png" alt="Bankaool" loading="lazy"></div><div class="mq-item"><img src="assets/logos/brasa.png" alt="Brasa" loading="lazy"></div><div class="mq-item"><img src="assets/logos/hospital-angeles.png" alt="Hospital Ángeles" loading="lazy"></div><div class="mq-item"><img src="assets/logos/tribunal-superior-de-justicia.png" alt="Tribunal Superior de Justicia" loading="lazy"></div><div class="mq-item"><img src="assets/logos/bankaool.png" alt="Bankaool" loading="lazy"></div><div class="mq-item"><img src="assets/logos/brasa.png" alt="Brasa" loading="lazy"></div><div class="mq-item"><img src="assets/logos/hospital-angeles.png" alt="Hospital Ángeles" loading="lazy"></div><div class="mq-item"><img src="assets/logos/tribunal-superior-de-justicia.png" alt="Tribunal Superior de Justicia" loading="lazy"></div></div></div></div>
   </div>
-  <p class="mt-6 text-[13px] font-semibold text-[#212F5B] px-5">1.er lugar en IA, World Police Summit 2025</p>
 </section>
 <!-- CÓMO EMPEZAR (versión corta): tres paquetes y tres pasos en una línea -->
 <section class="reveal reveal-up py-[40px] md:py-[48px] px-5 sm:px-10 text-[#212F5B]" id="empezar" style="background:linear-gradient(180deg,#C9DCE8,#E2EDF3)">
   <div class="max-w-5xl mx-auto text-center">
-    <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] mb-2 text-navy">Elige cuántos tótems</h2>
-    <p class="text-[14px] text-dim mb-7">Cada paquete incluye tótem, sensor, asistente, dashboard y soporte.</p>
+    <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] mb-2 text-navy">Elige cuántos Retail Data Points</h2>
+    <p class="text-[14px] text-dim mb-7">Cada paquete incluye Retail Data Point, sensor, asistente, dashboard y soporte.</p>
     <div class="grid md:grid-cols-3 gap-4 mb-8">
       <article class="sol-card rounded-[24px] border border-line p-6 text-center flex flex-col" style="background:#fff;color:#212F5B">
         <span class="block h-[28px]"></span>
-        <h3 class="font-serif text-[28px] font-medium leading-tight mb-5">1 tótem</h3>
-        <button type="button" class="btn-outline mt-auto" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Cotizar</button>
+        <h3 class="font-serif text-[28px] font-medium leading-tight mb-5">1 Retail Data Point</h3>
+        <button type="button" class="btn-outline mt-auto" onclick="document.getElementById('modelo-revenue').scrollIntoView({behavior:'smooth'})">Cotizar</button>
       </article>
       <article class="sol-card rounded-[24px] border border-gold shadow-[0_24px_55px_rgba(33,47,91,0.3)] md:scale-[1.05] z-[1] p-6 text-center flex flex-col" style="background:#212F5B;color:#fff">
         <span class="inline-block mb-2 rounded-full bg-gold-light px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.12em] text-ink">Recomendado</span>
-        <h3 class="font-serif text-[28px] font-medium leading-tight mb-5">2 tótems</h3>
-        <button type="button" class="btn-sky mt-auto" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Cotizar</button>
+        <h3 class="font-serif text-[28px] font-medium leading-tight mb-5">2 Retail Data Points</h3>
+        <button type="button" class="btn-sky mt-auto" onclick="document.getElementById('modelo-revenue').scrollIntoView({behavior:'smooth'})">Cotizar</button>
       </article>
       <article class="sol-card rounded-[24px] border border-line p-6 text-center flex flex-col" style="background:#fff;color:#212F5B">
         <span class="block h-[28px]"></span>
-        <h3 class="font-serif text-[28px] font-medium leading-tight mb-5">3 tótems</h3>
-        <button type="button" class="btn-outline mt-auto" onclick="document.getElementById('cnt').scrollIntoView({behavior:'smooth'})">Cotizar</button>
+        <h3 class="font-serif text-[28px] font-medium leading-tight mb-5">3 Retail Data Points</h3>
+        <button type="button" class="btn-outline mt-auto" onclick="document.getElementById('modelo-revenue').scrollIntoView({behavior:'smooth'})">Cotizar</button>
       </article>
     </div>
     <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-2 text-[13.5px] font-semibold">
@@ -286,7 +398,7 @@
 
 
 
-<!-- 16. PRUÉBALO EN VIVO Y CONTACTO — QR (ilustrativo, el real queda pendiente), WhatsApp en móvil y formulario (sin envío todavía) -->
+<!-- 16. PRUÉBALO EN VIVO Y CONTACTO — QR de WhatsApp, botón móvil y formulario (sin envío todavía) -->
 <section class="reveal reveal-left relative py-[56px] md:py-[64px] px-5 sm:px-10" id="cnt" style="background:linear-gradient(180deg,#EEF4F6,#F3F8FA)">
   <div class="relative z-[2] max-w-6xl mx-auto">
     <div class="grid md:grid-cols-2 gap-8 md:gap-14 items-start">
@@ -298,7 +410,9 @@
         <!-- Pendiente: enlace real de WhatsApp; confirmar que el 660 211 4254 sea una línea de WhatsApp -->
         <a href="https://wa.me/526602114254" target="_blank" rel="noopener" class="btn-gold md:hidden">Abrir WhatsApp</a>
         <div class="hidden md:block w-[230px] rounded-[26px] bg-white border-2 border-sky/70 p-5 text-center shadow-[0_24px_55px_rgba(33,47,91,0.15)]">
-          <div class="mx-auto w-[170px] h-[170px]"><svg viewBox="0 0 13 13" class="w-full h-full" fill="#212F5B" shape-rendering="crispEdges" aria-hidden="true"><path d="M0 0h5v5H0zM1 1v3h3V1z" fill-rule="evenodd"/><rect x="2" y="2" width="1" height="1"/><path d="M8 0h5v5H8zM9 1v3h3V1z" fill-rule="evenodd"/><rect x="10" y="2" width="1" height="1"/><path d="M0 8h5v5H0zM1 9v3h3V9z" fill-rule="evenodd"/><rect x="2" y="10" width="1" height="1"/><rect x="5" y="0" width="1" height="1"/><rect x="6" y="0" width="1" height="1"/><rect x="6" y="1" width="1" height="1"/><rect x="7" y="1" width="1" height="1"/><rect x="5" y="2" width="1" height="1"/><rect x="5" y="4" width="1" height="1"/><rect x="6" y="4" width="1" height="1"/><rect x="3" y="5" width="1" height="1"/><rect x="4" y="5" width="1" height="1"/><rect x="5" y="5" width="1" height="1"/><rect x="7" y="5" width="1" height="1"/><rect x="11" y="5" width="1" height="1"/><rect x="3" y="6" width="1" height="1"/><rect x="7" y="6" width="1" height="1"/><rect x="8" y="6" width="1" height="1"/><rect x="9" y="6" width="1" height="1"/><rect x="10" y="6" width="1" height="1"/><rect x="12" y="6" width="1" height="1"/><rect x="1" y="7" width="1" height="1"/><rect x="2" y="7" width="1" height="1"/><rect x="5" y="7" width="1" height="1"/><rect x="7" y="7" width="1" height="1"/><rect x="8" y="7" width="1" height="1"/><rect x="11" y="7" width="1" height="1"/><rect x="6" y="8" width="1" height="1"/><rect x="10" y="8" width="1" height="1"/><rect x="6" y="9" width="1" height="1"/><rect x="7" y="9" width="1" height="1"/><rect x="9" y="9" width="1" height="1"/><rect x="10" y="9" width="1" height="1"/><rect x="12" y="9" width="1" height="1"/><rect x="6" y="10" width="1" height="1"/><rect x="7" y="10" width="1" height="1"/><rect x="9" y="10" width="1" height="1"/><rect x="10" y="10" width="1" height="1"/><rect x="5" y="11" width="1" height="1"/><rect x="7" y="11" width="1" height="1"/><rect x="9" y="11" width="1" height="1"/><rect x="10" y="11" width="1" height="1"/><rect x="12" y="11" width="1" height="1"/><rect x="6" y="12" width="1" height="1"/><rect x="7" y="12" width="1" height="1"/><rect x="8" y="12" width="1" height="1"/><rect x="10" y="12" width="1" height="1"/><rect x="12" y="12" width="1" height="1"/></svg></div>
+          <div class="mx-auto w-[170px] h-[170px]">
+            <img src="assets/images/qr-whatsapp.jpg" alt="Código QR de WhatsApp para probar la experiencia" class="block w-full h-full object-contain" loading="lazy">
+          </div>
           <p class="mt-3 text-[13px] font-semibold leading-snug text-[#1A74B8]">Escanea y vive la experiencia completa.</p>
         </div>
       </div>
@@ -336,7 +450,7 @@
 
     <div class="mt-8 rounded-[20px] px-6 py-4 flex flex-wrap items-center justify-between gap-x-8 gap-y-2 text-[14px] text-white" style="background:#03313F">
       <a href="mailto:contacto@intelezo.com" class="font-semibold hover:text-gold-light transition-colors">contacto@intelezo.com</a>
-      <a href="tel:+526602114254" class="font-semibold hover:text-gold-light transition-colors">660 211 4254</a>
+      <a href="tel:+526602114254" class="font-semibold hover:text-gold-light transition-colors">614 443 2698</a>
       <span class="text-white/80">Inteligencia que decide. Datos que actúan.</span>
     </div>
   </div>
@@ -347,11 +461,6 @@
     <div>
       <img src="assets/images/logo-dym-rmi-dark.png" alt="DYM · Retail Media Intelligence" class="h-12 w-auto mb-3 block">
       <p class="text-xs text-dim leading-relaxed max-w-[300px]">Inteligencia en tienda que conecta cada pantalla con una conversación.</p>
-      <div class="mt-5 flex items-center gap-3">
-        <img src="assets/images/logo-intelezo-dark.png" alt="INTELEZO · From Metrics to Momentum" class="h-9 w-auto block">
-        <span class="text-[13px] font-semibold text-teal" aria-label="por">×</span>
-        <img src="assets/images/logo-integral-dark.webp" alt="INTEGRAL · Positive Artificial Intelligence" class="h-11 w-auto block mix-blend-multiply">
-      </div>
     </div>
     <div>
       <h5 class="text-[10px] font-semibold uppercase tracking-wider text-navy mb-3.5">Solución</h5>
@@ -371,6 +480,7 @@
       <h5 class="text-[10px] font-semibold uppercase tracking-wider text-navy mb-3.5">Contacto</h5>
       <a href="mailto:contacto@intelezo.com" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">contacto@intelezo.com</a>
       <a href="tel:+526602114254" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">660 211 4254</a>
+      <p class="text-xs text-dim leading-relaxed py-[3px]">Paseos Vistas del Sol 6800, Haciendas del Valle, Torre Azenzo, Torre A, Piso 12, Oficina 1204</p>
       <a href="#cnt" class="block text-xs text-dim no-underline py-[3px] hover:text-gold transition-colors">Pruébalo en vivo</a>
     </div>
   </div>
