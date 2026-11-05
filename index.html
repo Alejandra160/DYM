@@ -75,7 +75,7 @@
     <div class="absolute inset-0 translate-x-4 translate-y-4 rounded-[24px] bg-white/10" aria-hidden="true"></div>
     <div class="absolute inset-0 -translate-x-3 -translate-y-3 rounded-[24px] border border-white/30" aria-hidden="true"></div>
     <div class="relative rounded-[24px] overflow-hidden bg-ink aspect-video shadow-[0_30px_70px_rgba(3,49,64,0.45)]">
-      <video id="demoVideo" class="w-full h-full object-cover block" src="assets/video/asi-se-ve-en-la-practica.mp4" poster="assets/video/asi-se-ve-en-la-practica.jpg" muted loop playsinline controls preload="metadata" aria-label="Así se ve en la práctica: un cliente entra, el tótem lo detecta y el asistente lo atiende"></video>
+      <video id="demoVideo" class="w-full h-full object-cover block" src="assets/video/asi-se-ve-en-la-practica.mp4" poster="assets/video/asi-se-ve-en-la-practica.jpg" muted loop playsinline controls preload="metadata" aria-label="Así se ve en la práctica: un cliente entra, el Retail Data Point lo detecta y el asistente lo atiende"></video>
     </div>
   </div>
 </section>
@@ -89,7 +89,7 @@
     <div class="grid md:grid-cols-3 gap-3">
       <article class="rounded-[20px] border border-white/15 bg-[#0A4A5E]/65 p-5">
         <p class="text-[10px] font-bold tracking-[0.12em] text-gold-light">RETAIL MEDIA</p>
-        <h3 class="font-serif text-[20px] font-medium mt-2">Tótems inteligentes</h3>
+        <h3 class="font-serif text-[20px] font-medium mt-2">Retail Data Points inteligentes</h3>
         <p class="text-sm leading-relaxed text-white/75 mt-2">Publicidad segmentada y campañas dentro de la tienda.</p>
       </article>
       <article class="rounded-[20px] border border-white/15 bg-[#0A4A5E]/65 p-5">
@@ -132,34 +132,39 @@
     <div class="max-w-[760px] mb-7">
       <p class="kicker !text-teal-300 mb-3">Modelo de revenue</p>
       <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] text-white" id="mr-title">¿Cuánto puede generar una tienda?</h2>
-      <p class="text-sm sm:text-base leading-relaxed text-white/75 mt-3">Mueve los supuestos. El escenario inicial contempla la mitad de los espacios vendidos.</p>
+      <p class="text-sm sm:text-base leading-relaxed text-white/75 mt-3">Mueve los supuestos. Inicia con un escenario conservador: la mitad de los espacios vendidos.</p>
     </div>
     <div class="grid lg:grid-cols-2 gap-5 items-stretch">
       <div class="rounded-[24px] bg-[#0A4A5E]/75 border border-white/15 p-5 sm:p-7 flex flex-col gap-6">
         <div>
-          <span class="block text-sm font-semibold text-white mb-3" id="mr-l-t">Tótems por tienda</span>
+          <span class="block text-sm font-semibold text-white mb-3" id="mr-l-t">Retail Data Points por tienda</span>
           <div class="flex flex-wrap gap-2" role="group" aria-labelledby="mr-l-t">
-            <button type="button" class="mr-chip" aria-pressed="false" data-t="1">1 tótem</button>
-            <button type="button" class="mr-chip is-selected" aria-pressed="true" data-t="2">2 tótems</button>
-            <button type="button" class="mr-chip" aria-pressed="false" data-t="3">3 tótems</button>
+            <button type="button" class="mr-chip" aria-pressed="false" data-t="1">1 Retail Data Point</button>
+            <button type="button" class="mr-chip is-selected" aria-pressed="true" data-t="2">2 Retail Data Points</button>
+            <button type="button" class="mr-chip" aria-pressed="false" data-t="3">3 Retail Data Points</button>
           </div>
         </div>
         <div>
-          <label class="flex justify-between gap-3 text-sm font-semibold text-white" for="mr-occ"><span>Espacios vendidos a marcas</span><b class="text-gold-light tabular-nums" id="mr-occ-v">50%</b></label>
-          <input class="mt-2 w-full accent-[#1A74B8]" id="mr-occ" type="range" min="0" max="100" step="5" value="50">
-          <span class="block text-xs text-white/65 mt-1" id="mr-occ-h"></span>
+          <label class="flex justify-between gap-3 text-sm font-semibold text-white" for="mr-segocc"><span>Espacios segmentados vendidos</span><b class="text-gold-light tabular-nums" id="mr-segocc-v">50%</b></label>
+          <input class="mt-2 w-full accent-[#1A74B8]" id="mr-segocc" type="range" min="0" max="100" step="5" value="50">
+          <span class="block text-xs text-white/65 mt-1" id="mr-segocc-h"></span>
         </div>
         <div>
-          <label class="flex justify-between gap-3 text-sm font-semibold text-white" for="mr-prods"><span>Productos patrocinados en el asistente</span><b class="text-gold-light tabular-nums" id="mr-prods-v">600</b></label>
-          <input class="mt-2 w-full accent-[#1A74B8]" id="mr-prods" type="range" min="0" max="800" step="25" value="600">
-          <span class="block text-xs text-white/65 mt-1">MXN 500 al mes por producto recomendado</span>
+          <label class="flex justify-between gap-3 text-sm font-semibold text-white" for="mr-loopocc"><span>Espacios de loop vendidos</span><b class="text-gold-light tabular-nums" id="mr-loopocc-v">50%</b></label>
+          <input class="mt-2 w-full accent-[#1A74B8]" id="mr-loopocc" type="range" min="0" max="100" step="5" value="50">
+          <span class="block text-xs text-white/65 mt-1" id="mr-loopocc-h"></span>
+        </div>
+        <div>
+          <label class="flex justify-between gap-3 text-sm font-semibold text-white" for="mr-prods"><span>Productos patrocinados por tienda</span><b class="text-gold-light tabular-nums" id="mr-prods-v">600</b></label>
+          <input class="mt-2 w-full accent-[#1A74B8]" id="mr-prods" type="range" min="0" max="1000" step="25" value="600">
+          <span class="block text-xs text-white/65 mt-1">Recomendados en el asistente · MXN 500 al mes cada uno</span>
         </div>
         <div>
           <label class="flex justify-between gap-3 text-sm font-semibold text-white" for="mr-shops"><span>Tiendas con DYM</span><b class="text-gold-light tabular-nums" id="mr-shops-v">10</b></label>
           <input class="mt-2 w-full accent-[#1A74B8]" id="mr-shops" type="range" min="1" max="90" step="1" value="10">
           <span class="block text-xs text-white/65 mt-1">De una tienda piloto a toda la cadena</span>
         </div>
-        <p class="text-xs leading-relaxed text-white/60">Supuestos: 24 espacios de loop a MXN 3,000 y 16 segmentos reactivos a MXN 8,000 por tótem, al mes. Proyecciones, no garantías.</p>
+        <p class="text-xs leading-relaxed text-white/60">Supuestos: cada Retail Data Point tiene 24 espacios de loop y 16 espacios segmentados, al mes. Proyecciones, no garantías.</p>
       </div>
 
       <div class="rounded-[24px] bg-navy text-white p-5 sm:p-7 flex flex-col gap-5" aria-live="polite">
@@ -167,13 +172,17 @@
           <span class="text-sm text-white/70">Ingreso de marcas por tienda, al mes</span>
           <p class="font-medium text-[clamp(42px,6vw,64px)] leading-tight tracking-tight text-teal-300 tabular-nums" id="mr-store">$0</p>
         </div>
-        <div class="grid sm:grid-cols-2 gap-3">
+        <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
           <div class="rounded-2xl bg-white/[0.07] p-4">
-            <span class="text-xs text-white/65">Espacios en tótems</span>
-            <strong class="block text-xl font-semibold text-white tabular-nums mt-1" id="mr-esp">$0</strong>
+            <span class="text-xs text-white/65">Espacios segmentados</span>
+            <strong class="block text-xl font-semibold text-white tabular-nums mt-1" id="mr-seg">$0</strong>
           </div>
           <div class="rounded-2xl bg-white/[0.07] p-4">
-            <span class="text-xs text-white/65">Recomendaciones en el asistente</span>
+            <span class="text-xs text-white/65">Espacios de loop</span>
+            <strong class="block text-xl font-semibold text-white tabular-nums mt-1" id="mr-loop">$0</strong>
+          </div>
+          <div class="rounded-2xl bg-white/[0.07] p-4">
+            <span class="text-xs text-white/65">Recomendaciones del asistente</span>
             <strong class="block text-xl font-semibold text-white tabular-nums mt-1" id="mr-ast">$0</strong>
           </div>
         </div>
@@ -192,10 +201,10 @@
     </div>
   </div>
 </section>
-<!-- SOLUCIÓN (versión corta): Retail Data Point + Retail Agent en una sola sección, con el tótem y el teléfono como protagonistas -->
+<!-- SOLUCIÓN (versión corta): Retail Data Point + Retail Agent en una sola sección -->
 <section class="reveal reveal-up py-[40px] md:py-[48px] px-5 sm:px-10 text-white" id="solucion" style="background:linear-gradient(180deg,#0E5470,#17688F)">
   <div class="max-w-6xl mx-auto">
-    <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] mb-7 text-white text-center">Un tótem, un escaneo, una conversación</h2>
+    <h2 class="font-serif font-medium text-[clamp(26px,3.2vw,44px)] tracking-[-0.01em] leading-[1.12] mb-7 text-white text-center">Un Retail Data Point, un escaneo, una conversación</h2>
     <div class="grid lg:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] gap-8 lg:gap-6 items-start">
 
       <div id="rdp" class="flex flex-col items-center text-center">
@@ -203,7 +212,7 @@
         <p class="text-[14px] text-white/80 mb-4">Detecta, comunica y mide.</p>
         <div class="tt-wrap">
           <div class="tt-chip" aria-live="polite"><span class="tt-dot" aria-hidden="true"></span>Perfil estimado: <strong id="rdProfile">Mujer · 25–34</strong></div>
-          <div id="rdTotem" class="tt" role="img" aria-label="Tótem de piso con una oferta de ejemplo">
+          <div id="rdTotem" class="tt" role="img" aria-label="Retail Data Point de piso con una oferta de ejemplo">
             <div class="tt-body">
               <div class="tt-lens" aria-hidden="true"><i class="tt-led"></i></div>
               <div id="rdScreen" class="rd-screen tt-screen">
@@ -286,7 +295,7 @@
           <h3 class="rw-word">Detecta</h3>
         </div>
         <div class="rw" tabindex="0" role="button" aria-expanded="false" style="--c:#2D7A7B;--w:#8FD6CF">
-          <p class="rw-line">El tótem le muestra la oferta de su perfil y un QR. <span class="rw-dato">Dato: <strong>impresiones por segmento</strong></span></p>
+          <p class="rw-line">El Retail Data Point muestra una oferta según su perfil y un QR. <span class="rw-dato">Dato: <strong>impresiones por segmento</strong></span></p>
           <h3 class="rw-word">Activa</h3>
         </div>
       </div>
@@ -386,11 +395,11 @@
       </div>
     </div>
     <div id="faqList" class="flex flex-col gap-3.5">
-      <details class="faq-item bg-white border border-line rounded-[24px] px-6 py-5" data-cat="general" open><summary>¿Funciona en varias sucursales?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">Sí. Se puede empezar con un tótem como piloto y crecer a la tienda completa, a un formato y a todas las tiendas, todo desde un solo dashboard.</p></details>
+      <details class="faq-item bg-white border border-line rounded-[24px] px-6 py-5" data-cat="general" open><summary>¿Funciona en varias sucursales?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">Sí. Se puede empezar con un Retail Data Point como piloto y crecer a la tienda completa, a un formato y a todas las tiendas, todo desde un solo dashboard.</p></details>
       <details class="faq-item bg-white border border-line rounded-[24px] px-6 py-5" data-cat="general"><summary>¿Cuánto dura el piloto?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">El piloto dura 1 mes, aparte de los meses de set-up, y se mide contra una línea base con indicadores acordados antes de arrancar.</p></details>
       <details class="faq-item bg-white border border-line rounded-[24px] px-6 py-5" data-cat="instalacion" style="display:none"><summary>¿Necesito instalación especializada?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">La instalación es no invasiva y nuestro equipo te acompaña en todo el proceso.</p></details>
       <details class="faq-item bg-white border border-line rounded-[24px] px-6 py-5" data-cat="instalacion" style="display:none"><summary>¿El asistente se conecta a mi catálogo?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">Sí. Se conecta a la base de cada tienda: precios, catálogo y promociones, tienda por tienda. La conexión se define con el equipo de TI del cliente.</p></details>
-      <details class="faq-item bg-white border border-line rounded-[24px] px-6 py-5" data-cat="privacidad" style="display:none"><summary>¿Se guardan datos personales de mis clientes?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">Los tótems estiman un perfil de forma anónima, sin reconocimiento facial, y los datos se manejan de forma anónima y agregada. La conversación con el asistente la inicia el cliente al escanear el QR.</p></details>
+      <details class="faq-item bg-white border border-line rounded-[24px] px-6 py-5" data-cat="privacidad" style="display:none"><summary>¿Se guardan datos personales de mis clientes?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">Los Retail Data Points estiman un perfil de forma anónima, sin reconocimiento facial, y los datos se manejan de forma anónima y agregada. La conversación con el asistente la inicia el cliente al escanear el QR.</p></details>
       <details class="faq-item bg-white border border-line rounded-[24px] px-6 py-5" data-cat="privacidad" style="display:none"><summary>¿Cómo protegen mi información?</summary><p class="text-[13.5px] text-dim leading-relaxed mt-3.5">Tu catálogo, inventario y conversaciones se manejan con acceso restringido, exclusivo para tu operación.</p></details>
     </div>
   </div>
