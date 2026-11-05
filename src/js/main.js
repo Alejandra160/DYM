@@ -12,44 +12,55 @@
   targets.forEach(function (el) { io.observe(el); });
 })();
 
-// Modelo de revenue: estimación ilustrativa a partir de los supuestos editables
+// Modelo de revenue: estimación por espacios segmentados, loop y recomendaciones
 (function () {
   var root = document.getElementById('modelo-revenue');
   if (!root) return;
 
   var fees = { 1: 309999, 2: 339999, 3: 369000 };
-  var capacityPerTotem = 200000;
+  var loopSlotsPerPoint = 24;
+  var loopPrice = 3000;
+  var segmentedSlotsPerPoint = 16;
+  var segmentedPrice = 8000;
   var revenuePerProduct = 500;
-  var slotsPerTotem = 40;
-  var state = { totems: 2, occupancy: 50, products: 600, stores: 10 };
+  var state = { points: 2, segmentedOccupancy: 50, loopOccupancy: 50, products: 600, stores: 10 };
   var money = function (amount) {
     return (amount < 0 ? '−$' : '$') + Math.round(Math.abs(amount)).toLocaleString('es-MX');
   };
   var get = function (id) { return document.getElementById(id); };
-  var occupancy = get('mr-occ');
+  var segmentedOccupancy = get('mr-segocc');
+  var loopOccupancy = get('mr-loopocc');
   var products = get('mr-prods');
   var stores = get('mr-shops');
   var investmentToggle = get('mr-tg');
   var investment = get('mr-inv');
   var net = get('mr-net');
+  var investmentExpanded = false;
 
   function render() {
-    var spaces = state.totems * (state.occupancy / 100) * capacityPerTotem;
+    var segmentedRevenue = state.points * (state.segmentedOccupancy / 100) * segmentedSlotsPerPoint * segmentedPrice;
+    var loopRevenue = state.points * (state.loopOccupancy / 100) * loopSlotsPerPoint * loopPrice;
+    var advertisingRevenue = segmentedRevenue + loopRevenue;
     var recommendations = state.products * revenuePerProduct;
-    var storeRevenue = spaces + recommendations;
+    var storeRevenue = advertisingRevenue + recommendations;
     var chainRevenue = storeRevenue * state.stores;
-    var fee = fees[state.totems];
+    var fee = fees[state.points];
     var netRevenue = storeRevenue - fee;
-    var breakEvenProducts = Math.max(0, Math.ceil((fee - spaces) / revenuePerProduct));
-    var totalSlots = state.totems * slotsPerTotem;
-    var soldSlots = Math.round(totalSlots * state.occupancy / 100);
+    var breakEvenProducts = Math.max(0, Math.ceil((fee - advertisingRevenue) / revenuePerProduct));
+    var segmentedTotal = state.points * segmentedSlotsPerPoint;
+    var segmentedSold = Math.round(segmentedTotal * state.segmentedOccupancy / 100);
+    var loopTotal = state.points * loopSlotsPerPoint;
+    var loopSold = Math.round(loopTotal * state.loopOccupancy / 100);
 
-    get('mr-occ-v').textContent = state.occupancy + '%';
-    get('mr-occ-h').textContent = soldSlots + ' de ' + totalSlots + ' espacios vendidos en la tienda';
+    get('mr-segocc-v').textContent = state.segmentedOccupancy + '%';
+    get('mr-segocc-h').textContent = segmentedSold + ' de ' + segmentedTotal + ' espacios vendidos · MXN 8,000 al mes cada uno';
+    get('mr-loopocc-v').textContent = state.loopOccupancy + '%';
+    get('mr-loopocc-h').textContent = loopSold + ' de ' + loopTotal + ' espacios vendidos · MXN 3,000 al mes cada uno';
     get('mr-prods-v').textContent = state.products;
     get('mr-shops-v').textContent = state.stores;
     get('mr-store').textContent = money(storeRevenue);
-    get('mr-esp').textContent = money(spaces);
+    get('mr-seg').textContent = money(segmentedRevenue);
+    get('mr-loop').textContent = money(loopRevenue);
     get('mr-ast').textContent = money(recommendations);
     get('mr-chain-l').textContent = 'En ' + state.stores + (state.stores === 1 ? ' tienda' : ' tiendas') + ', al mes';
     get('mr-chain').textContent = money(chainRevenue);
@@ -57,12 +68,15 @@
     get('mr-fee').textContent = money(fee);
     net.textContent = money(netRevenue);
     net.style.color = netRevenue >= 0 ? '#74C6C0' : '#F2A65A';
-    get('mr-be').textContent = 'Punto de equilibrio con ' + state.occupancy + '% de espacios vendidos: ' + breakEvenProducts + ' productos patrocinados.';
+    get('mr-be').textContent = 'Punto de equilibrio con los espacios vendidos: ' + breakEvenProducts + ' productos patrocinados.';
+    investmentToggle.setAttribute('aria-expanded', String(investmentExpanded));
+    investment.hidden = !investmentExpanded;
+    investmentToggle.textContent = investmentExpanded ? 'Ocultar inversión' : 'Ver inversión y punto de equilibrio';
   }
 
   root.querySelectorAll('.mr-chip').forEach(function (button) {
     button.addEventListener('click', function () {
-      state.totems = Number(button.getAttribute('data-t'));
+      state.points = Number(button.getAttribute('data-t'));
       root.querySelectorAll('.mr-chip').forEach(function (option) {
         var selected = option === button;
         option.classList.toggle('is-selected', selected);
@@ -72,8 +86,12 @@
     });
   });
 
-  occupancy.addEventListener('input', function () {
-    state.occupancy = Number(occupancy.value);
+  segmentedOccupancy.addEventListener('input', function () {
+    state.segmentedOccupancy = Number(segmentedOccupancy.value);
+    render();
+  });
+  loopOccupancy.addEventListener('input', function () {
+    state.loopOccupancy = Number(loopOccupancy.value);
     render();
   });
   products.addEventListener('input', function () {
@@ -85,10 +103,8 @@
     render();
   });
   investmentToggle.addEventListener('click', function () {
-    var expanded = investmentToggle.getAttribute('aria-expanded') !== 'true';
-    investmentToggle.setAttribute('aria-expanded', String(expanded));
-    investment.hidden = !expanded;
-    investmentToggle.textContent = expanded ? 'Ocultar inversión' : 'Ver inversión y punto de equilibrio';
+    investmentExpanded = !investmentExpanded;
+    render();
   });
 
   render();
