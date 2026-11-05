@@ -63,8 +63,142 @@ body {
       radial-gradient(ellipse 70% 60% at 10% 100%, rgba(44,124,124,0.25) 0%, rgba(44,124,124,0) 70%),
       linear-gradient(180deg, #0E1830 0%, #03313F 100%);
   }
-
-
+  .hero-alsuper {
+    position: relative;
+    isolation: isolate;
+    display: flex;
+    align-items: center;
+    min-height: max(620px, calc(100svh - 56px));
+    overflow: hidden;
+    background: #07182e;
+    color: #fff;
+    padding-bottom: 56px;
+  }
+  .hero-alsuper::before {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    background-image:
+      linear-gradient(90deg, #07182e 0%, #07182e 50%, rgba(7,24,46,.98) 66%, rgba(7,24,46,.84) 75%, rgba(7,24,46,.28) 84%, rgba(7,24,46,0) 100%),
+      url("../../assets/images/hero-alsuper-dym.jpeg");
+    background-position: center, right center;
+    background-size: cover;
+  }
+  .hero-alsuper::after {
+    content: "";
+    position: absolute;
+    z-index: 0;
+    inset: auto 0 0;
+    height: clamp(90px, 14vh, 150px);
+    background: linear-gradient(180deg, rgba(3,49,63,0), #03313F);
+    pointer-events: none;
+  }
+  .hero-alsuper__content {
+    width: min(100% - 40px, 1200px);
+    margin: 0 auto;
+    padding: 52px 0 64px;
+    position: relative;
+    z-index: 2;
+  }
+  .hero-alsuper__sparkles {
+    position: absolute;
+    z-index: 1;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: clamp(110px, 22%, 190px);
+    overflow: visible;
+    pointer-events: none;
+  }
+  .hero-alsuper__sparkle-glow,
+  .hero-alsuper__sparkle-line,
+  .hero-alsuper__sparkle-core {
+    fill: none;
+    stroke: url(#heroSparkleGradient);
+    stroke-linecap: round;
+  }
+  .hero-alsuper__sparkle-glow {
+    stroke-width: 24;
+    filter: url(#heroSparkleBlur);
+    opacity: .8;
+  }
+  .hero-alsuper__sparkle-line {
+    stroke-width: 7;
+    opacity: .85;
+  }
+  .hero-alsuper__sparkle-core {
+    stroke: #fff0c1;
+    stroke-width: 2;
+    opacity: .95;
+  }
+  .hero-alsuper__logos {
+    display: flex;
+    align-items: center;
+    gap: clamp(14px, 2.4vw, 32px);
+    margin-bottom: clamp(24px, 3vw, 40px);
+  }
+  .hero-alsuper__brand {
+    display: block;
+    width: clamp(170px, 22vw, 270px);
+    height: auto;
+  }
+  .hero-alsuper__cross {
+    color: rgba(255,255,255,.82);
+    font-size: clamp(28px, 3.2vw, 42px);
+    font-weight: 300;
+    line-height: 1;
+  }
+  .hero-alsuper__dym {
+    display: block;
+    width: clamp(150px, 19vw, 230px);
+    height: auto;
+  }
+  .hero-alsuper__content h1 {
+    max-width: 900px;
+    margin: 0;
+    color: #edb95f;
+    font-size: clamp(32px, 3.8vw, 52px);
+    font-weight: 700;
+    letter-spacing: -.035em;
+    line-height: 1.08;
+  }
+  .hero-alsuper__rule {
+    display: block;
+    width: clamp(110px, 17vw, 220px);
+    height: 3px;
+    margin: clamp(20px, 3vw, 34px) 0;
+    background: #edb95f;
+  }
+  .hero-alsuper__content > p {
+    max-width: 680px;
+    margin: 0;
+    color: rgba(255,255,255,.92);
+    font-size: clamp(17px, 2.2vw, 28px);
+    line-height: 1.4;
+  }
+  .hero-alsuper__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 30px;
+  }
+  @media (max-width: 640px) {
+    .hero-alsuper { min-height: min(780px, calc(100svh - 56px)); align-items: flex-start; }
+    .hero-alsuper::before {
+      background-image:
+        linear-gradient(180deg, #07182e 0%, #07182e 43%, rgba(7,24,46,.98) 57%, rgba(7,24,46,.86) 68%, rgba(7,24,46,.18) 82%, rgba(7,24,46,0) 100%),
+        url("../../assets/images/hero-alsuper-dym.jpeg");
+      background-position: center, 75% center;
+    }
+    .hero-alsuper__content { width: calc(100% - 40px); padding: 42px 0 48px; }
+    .hero-alsuper__logos { gap: 14px; margin-bottom: 38px; }
+    .hero-alsuper__brand { width: clamp(140px, 40vw, 175px); }
+    .hero-alsuper__dym { width: clamp(125px, 38vw, 170px); }
+    .hero-alsuper__content h1 { font-size: clamp(30px, 8.5vw, 42px); }
+    .hero-alsuper__content > p { font-size: 17px; }
+    .hero-alsuper__actions { gap: 9px; margin-top: 22px; }
+  }
   /* Motivo de marca: 6 barras ascendentes (3 navy, 1 verde azulado, 1 cielo, 1 cielo claro) */
   .bars { @apply flex items-end gap-[3%] w-full; }
   .bars > span {
@@ -124,6 +258,17 @@ body {
   }
   .field-select:focus { @apply border-sky; }
   .field-select option { @apply bg-white text-navy-deep; }
+
+  .mr-chip {
+    @apply min-h-[44px] rounded-xl border border-white/35 bg-transparent px-4 text-sm font-semibold text-white transition-colors;
+  }
+  .mr-chip:hover { @apply border-gold-light; }
+  .mr-chip.is-selected { @apply border-gold-light bg-gold-light text-ink; }
+  .mr-chip:focus-visible, .mr-toggle:focus-visible { @apply outline-2 outline-offset-2 outline-gold-light; }
+  .mr-toggle {
+    @apply min-h-[44px] rounded-xl border border-white/35 bg-transparent px-4 text-sm font-medium text-white transition-colors;
+  }
+  .mr-toggle:hover { @apply border-gold-light text-gold-light; }
 
   /* Arrow bullet lists (insygt / MARKO feature lists) — pensadas para fondo claro */
   .arrow-list li {
@@ -236,28 +381,6 @@ body {
   .vt-wipe.run, .vt-img, .vt-slide { transition: none; }
   .vt-pill.on::after { animation: none; width: 100%; }
 }
-/* Franja de palabras: cada palabra se disuelve con desenfoque mientras entra la siguiente */
-.vw, .vp { grid-area: 1 / 1; }
-.vwrap { overflow: hidden; padding: 10px 0; }
-.vw {
-  font-size: clamp(56px, 11vw, 168px); font-weight: 500; line-height: 1.05; letter-spacing: -0.035em;
-  opacity: 0; filter: blur(6px); transform: translateY(-75%);
-  transition: opacity .6s ease, filter .6s ease, transform .85s cubic-bezier(.2,.65,.3,1);
-}
-.vw.on { opacity: 1; filter: blur(0); transform: none; }
-.vw.out { opacity: 0; filter: blur(6px); transform: translateY(75%); }
-.vp {
-  font-size: clamp(17px, 1.9vw, 24px); font-weight: 500; color: #fff; max-width: 640px;
-  opacity: 0; transform: translateY(10px); transition: opacity .5s ease, transform .5s ease;
-}
-.vp.on { opacity: 1; transform: none; transition-delay: .1s; }
-.vd { width: 8px; height: 8px; border-radius: 9999px; background: rgba(255,255,255,.3); transition: width .4s ease, background-color .4s ease; }
-.vd.on { width: 28px; background: #fff; }
-@media (prefers-reduced-motion: reduce) {
-  .vw, .vp, .vd { transition: none; }
-}
-
-
 /* Mercado y referentes: tarjetas que se voltean (hover, foco o toque) para mostrar qué habilita DYM */
 .fc { perspective: 900px; display: grid; }
 .fc-inner { display: grid; transform-style: preserve-3d; transition: transform .7s cubic-bezier(.2,.65,.3,1); }

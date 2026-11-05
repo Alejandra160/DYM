@@ -12,39 +12,86 @@
   targets.forEach(function (el) { io.observe(el); });
 })();
 
-// Franja de palabras: Detecta → Conversa → Vende (se disuelven entre sí)
+// Modelo de revenue: estimación ilustrativa a partir de los supuestos editables
 (function () {
-  var stage = document.getElementById('wordStage');
-  if (!stage) return;
-  var words = stage.querySelectorAll('.vw');
-  var phrases = stage.querySelectorAll('.vp');
-  var dots = stage.querySelectorAll('.vd');
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  var cur = 0, timer = null;
+  var root = document.getElementById('modelo-revenue');
+  if (!root) return;
 
-  function show(n) {
-    var prev = cur;
-    [words, phrases, dots].forEach(function (list) {
-      list.forEach(function (el, idx) { el.classList.toggle('on', idx === n); });
+  var fees = { 1: 309999, 2: 339999, 3: 369000 };
+  var capacityPerTotem = 200000;
+  var revenuePerProduct = 500;
+  var slotsPerTotem = 40;
+  var state = { totems: 2, occupancy: 50, products: 600, stores: 10 };
+  var money = function (amount) {
+    return (amount < 0 ? '−$' : '$') + Math.round(Math.abs(amount)).toLocaleString('es-MX');
+  };
+  var get = function (id) { return document.getElementById(id); };
+  var occupancy = get('mr-occ');
+  var products = get('mr-prods');
+  var stores = get('mr-shops');
+  var investmentToggle = get('mr-tg');
+  var investment = get('mr-inv');
+  var net = get('mr-net');
+
+  function render() {
+    var spaces = state.totems * (state.occupancy / 100) * capacityPerTotem;
+    var recommendations = state.products * revenuePerProduct;
+    var storeRevenue = spaces + recommendations;
+    var chainRevenue = storeRevenue * state.stores;
+    var fee = fees[state.totems];
+    var netRevenue = storeRevenue - fee;
+    var breakEvenProducts = Math.max(0, Math.ceil((fee - spaces) / revenuePerProduct));
+    var totalSlots = state.totems * slotsPerTotem;
+    var soldSlots = Math.round(totalSlots * state.occupancy / 100);
+
+    get('mr-occ-v').textContent = state.occupancy + '%';
+    get('mr-occ-h').textContent = soldSlots + ' de ' + totalSlots + ' espacios vendidos en la tienda';
+    get('mr-prods-v').textContent = state.products;
+    get('mr-shops-v').textContent = state.stores;
+    get('mr-store').textContent = money(storeRevenue);
+    get('mr-esp').textContent = money(spaces);
+    get('mr-ast').textContent = money(recommendations);
+    get('mr-chain-l').textContent = 'En ' + state.stores + (state.stores === 1 ? ' tienda' : ' tiendas') + ', al mes';
+    get('mr-chain').textContent = money(chainRevenue);
+    get('mr-year').textContent = money(chainRevenue * 12) + ' al año';
+    get('mr-fee').textContent = money(fee);
+    net.textContent = money(netRevenue);
+    net.style.color = netRevenue >= 0 ? '#74C6C0' : '#F2A65A';
+    get('mr-be').textContent = 'Punto de equilibrio con ' + state.occupancy + '% de espacios vendidos: ' + breakEvenProducts + ' productos patrocinados.';
+  }
+
+  root.querySelectorAll('.mr-chip').forEach(function (button) {
+    button.addEventListener('click', function () {
+      state.totems = Number(button.getAttribute('data-t'));
+      root.querySelectorAll('.mr-chip').forEach(function (option) {
+        var selected = option === button;
+        option.classList.toggle('is-selected', selected);
+        option.setAttribute('aria-pressed', selected ? 'true' : 'false');
+      });
+      render();
     });
-    if (prev !== n) {
-      words[prev].classList.add('out');
-      setTimeout(function () { words[prev].classList.remove('out'); }, 1000);
-    }
-    cur = n;
-  }
-  function stop() { clearInterval(timer); timer = null; }
-  function start() {
-    stop();
-    if (reduce) return;
-    timer = setInterval(function () { show((cur + 1) % words.length); }, 2800);
-  }
+  });
 
-  if ('IntersectionObserver' in window) {
-    new IntersectionObserver(function (entries) {
-      if (entries[0].isIntersecting) start(); else stop();
-    }, { threshold: 0.3 }).observe(stage);
-  }
+  occupancy.addEventListener('input', function () {
+    state.occupancy = Number(occupancy.value);
+    render();
+  });
+  products.addEventListener('input', function () {
+    state.products = Number(products.value);
+    render();
+  });
+  stores.addEventListener('input', function () {
+    state.stores = Number(stores.value);
+    render();
+  });
+  investmentToggle.addEventListener('click', function () {
+    var expanded = investmentToggle.getAttribute('aria-expanded') !== 'true';
+    investmentToggle.setAttribute('aria-expanded', String(expanded));
+    investment.hidden = !expanded;
+    investmentToggle.textContent = expanded ? 'Ocultar inversión' : 'Ver inversión y punto de equilibrio';
+  });
+
+  render();
 })();
 // Video "Así se ve en la práctica": se reproduce (sin sonido) al entrar en pantalla y se pausa al salir
 (function () {
@@ -348,12 +395,12 @@
 // Logo del header: oculto mientras se ve el logo grande del hero, aparece al hacer scroll
 (function () {
   var navLogo = document.getElementById('navLogo');
-  var heroLogo = document.getElementById('heroLogo');
-  if (!navLogo || !heroLogo) return;
+  var hero = document.querySelector('.hero-alsuper');
+  if (!navLogo || !hero) return;
   if (!('IntersectionObserver' in window)) { navLogo.classList.remove('opacity-0'); return; }
   new IntersectionObserver(function (entries) {
     navLogo.classList.toggle('opacity-0', entries[0].isIntersecting);
-  }, { rootMargin: '-70px 0px 0px 0px' }).observe(heroLogo);
+  }, { rootMargin: '-70px 0px 0px 0px' }).observe(hero);
 })();
 // Botón "volver arriba" — aparece al bajar en la página
 (function () {
